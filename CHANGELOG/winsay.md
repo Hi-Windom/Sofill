@@ -659,3 +659,86 @@
 1. [修改文档宽度模式时文档题目未生效 · Issue #453 · v0.140](https://github.com/Hi-Windom/winsay/issues/453)
 2. [设置块滚动条在左侧显示后许多地方的tooltips无法正常显示 · Issue #466 · v0.144](https://github.com/Hi-Windom/winsay/issues/466)
 3. [protyle-gutters位置异常 · Issue #542 · v0.186](https://github.com/Hi-Windom/winsay/issues/542)
+
+
+### v0.198 ~ v0.248 聚合说明
+
+> 2022-12-04 released
+
+<p><a href="https://github.com/Hi-Windom/winsay/issues/603"><img src="https://img.shields.io/badge/SiYuan-2.5.2-green"/></a> <a href="https://github.com/Hi-Windom/winsay/issues/409"><img src="https://img.shields.io/badge/%E4%B8%8D%E5%85%BC%E5%AE%B9-2.4.5---red"/></a> <img src="https://img.shields.io/badge/-%E6%9E%84%E5%BB%BA-yellow"/></p></p>
+
+引入特性：
+
+1. [选区菜单注入一个搜索控件 · Issue #563 · v0.198](https://github.com/Hi-Windom/winsay/issues/563)
+2. [主题设置支持显示调试信息 · Issue #566 · v0.200](https://github.com/Hi-Windom/winsay/issues/566)
+3. [支持通过主题设置面板临时突破思源最大页签打开数限制 · Issue #568 · v0.200](https://github.com/Hi-Windom/winsay/issues/568)
+4. [主题引用锚文本样式配置支持同步至思源导出配置 · Issue #565 · v0.206](https://github.com/Hi-Windom/winsay/issues/565)
+5. [支持通过主题设置界面配置主题明亮模式缺省形态 · Issue #577 · v0.206](https://github.com/Hi-Windom/winsay/issues/577)
+6. [文档宽度模式增加固宽预览类选项 · Issue #583 · v0.208](https://github.com/Hi-Windom/winsay/issues/583)
+7. [13号色特殊显示 · Issue #320 · v0.210](https://github.com/Hi-Windom/winsay/issues/320)
+8. [反链面板粘性布局 · Issue #590 · v0.210](https://github.com/Hi-Windom/winsay/issues/590)
+9. [图片预览viewer界面美化 · Issue #595 · v0.214](https://github.com/Hi-Windom/winsay/issues/595)
+10. [文档选区工具条位置 · Issue #600 · v0.216](https://github.com/Hi-Windom/winsay/issues/600)
+11. [在主题设置面板导出配置时支持附加思源快捷键配置 · Issue #580 · v0.218](https://github.com/Hi-Windom/winsay/issues/580)
+12. [在主题设置面板导出配置时支持附加思源编辑器配置 · Issue #581 · v0.218](https://github.com/Hi-Windom/winsay/issues/581)
+13. [支持通过主题设置界面配置文档属性缩放 · Issue #618 · v0.224](https://github.com/Hi-Windom/winsay/issues/618)
+14. [支持通过主题设置界面配置HintHint限高 · Issue #620 · v0.224](https://github.com/Hi-Windom/winsay/issues/620)
+15. [支持通过主题设置面板开启主题自我保护 · Issue #353 · v0.226](https://github.com/Hi-Windom/winsay/issues/353)
+16. [HintHint限宽策略调整+支持通过主题设置界面配置HintHint限宽 · Issue #627 · v0.228](https://github.com/Hi-Windom/winsay/issues/627)
+17. [HintHint首项聚焦穿透模式 · Issue #628 · v0.228](https://github.com/Hi-Windom/winsay/issues/628)
+18. [支持通过主题设置面板隐藏文档树【更多】图标 · Issue #633 · v0.230](https://github.com/Hi-Windom/winsay/issues/633)
+19. [搜索匹配列表分组辅助线（需开启搜索面板标号） · Issue #639 · v0.230](https://github.com/Hi-Windom/winsay/issues/639)
+20. [支持通过主题设置配置滤镜 · Issue #643 · v0.232](https://github.com/Hi-Windom/winsay/issues/643)
+21. [滤镜在移动端可用 · Issue #652 · v0.234](https://github.com/Hi-Windom/winsay/issues/652)
+22. [支持通过主题设置面板配置状态提示增强 · Issue #654 · v0.236](https://github.com/Hi-Windom/winsay/issues/654)
+23. [Android 手机端新增一个主题设置入口 · Issue #661 · v0.240](https://github.com/Hi-Windom/winsay/issues/661)
+24. [选区搜索支持 Android 手机端 · Issue #662 · v0.240](https://github.com/Hi-Windom/winsay/issues/662)
+25. [支持通过主题设置界面开启【任何时候都不隐藏面包屑】+ 其他细节优化 · Issue #666 · v0.242](https://github.com/Hi-Windom/winsay/issues/666)
+26. [搜索历史弹出层样式 · Issue #672 · v0.244](https://github.com/Hi-Windom/winsay/issues/672)
+27. [支持通过主题设置界面禁用文档树修改图标 · Issue #684 · v0.248](https://github.com/Hi-Windom/winsay/issues/684)
+
+改进优化：
+
+1. [细节优化 · Issue #567 · v0.200](https://github.com/Hi-Windom/winsay/issues/567)
+2. [Ctrl + 鼠标滚轮缩放字号优化 · Issue #86 · v0.202](https://github.com/Hi-Windom/winsay/issues/86)
+3. [细节优化 · Issue #571 · v0.202](https://github.com/Hi-Windom/winsay/issues/571)
+4. [细节优化 · Issue #574 · v0.204](https://github.com/Hi-Windom/winsay/issues/574)
+5. [细节优化 · Issue #584 · v0.208](https://github.com/Hi-Windom/winsay/issues/584)
+6. [CTRL + TAB 弹出层鲁棒性增强 · Issue #588 · v0.210](https://github.com/Hi-Windom/winsay/issues/588)
+7. [使用思源集市自检源支持跳转到集市更新 · Issue #592 · v0.212](https://github.com/Hi-Windom/winsay/issues/592)
+8. [去除文档树多余滚动条+细节优化 · Issue #594 · v0.214](https://github.com/Hi-Windom/winsay/issues/594)
+9. [支持将自动检查更新设为静默模式，无更新时不再通知打扰 · Issue #609 · v0.220](https://github.com/Hi-Windom/winsay/issues/609)
+10. [暗黑模式虚拟引用聚焦背景色优化 · Issue #614 · v0.220](https://github.com/Hi-Windom/winsay/issues/614)
+11. [插入模板弹出层【打开文件位置】控件常显 · Issue #613 · v0.220](https://github.com/Hi-Windom/winsay/issues/613)
+12. [启动优化 · Issue #611 · v0.220](https://github.com/Hi-Windom/winsay/issues/611)
+13. [主题设置界面正式支持手机和平板端 · Issue #552 · v0.222](https://github.com/Hi-Windom/winsay/issues/552)
+14. [细节优化 · Issue #619 · v0.224](https://github.com/Hi-Windom/winsay/issues/619)
+15. [未开启文档树自适应显示时不再显示聚焦辅助线 · Issue #635 · v0.230](https://github.com/Hi-Windom/winsay/issues/635)
+16. [搜索智能布局模式优化 · Issue #640 · v0.230](https://github.com/Hi-Windom/winsay/issues/640)
+17. [#628 优化 · Issue #641 · v0.230](https://github.com/Hi-Windom/winsay/issues/641)
+18. [文档树视觉效果升级 · Issue #645 · v0.232](https://github.com/Hi-Windom/winsay/issues/645)
+19. [细节优化 · Issue #651 · v0.234](https://github.com/Hi-Windom/winsay/issues/651)
+20. [重载优化 · Issue #549 · v0.236](https://github.com/Hi-Windom/winsay/issues/549)
+21. [支持通过主题设置面板开启【在文档名下方显示创建日期】 · Issue #655 · v0.236](https://github.com/Hi-Windom/winsay/issues/655)
+22. [搜索界面全屏显示文档效果优化 · Issue #667 · v0.242](https://github.com/Hi-Windom/winsay/issues/667)
+23. [Android 手机端文档树调整 · Issue #664 · v0.242](https://github.com/Hi-Windom/winsay/issues/664)
+24. [搜索标号细节优化 · Issue #668 · v0.242](https://github.com/Hi-Windom/winsay/issues/668)
+25. [变更搜索提示内容 · Issue #670 · v0.244](https://github.com/Hi-Windom/winsay/issues/670)
+26. [文档树自适应显示优化 · Issue #680 · v0.246](https://github.com/Hi-Windom/winsay/issues/680)
+27. [优化导出PDF形态 · Issue #681 · v0.246](https://github.com/Hi-Windom/winsay/issues/681)
+28. [已有选择器适配英文和繁体中文 · Issue #636 · v0.248](https://github.com/Hi-Windom/winsay/issues/636)
+
+缺陷修复：
+
+1. [笔记本设置界面复制ID按钮样式未定义 · Issue #573 · v0.212](https://github.com/Hi-Windom/winsay/issues/573)
+2. [反链面板选区工具条不显示 · Issue #599 · v0.216](https://github.com/Hi-Windom/winsay/issues/599)
+3. [工具条搜索框并不总是存在 · Issue #598 · v0.216](https://github.com/Hi-Windom/winsay/issues/598)
+4. [顶栏清爽模式失效 · Issue #626 · v0.228](https://github.com/Hi-Windom/winsay/issues/626)
+5. [侧栏resize拖拽问题 · Issue #630 · v0.230](https://github.com/Hi-Windom/winsay/issues/630)
+6. [未开启文档树自适应显示时笔记本项层级异常 · Issue #634 · v0.230](https://github.com/Hi-Windom/winsay/issues/634)
+7. [顶栏自动隐藏后图标离奇消失 · Issue #650 · v0.234](https://github.com/Hi-Windom/winsay/issues/650)
+8. [顶栏图标过渡浮动问题 · Issue #647 · v0.234](https://github.com/Hi-Windom/winsay/issues/647)
+9. [mac系统显示错误 · Issue #658 · v0.238](https://github.com/Hi-Windom/winsay/issues/658)
+10. [部分文档切换编辑/阅读模式卡死 · Issue #660 · v0.240](https://github.com/Hi-Windom/winsay/issues/660)
+11. [搜索左右布局下文档全屏留空 · Issue #665 · v0.242](https://github.com/Hi-Windom/winsay/issues/665)
+12. [部分主题设置失效 · Issue #685 · v0.248](https://github.com/Hi-Windom/winsay/issues/685)
