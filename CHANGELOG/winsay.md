@@ -1,5 +1,46 @@
 ## Sofill- Release
 
+### v1.4 聚合说明
+
+> 2023-01-07 released
+
+<p>
+<img src="https://img.shields.io/badge/SiYuan-2.6.2-green" alt="适配 SiYuan v2.6.2" title="建议先更新思源版本" style="cursor:pointer;height: 38px;margin: 3px auto;"/>
+<img src="https://img.shields.io/badge/%E5%81%9C%E6%AD%A2%E9%80%82%E9%85%8D-2.6.1---red" alt="停止适配 SiYuan v2.6.1 及更早版本" title="只是后续不再主动适配，不代表主题无法在这些版本的思源中使用" style="cursor:pointer;height: 38px;margin: 3px;"/>
+<img src="https://img.shields.io/badge/-%E6%9E%84%E5%BB%BA-yellow" alt="这是一个构建版本" title="建议手动删除旧版本后再下载，而不是直接更新" style="cursor:pointer;height: 38px;margin: 3px;"/> <br>
+<img src="https://img.shields.io/badge/Android-PASS-green?logo=Android" title="" style="margin: 3px auto;"/>
+<img src="https://img.shields.io/badge/Windows 11-PASS-green?logo=Windows 11" title="" style="margin: 3px auto;"/>
+<img src="https://img.shields.io/badge/Docker-PASS-green?logo=Docker" title="" style="margin: 3px auto;"/>
+</p>
+
+引入特性：
+
+1. [文档内链接聚焦动效 · Issue #840 · v1.4.2](https://github.com/Hi-Windom/winsay/issues/840)
+2. [导出配置数据支持附加思源同步配置 · Issue #848 · v1.4.5](https://github.com/Hi-Windom/winsay/issues/848)
+3. [自动检测更新支持忽略小版本 · Issue #861 · v1.4.8](https://github.com/Hi-Windom/winsay/issues/861)
+4. [数据快照界面优化 · Issue #847 · v1.4.10](https://github.com/Hi-Windom/winsay/issues/847)
+5. [思源登录用户文档只读模式增强提示 · Issue #869 · v1.4.11](https://github.com/Hi-Windom/winsay/issues/869)
+6. [安卓手机端支持状态栏歌词模式 · Issue #874 · v1.4.17](https://github.com/Hi-Windom/winsay/issues/874)
+
+改进优化：
+
+1. [安卓手机端主题设置面板移除搜索项 · Issue #837 · v1.4.1](https://github.com/Hi-Windom/winsay/issues/837)
+2. [一次性通知延时通知 · Issue #842 · v1.4.3](https://github.com/Hi-Windom/winsay/issues/842)
+3. [README重要 badge 图片无法加载时显示替代文本 · Issue #845 · v1.4.4](https://github.com/Hi-Windom/winsay/issues/845)
+4. [集市版本更新日志使用badge显示真机适配测试通过 · Issue #854 · v1.4.6](https://github.com/Hi-Windom/winsay/issues/854)
+5. [body加入非订阅用户/订阅用户类名 · Issue #850 · v1.4.6](https://github.com/Hi-Windom/winsay/issues/850)
+6. [页签栏支持切换为默认主题样式 · Issue #852 · v1.4.7](https://github.com/Hi-Windom/winsay/issues/852)
+7. [关于页新增开源软件声明链接 · Issue #857 · v1.4.8](https://github.com/Hi-Windom/winsay/issues/857)
+8. [顶栏清爽模式加入订阅用户权益 · Issue #872 · v1.4.12](https://github.com/Hi-Windom/winsay/issues/872)
+9. [文档属性缩放加入登录用户权益 · Issue #871 · v1.4.12](https://github.com/Hi-Windom/winsay/issues/871)
+10. [导出配置数据支持安卓端 · Issue #877 · v1.4.14](https://github.com/Hi-Windom/winsay/issues/877)
+11. [取消压缩 Block.css 和 Popup.css 并用 less 构建 · Issue #839 · v1.4.15](https://github.com/Hi-Windom/winsay/issues/839)
+12. [取消压缩 CP.css 并使用 less 构建 · Issue #875 · v1.4.16](https://github.com/Hi-Windom/winsay/issues/875)
+
+修复缺陷：
+
+1. [垂直页签栏遮挡左下角弹出层 · Issue #866 · v1.4.9](https://github.com/Hi-Windom/winsay/issues/866)
+
 ### v1.0 ~ v1.3 聚合说明
 
 > 2023-01-03 released
