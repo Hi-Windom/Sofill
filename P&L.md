@@ -40,6 +40,7 @@ Sofill 系列主题的诞生与成长离不开下列开源项目的贡献，以�
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [vscode-easy-less](https://github.com/mrcrowl/vscode-easy-less)
 * [vditor](https://github.com/Vanessa219/vditor)
+* [es6-string-html](https://marketplace.visualstudio.com/items?itemName=Tobermory.es6-string-html)
 
 ## 💎 特别鸣谢
 
