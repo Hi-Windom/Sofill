@@ -1,3 +1,8 @@
+/*!
+* sofill v1.0.7
+* https://github.com/Hi-Windom/Sofill
+* https://www.npmjs.com/package/sofill
+*/
 function 通知(text, timeout = 7000) {
     var url = "http://127.0.0.1:6806/api/notification/pushMsg";
     var httpRequest = new XMLHttpRequest();
@@ -37,7 +42,7 @@ function pushMessage(text) {
         }
     };
 }
-var Alert = {
+var index$2 = {
     通知,
     pushMessage,
 };
@@ -221,19 +226,35 @@ var Utils = {
     diguiTooONE,
 };
 
-var index$1 = {
-    Alert,
-    Utils,
-};
-
-var index$2 = /*#__PURE__*/Object.freeze({
+var index$1 = /*#__PURE__*/Object.freeze({
     __proto__: null,
-    default: index$1
+    Alert: index$2,
+    Utils: Utils
 });
 
 var Account = {};
 
 var Asset = {};
+
+async function 向思源请求数据(url, data) {
+    let resData = null;
+    await fetch(url, {
+        body: JSON.stringify(data),
+        method: "POST",
+        headers: {
+            Authorization: `Token '${window.siyuan.config.api.token}'`,
+        },
+    }).then(function (response) {
+        resData = response.json();
+    });
+    console.log(resData);
+    return resData;
+}
+async function 解析响应体(response) {
+    let r = await response;
+    // console.log(r)
+    return r.code === 0 ? r.data : null;
+}
 
 var Query = {
     sql: 以sql向思源请求块数据,
@@ -794,76 +815,39 @@ async function 渲染模板(data) {
     return 解析响应体(向思源请求数据(url, data));
 }
 
-var siyuan = {
-    request: 向思源请求数据,
-    transactions: 交互业务,
-    Account,
-    Asset,
-    Attr,
-    Av,
-    Bazaar,
-    Block,
-    Bookmark,
-    Export,
-    File: _File,
-    Filetree,
-    Format,
-    Graph,
-    History,
-    Import,
-    Inbox,
-    Lute,
-    Notebook,
-    Notification,
-    Outline,
-    Query,
-    Ref,
-    Repo,
-    Riff,
-    Search,
-    Setting,
-    Snippet,
-    Storage,
-    Sync,
-    System,
-    Tag,
-    Template,
-};
-async function 向思源请求数据(url, data) {
-    let resData = null;
-    await fetch(url, {
-        body: JSON.stringify(data),
-        method: "POST",
-        headers: {
-            Authorization: `Token '${window.siyuan.config.api.token}'`,
-        },
-    }).then(function (response) {
-        resData = response.json();
-    });
-    console.log(resData);
-    return resData;
-}
-async function 解析响应体(response) {
-    let r = await response;
-    // console.log(r)
-    return r.code === 0 ? r.data : null;
-}
-async function 交互业务(protyle, transactions = []) {
-    const url = "/api/transactions";
-    const ws_url = new URL(protyle.ws.ws.url);
-    const data = {
-        app: ws_url.searchParams.get("app"),
-        session: ws_url.searchParams.get("id"),
-        transactions: transactions,
-    };
-    return 解析响应体(向思源请求数据(url, data));
-}
-
 var index = /*#__PURE__*/Object.freeze({
     __proto__: null,
-    siyuan: siyuan,
-    '向思源请求数据': 向思源请求数据,
-    '解析响应体': 解析响应体
+    Account: Account,
+    Asset: Asset,
+    Attr: Attr,
+    Av: Av,
+    Bazaar: Bazaar,
+    Block: Block,
+    Bookmark: Bookmark,
+    Export: Export,
+    Filetree: Filetree,
+    Format: Format,
+    Graph: Graph,
+    History: History,
+    Import: Import,
+    Inbox: Inbox,
+    Lute: Lute,
+    Notebook: Notebook,
+    Notification: Notification,
+    Outline: Outline,
+    Query: Query,
+    Ref: Ref,
+    Repo: Repo,
+    Riff: Riff,
+    Search: Search,
+    Setting: Setting,
+    Snippet: Snippet,
+    Storage: Storage,
+    Sync: Sync,
+    System: System,
+    Tag: Tag,
+    Template: Template,
+    _File: _File
 });
 
-export { index as siyuan, index$2 as sofill };
+export { index as siyuan, index$1 as sofill };
