@@ -865,9 +865,9 @@
         sofill,
     };
 
-    class Sofill {
-        API = API;
-    }
+    var Sofill = {
+        API,
+    };
 
     exports.Sofill = Sofill;
 
