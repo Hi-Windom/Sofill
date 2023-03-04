@@ -1,8 +1,9 @@
 {
   "name": "sofill",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
-  "main": "Sofill.js",
+  "main": "index.cjs",
+  "module": "index.mjs",
   "keywords": [],
   "author": "Soltus",
   "license": "ISC",
