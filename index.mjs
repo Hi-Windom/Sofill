@@ -1,3 +1,236 @@
+function 通知(text, timeout = 7000) {
+    var url = "http://127.0.0.1:6806/api/notification/pushMsg";
+    var httpRequest = new XMLHttpRequest();
+    httpRequest.open("POST", url, true);
+    httpRequest.setRequestHeader("Content-type", "application/json");
+    var obj = {
+        msg: text,
+        timeout: 7000,
+    };
+    httpRequest.send(JSON.stringify(obj));
+    // 响应后的回调函数
+    httpRequest.onreadystatechange = function () {
+        if (httpRequest.readyState === 4 && httpRequest.status === 200) {
+            var json = httpRequest.responseText;
+            console.log(json);
+        }
+    };
+}
+/**
+ * @deprecated 过时的
+ */
+function pushMessage(text) {
+    var url = "http://127.0.0.1:6806/api/notification/pushMsg";
+    var httpRequest = new XMLHttpRequest();
+    httpRequest.open("POST", url, true);
+    httpRequest.setRequestHeader("Content-type", "application/json");
+    var obj = {
+        msg: text,
+        timeout: 7000,
+    };
+    httpRequest.send(JSON.stringify(obj));
+    // 响应后的回调函数
+    httpRequest.onreadystatechange = function () {
+        if (httpRequest.readyState === 4 && httpRequest.status === 200) {
+            var json = httpRequest.responseText;
+            console.log(json);
+        }
+    };
+}
+var Alert = {
+    通知,
+    pushMessage,
+};
+
+// 如果 version1 > version2 返回 1，如果 version1 < version2 返回 -1， 除此之外返回 0。
+function compareVersion(version1, version2) {
+    const arr1 = version1.split(".");
+    const arr2 = version2.split(".");
+    const length1 = arr1.length;
+    const length2 = arr2.length;
+    const minlength = Math.min(length1, length2);
+    let i = 0;
+    for (i; i < minlength; i++) {
+        let a = parseInt(arr1[i]);
+        let b = parseInt(arr2[i]);
+        if (a > b) {
+            return 1;
+        }
+        else if (a < b) {
+            return -1;
+        }
+    }
+    if (length1 > length2) {
+        for (let j = i; j < length1; j++) {
+            if (parseInt(arr1[j]) !== 0) {
+                return 1;
+            }
+        }
+        return 0;
+    }
+    else if (length1 < length2) {
+        for (let j = i; j < length2; j++) {
+            if (parseInt(arr2[j]) !== 0) {
+                return -1;
+            }
+        }
+        return 0;
+    }
+    return 0;
+}
+//判断字符是否为空
+function isEmpty(obj) {
+    return (typeof obj === "undefined" || obj === null || obj === "" || obj === "null");
+}
+function RangeLimitedInt(min, value1, max) {
+    var v1 = parseInt(min, 10);
+    var v2 = parseInt(value1, 10);
+    var v3 = parseInt(max, 10);
+    var vmin = v2 < v3 ? v2 : v3;
+    var vmax = v1 > vmin ? v1 : vmin;
+    return vmax;
+}
+function CopyDOM(from, to) {
+    var upperDiv = document.querySelector(from);
+    var belowNode = document.querySelector(to);
+    var newDom = upperDiv.cloneNode(true);
+    belowNode.appendChild(newDom);
+}
+function MoveDOM(from, to) {
+    var upperDiv = document.querySelector(from);
+    var belowNode = document.querySelector(to);
+    belowNode.appendChild(upperDiv);
+}
+function MoveChildren(from, to) {
+    var upperDiv = document.querySelector(from);
+    var upperUl = upperDiv.children;
+    var len = upperDiv.childElementCount;
+    var belowNode = document.querySelector(to);
+    for (var i = 0; i < len; i++) {
+        belowNode.appendChild(upperUl[0]);
+    }
+}
+function isAppMode() {
+    return document.getElementsByTagName("body")[0].classList.contains("android")
+        ? false
+        : document
+            .getElementsByTagName("body")[0]
+            .classList.contains("body--desktop")
+            ? false
+            : window.siyuan.config.system.os === "windows" ||
+                window.siyuan.config.system.os === "darwin"
+                ? true
+                : false;
+}
+function removejscssfile(filename, filetype) {
+    var targetelement = filetype === "js" ? "script" : filetype === "css" ? "link" : "none";
+    var targetattr = filetype === "js" ? "src" : filetype === "css" ? "href" : "none";
+    var allsuspects = document.getElementsByTagName(targetelement);
+    for (var i = allsuspects.length; i >= 0; i--) {
+        if (allsuspects[i]?.getAttribute(targetattr) != null &&
+            allsuspects[i].getAttribute(targetattr).indexOf(filename) !== -1)
+            allsuspects[i].parentNode.removeChild(allsuspects[i]);
+    }
+}
+/**
+ * 为元素注册监听事件
+ * @param {Element} element
+ * @param {string} strType
+ * @param {Fun} fun
+ */
+function AddEvent(element, strType, fun) {
+    //判断浏览器有没有addEventListener方法
+    if (element.addEventListener) {
+        element.addEventListener(strType, fun, false);
+        //判断浏览器有没 有attachEvent IE8的方法
+    }
+    else if (element.attachEvent) {
+        element.attachEvent("on" + strType, fun);
+        //如果都没有则使用 元素.事件属性这个基本方法
+    }
+    else {
+        element["on" + strType] = fun;
+    }
+}
+/**
+ * 为元素解绑监听事件
+ * @param {Element}  element ---注册事件元素对象
+ * @param {String}   strType ---注册事件名(不加on 如"click")
+ * @param {Function} fun	 ---回调函数
+ *
+ */
+function myRemoveEvent(element, strType, fun) {
+    //判断浏览器有没有addEventListener方法
+    if (element.addEventListener) {
+        // addEventListener方法专用删除方法
+        element.removeEventListener(strType, fun, false);
+        //判断浏览器有没有attachEvent IE8的方法
+    }
+    else if (element.attachEvent) {
+        // attachEvent方法专用删除事件方法
+        element.detachEvent("on" + strType, fun);
+        //如果都没有则使用 元素.事件属性这个基本方法
+    }
+    else {
+        //删除事件用null
+        element["on" + strType] = null;
+    }
+}
+/**
+ * 递归DOM元素查找深度子级的第一个符合条件的元素
+ * @param {*} element 要查找DOM元素
+ * @param {*} judgeFun 查找函数 : fun(v) return true or false
+ * @returns element
+ */
+function diguiTooONE(element, judgeFun) {
+    if (element == null)
+        return null;
+    if (judgeFun == null)
+        return null;
+    return digui(element);
+    function digui(elem) {
+        var child = elem.children;
+        if ((child.length = 0))
+            return null;
+        for (let index = 0; index < child.length; index++) {
+            const element2 = child[index];
+            if (judgeFun(element2)) {
+                return element2;
+            }
+            else {
+                var item = digui(element2);
+                if (item == null)
+                    continue;
+                return item;
+            }
+        }
+        return null;
+    }
+}
+var Utils = {
+    compareVersion,
+    isEmpty,
+    RangeLimitedInt,
+    MoveDOM,
+    MoveChildren,
+    CopyDOM,
+    isAppMode,
+    removejscssfile,
+    AddEvent,
+    myRemoveEvent,
+    diguiTooONE,
+};
+
+var index$1 = {
+    Alert,
+    Utils,
+};
+
+var index$2 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: index$1
+});
+
 var Account = {};
 
 var Asset = {};
@@ -626,241 +859,11 @@ async function 交互业务(protyle, transactions = []) {
     return 解析响应体(向思源请求数据(url, data));
 }
 
-function 通知(text, timeout = 7000) {
-    var url = "http://127.0.0.1:6806/api/notification/pushMsg";
-    var httpRequest = new XMLHttpRequest();
-    httpRequest.open("POST", url, true);
-    httpRequest.setRequestHeader("Content-type", "application/json");
-    var obj = {
-        msg: text,
-        timeout: 7000,
-    };
-    httpRequest.send(JSON.stringify(obj));
-    // 响应后的回调函数
-    httpRequest.onreadystatechange = function () {
-        if (httpRequest.readyState === 4 && httpRequest.status === 200) {
-            var json = httpRequest.responseText;
-            console.log(json);
-        }
-    };
-}
-/**
- * @deprecated 过时的
- */
-function pushMessage(text) {
-    var url = "http://127.0.0.1:6806/api/notification/pushMsg";
-    var httpRequest = new XMLHttpRequest();
-    httpRequest.open("POST", url, true);
-    httpRequest.setRequestHeader("Content-type", "application/json");
-    var obj = {
-        msg: text,
-        timeout: 7000,
-    };
-    httpRequest.send(JSON.stringify(obj));
-    // 响应后的回调函数
-    httpRequest.onreadystatechange = function () {
-        if (httpRequest.readyState === 4 && httpRequest.status === 200) {
-            var json = httpRequest.responseText;
-            console.log(json);
-        }
-    };
-}
-var Alert = {
-    通知,
-    pushMessage,
-};
+var index = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    siyuan: siyuan,
+    '向思源请求数据': 向思源请求数据,
+    '解析响应体': 解析响应体
+});
 
-// 如果 version1 > version2 返回 1，如果 version1 < version2 返回 -1， 除此之外返回 0。
-function compareVersion(version1, version2) {
-    const arr1 = version1.split(".");
-    const arr2 = version2.split(".");
-    const length1 = arr1.length;
-    const length2 = arr2.length;
-    const minlength = Math.min(length1, length2);
-    let i = 0;
-    for (i; i < minlength; i++) {
-        let a = parseInt(arr1[i]);
-        let b = parseInt(arr2[i]);
-        if (a > b) {
-            return 1;
-        }
-        else if (a < b) {
-            return -1;
-        }
-    }
-    if (length1 > length2) {
-        for (let j = i; j < length1; j++) {
-            if (parseInt(arr1[j]) !== 0) {
-                return 1;
-            }
-        }
-        return 0;
-    }
-    else if (length1 < length2) {
-        for (let j = i; j < length2; j++) {
-            if (parseInt(arr2[j]) !== 0) {
-                return -1;
-            }
-        }
-        return 0;
-    }
-    return 0;
-}
-//判断字符是否为空
-function isEmpty(obj) {
-    return (typeof obj === "undefined" || obj === null || obj === "" || obj === "null");
-}
-function RangeLimitedInt(min, value1, max) {
-    var v1 = parseInt(min, 10);
-    var v2 = parseInt(value1, 10);
-    var v3 = parseInt(max, 10);
-    var vmin = v2 < v3 ? v2 : v3;
-    var vmax = v1 > vmin ? v1 : vmin;
-    return vmax;
-}
-function CopyDOM(from, to) {
-    var upperDiv = document.querySelector(from);
-    var belowNode = document.querySelector(to);
-    var newDom = upperDiv.cloneNode(true);
-    belowNode.appendChild(newDom);
-}
-function MoveDOM(from, to) {
-    var upperDiv = document.querySelector(from);
-    var belowNode = document.querySelector(to);
-    belowNode.appendChild(upperDiv);
-}
-function MoveChildren(from, to) {
-    var upperDiv = document.querySelector(from);
-    var upperUl = upperDiv.children;
-    var len = upperDiv.childElementCount;
-    var belowNode = document.querySelector(to);
-    for (var i = 0; i < len; i++) {
-        belowNode.appendChild(upperUl[0]);
-    }
-}
-function isAppMode() {
-    return document.getElementsByTagName("body")[0].classList.contains("android")
-        ? false
-        : document
-            .getElementsByTagName("body")[0]
-            .classList.contains("body--desktop")
-            ? false
-            : window.siyuan.config.system.os === "windows" ||
-                window.siyuan.config.system.os === "darwin"
-                ? true
-                : false;
-}
-function removejscssfile(filename, filetype) {
-    var targetelement = filetype === "js" ? "script" : filetype === "css" ? "link" : "none";
-    var targetattr = filetype === "js" ? "src" : filetype === "css" ? "href" : "none";
-    var allsuspects = document.getElementsByTagName(targetelement);
-    for (var i = allsuspects.length; i >= 0; i--) {
-        if (allsuspects[i]?.getAttribute(targetattr) != null &&
-            allsuspects[i].getAttribute(targetattr).indexOf(filename) !== -1)
-            allsuspects[i].parentNode.removeChild(allsuspects[i]);
-    }
-}
-/**
- * 为元素注册监听事件
- * @param {Element} element
- * @param {string} strType
- * @param {Fun} fun
- */
-function AddEvent(element, strType, fun) {
-    //判断浏览器有没有addEventListener方法
-    if (element.addEventListener) {
-        element.addEventListener(strType, fun, false);
-        //判断浏览器有没 有attachEvent IE8的方法
-    }
-    else if (element.attachEvent) {
-        element.attachEvent("on" + strType, fun);
-        //如果都没有则使用 元素.事件属性这个基本方法
-    }
-    else {
-        element["on" + strType] = fun;
-    }
-}
-/**
- * 为元素解绑监听事件
- * @param {Element}  element ---注册事件元素对象
- * @param {String}   strType ---注册事件名(不加on 如"click")
- * @param {Function} fun	 ---回调函数
- *
- */
-function myRemoveEvent(element, strType, fun) {
-    //判断浏览器有没有addEventListener方法
-    if (element.addEventListener) {
-        // addEventListener方法专用删除方法
-        element.removeEventListener(strType, fun, false);
-        //判断浏览器有没有attachEvent IE8的方法
-    }
-    else if (element.attachEvent) {
-        // attachEvent方法专用删除事件方法
-        element.detachEvent("on" + strType, fun);
-        //如果都没有则使用 元素.事件属性这个基本方法
-    }
-    else {
-        //删除事件用null
-        element["on" + strType] = null;
-    }
-}
-/**
- * 递归DOM元素查找深度子级的第一个符合条件的元素
- * @param {*} element 要查找DOM元素
- * @param {*} judgeFun 查找函数 : fun(v) return true or false
- * @returns element
- */
-function diguiTooONE(element, judgeFun) {
-    if (element == null)
-        return null;
-    if (judgeFun == null)
-        return null;
-    return digui(element);
-    function digui(elem) {
-        var child = elem.children;
-        if ((child.length = 0))
-            return null;
-        for (let index = 0; index < child.length; index++) {
-            const element2 = child[index];
-            if (judgeFun(element2)) {
-                return element2;
-            }
-            else {
-                var item = digui(element2);
-                if (item == null)
-                    continue;
-                return item;
-            }
-        }
-        return null;
-    }
-}
-var Utils = {
-    compareVersion,
-    isEmpty,
-    RangeLimitedInt,
-    MoveDOM,
-    MoveChildren,
-    CopyDOM,
-    isAppMode,
-    removejscssfile,
-    AddEvent,
-    myRemoveEvent,
-    diguiTooONE,
-};
-
-var sofill = {
-    Alert,
-    Utils,
-};
-
-var API = {
-    siyuan,
-    sofill,
-};
-
-var index = {
-    API,
-};
-
-export { index as default };
+export { index as siyuan, index$2 as sofill };
