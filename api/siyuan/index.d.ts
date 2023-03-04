@@ -64,7 +64,7 @@ export declare var siyuan: {
         getDocOutline: (文档id: any) => Promise<any>;
     };
     Query: {
-        sql: typeof import("./query").以sql向思源请求块数据;
+        sql: typeof import("./query/index").以sql向思源请求块数据;
     };
     Ref: {
         getBacklink: (id: any) => Promise<any>;
