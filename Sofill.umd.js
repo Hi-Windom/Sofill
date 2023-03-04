@@ -1,8 +1,8 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
-    typeof define === 'function' && define.amd ? define(['exports'], factory) :
-    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.Sofill = {}));
-})(this, (function (exports) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+    typeof define === 'function' && define.amd ? define(factory) :
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Sofill = factory());
+})(this, (function () { 'use strict';
 
     var Account = {};
 
@@ -672,8 +672,8 @@
         };
     }
     var Alert = {
-        通知: 通知,
-        pushMessage: pushMessage,
+        通知,
+        pushMessage,
     };
 
     // 如果 version1 > version2 返回 1，如果 version1 < version2 返回 -1， 除此之外返回 0。
@@ -865,10 +865,10 @@
         sofill,
     };
 
-    var Sofill = {
+    var index = {
         API,
     };
 
-    exports.Sofill = Sofill;
+    return index;
 
 }));

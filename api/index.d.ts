@@ -1,7 +1,9 @@
 import { 向思源请求数据 } from './siyuan/index';
-export declare var API: {
+declare const _default: {
     siyuan: {
         request: typeof 向思源请求数据;
+        transactions: (protyle: any, transactions?: any[]) => Promise<any>;
+        Account: {};
         /**
          * 向指定父级创建追加一个子元素，并可选添加ID,
          * @param {Element} fatherElement
@@ -9,9 +11,14 @@ export declare var API: {
          * @param {string} setId
          * @returns addElementObject
          */
-        transactions: (protyle: any, transactions?: any[]) => Promise<any>;
-        Account: {};
         Asset: {};
+        /**
+         * 向指定父级创建追加一个子元素，并可选添加ID,
+         * @param {Element} fatherElement
+         * @param {string} addElementTxt 要创建添加的元素标签
+         * @param {string} setId
+         * @returns addElementObject
+         */
         Attr: {
             getBlockAttrs: (内容块id: any) => Promise<any>;
             setBlockAttrs: (内容块id: any, 属性对象: any) => Promise<any>;
@@ -28,26 +35,7 @@ export declare var API: {
             deleteBlock: (id: any) => Promise<any>;
             updateBlock: (id: any, dataType: any, data: any) => Promise<any>;
         };
-        /**
-         * 向指定父级创建追加一个子元素，并可选添加ID,
-         * @param {Element} fatherElement
-         * @param {string} addElementTxt 要创建添加的元素标签
-         * @param {string} setId
-         * @returns addElementObject
-         */
-        Bookmark: {}; /**
-        //  * 获得文本的占用的宽度
-        //  * @param {*} text 字符串文班
-        //  * @param {*} font 文本字体的样式
-        //  * @returns
-        //  */
-        /**
-         * 向指定父级创建追加一个子元素，并可选添加ID,
-         * @param {Element} fatherElement
-         * @param {string} addElementTxt 要创建添加的元素标签
-         * @param {string} setId
-         * @returns addElementObject
-         */
+        Bookmark: {};
         Export: {
             exportMdContent: (文档id: any) => Promise<any>;
         };
@@ -67,13 +55,6 @@ export declare var API: {
             searchDocs: (k: any) => Promise<any>;
         };
         Format: {};
-        /**
-         * 向指定父级创建追加一个子元素，并可选添加ID,
-         * @param {Element} fatherElement
-         * @param {string} addElementTxt 要创建添加的元素标签
-         * @param {string} setId
-         * @returns addElementObject
-         */
         Graph: {
             getLocalGraph: (k: any, id: any, conf: any, reqId: any) => Promise<any>;
             getGraph: (k: any, conf: any, reqId: any) => Promise<any>;
@@ -91,13 +72,6 @@ export declare var API: {
             closeNotebook: (笔记本id: any) => Promise<any>;
             renameNotebook: (笔记本id: any, 笔记本的新名称: any) => Promise<any>;
         };
-        Notification: {
-            pushMsg: (message?: any, text?: any, timeout?: number) => Promise<any>;
-            pushErrMsg: (message?: any, text?: any, timeout?: number) => Promise<any>;
-        };
-        Outline: {
-            getDocOutline: (文档id: any) => Promise<any>;
-        };
         /**
          * 向指定父级创建追加一个子元素，并可选添加ID,
          * @param {Element} fatherElement
@@ -105,6 +79,13 @@ export declare var API: {
          * @param {string} setId
          * @returns addElementObject
          */
+        Notification: {
+            pushMsg: (message?: any, text?: any, timeout?: number) => Promise<any>;
+            pushErrMsg: (message?: any, text?: any, timeout?: number) => Promise<any>;
+        };
+        Outline: {
+            getDocOutline: (文档id: any) => Promise<any>;
+        };
         Query: {
             sql: typeof import("./siyuan/query").以sql向思源请求块数据;
         };
@@ -133,7 +114,7 @@ export declare var API: {
     };
     sofill: {
         Alert: {
-            通知: typeof import("./sofill/alert").通知;
+            通知: (text: any, timeout?: number) => void;
             pushMessage: (text: any) => void;
         };
         Utils: {
@@ -151,6 +132,7 @@ export declare var API: {
         };
     };
 };
+export default _default;
 export { insertCreateAfter, addinsertCreateElement, insertCreateBefore, };
 /**
  * 向指定父级创建追加一个子元素，并可选添加ID,

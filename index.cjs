@@ -668,8 +668,8 @@ function pushMessage(text) {
     };
 }
 var Alert = {
-    通知: 通知,
-    pushMessage: pushMessage,
+    通知,
+    pushMessage,
 };
 
 // 如果 version1 > version2 返回 1，如果 version1 < version2 返回 -1， 除此之外返回 0。
@@ -861,8 +861,8 @@ var API = {
     sofill,
 };
 
-var Sofill = {
+var index = {
     API,
 };
 
-exports.Sofill = Sofill;
+module.exports = index;

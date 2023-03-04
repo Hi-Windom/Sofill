@@ -1,6 +1,6 @@
-export declare var sofill: {
+declare const _default: {
     Alert: {
-        通知: typeof import("./alert/index").通知;
+        通知: (text: any, timeout?: number) => void;
         pushMessage: (text: any) => void;
     };
     Utils: {
@@ -17,3 +17,4 @@ export declare var sofill: {
         diguiTooONE: (element: any, judgeFun: any) => any;
     };
 };
+export default _default;

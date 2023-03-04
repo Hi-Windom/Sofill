@@ -1,4 +1,4 @@
-export declare var Sofill: {
+declare const _default: {
     API: {
         siyuan: {
             request: typeof import("./api/siyuan").向思源请求数据;
@@ -93,7 +93,7 @@ export declare var Sofill: {
         };
         sofill: {
             Alert: {
-                通知: typeof import("./api/sofill/alert").通知;
+                通知: (text: any, timeout?: number) => void;
                 pushMessage: (text: any) => void;
             };
             Utils: {
@@ -112,3 +112,4 @@ export declare var Sofill: {
         };
     };
 };
+export default _default;
