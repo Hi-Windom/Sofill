@@ -1,12 +1,29 @@
 {
   "name": "sofill",
-  "version": "1.0.9",
+  "version": "1.0.11",
   "description": "",
   "main": "index.cjs",
   "module": "index.mjs",
   "keywords": [],
   "author": "Soltus",
   "license": "ISC",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "require": "./lib/cjs/index.cjs",
+      "import": "./lib/es/index.mjs"
+    },
+    "./api": {
+      "types": "./api/index.d.ts",
+      "require": "./lib/cjs/api.cjs",
+      "import": "./lib/es/api.mjs"
+    },
+    "./config": {
+      "types": "./config/index.d.ts",
+      "require": "./lib/cjs/config.cjs",
+      "import": "./lib/es/config.mjs"
+    }
+  },
   "dependencies": {
     "@sillot/bridge": "^0.0.3"
   }
