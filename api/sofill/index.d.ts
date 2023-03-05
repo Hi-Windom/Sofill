@@ -1,2 +1,2 @@
-export { default as Alert } from "./alert/index";
-export { Utils } from "./utils/index";
+export * from "./alert/index";
+export * from "./utils/index";

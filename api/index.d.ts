@@ -1,5 +1,5 @@
-export * as sofill from "./sofill/index";
-export * as siyuan from "./siyuan/index";
+export * from "./sofill/index";
+export * from "./siyuan/index";
 export { insertCreateAfter, addinsertCreateElement, insertCreateBefore, };
 /**
  * 向指定父级创建追加一个子元素，并可选添加ID,

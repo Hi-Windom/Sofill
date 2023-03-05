@@ -1,5 +1,6 @@
+export { compareVersion, isEmpty, RangeLimitedInt, MoveDOM, MoveChildren, CopyDOM, isAppMode, removejscssfile, AddEvent, myRemoveEvent, diguiTooONE, };
 declare function compareVersion(version1: any, version2: any): 0 | 1 | -1;
-export declare function isEmpty(obj: any): boolean;
+declare function isEmpty(obj: any): boolean;
 declare function RangeLimitedInt(min: any, value1: any, max: any): number;
 declare function CopyDOM(from: any, to: any): void;
 declare function MoveDOM(from: any, to: any): void;
@@ -28,17 +29,3 @@ declare function myRemoveEvent(element: any, strType: any, fun: any): void;
  * @returns element
  */
 declare function diguiTooONE(element: any, judgeFun: any): any;
-export declare var Utils: {
-    compareVersion: typeof compareVersion;
-    isEmpty: typeof isEmpty;
-    RangeLimitedInt: typeof RangeLimitedInt;
-    MoveDOM: typeof MoveDOM;
-    MoveChildren: typeof MoveChildren;
-    CopyDOM: typeof CopyDOM;
-    isAppMode: typeof isAppMode;
-    removejscssfile: typeof removejscssfile;
-    AddEvent: typeof AddEvent;
-    myRemoveEvent: typeof myRemoveEvent;
-    diguiTooONE: typeof diguiTooONE;
-};
-export {};
