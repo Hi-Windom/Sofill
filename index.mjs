@@ -1,5 +1,6 @@
 /*!
-* sofill v1.0.7
+* sofill v1.0.8
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
+export * from '@sillot/bridge/src/SConst';
