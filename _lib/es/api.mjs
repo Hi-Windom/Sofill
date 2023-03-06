@@ -1,11 +1,9 @@
 /*!
-* sofill v1.0.10
+* sofill v1.0.11
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
-'use strict';
-
-var config = require('./config.cjs');
+import { apitoken } from './env.mjs';
 
 function 通知(text, timeout = 7000) {
     var url = "http://127.0.0.1:6806/api/notification/pushMsg";
@@ -114,18 +112,6 @@ function MoveChildren(from, to) {
     for (var i = 0; i < len; i++) {
         belowNode.appendChild(upperUl[0]);
     }
-}
-function isAppMode() {
-    return document.getElementsByTagName("body")[0].classList.contains("android")
-        ? false
-        : document
-            .getElementsByTagName("body")[0]
-            .classList.contains("body--desktop")
-            ? false
-            : window.siyuan.config.system.os === "windows" ||
-                window.siyuan.config.system.os === "darwin"
-                ? true
-                : false;
 }
 function removejscssfile(filename, filetype) {
     var targetelement = filetype === "js" ? "script" : filetype === "css" ? "link" : "none";
@@ -361,7 +347,7 @@ async function 获取文件(path) {
     const response = await fetch("/api/file/getFile", {
         method: "POST",
         headers: {
-            Authorization: `Token ${config.apitoken}`,
+            Authorization: `Token ${apitoken}`,
         },
         body: JSON.stringify({
             path: path,
@@ -384,7 +370,7 @@ async function 写入文件(path, filedata, isDir = false, modTime = Date.now())
         body: formdata,
         method: "POST",
         headers: {
-            Authorization: `Token ${config.apitoken}`,
+            Authorization: `Token ${apitoken}`,
         },
     });
     if (response.status === 200)
@@ -870,54 +856,4 @@ async function checkedChange(obj, YesFn, NoFn) {
     });
 }
 
-exports.Account = Account;
-exports.AddEvent = AddEvent;
-exports.Asset = Asset;
-exports.Attr = Attr;
-exports.Av = Av;
-exports.Bazaar = Bazaar;
-exports.Block = Block;
-exports.Bookmark = Bookmark;
-exports.CopyDOM = CopyDOM;
-exports.Export = Export;
-exports.Filetree = Filetree;
-exports.Format = Format;
-exports.Graph = Graph;
-exports.History = History;
-exports.Import = Import;
-exports.Inbox = Inbox;
-exports.Lute = Lute;
-exports.MoveChildren = MoveChildren;
-exports.MoveDOM = MoveDOM;
-exports.Notebook = Notebook;
-exports.Notification = Notification;
-exports.Outline = Outline;
-exports.Query = Query;
-exports.RangeLimitedInt = RangeLimitedInt;
-exports.Ref = Ref;
-exports.Repo = Repo;
-exports.Riff = Riff;
-exports.Search = Search;
-exports.Setting = Setting;
-exports.Snippet = Snippet;
-exports.Storage = Storage;
-exports.Sync = Sync;
-exports.System = System;
-exports.Tag = Tag;
-exports.Template = Template;
-exports._File = _File;
-exports.addinsertCreateElement = addinsertCreateElement;
-exports.checkedChange = checkedChange;
-exports.checkedInit = checkedInit;
-exports.compareVersion = compareVersion;
-exports.diguiTooONE = diguiTooONE;
-exports.insertCreateAfter = insertCreateAfter;
-exports.insertCreateBefore = insertCreateBefore;
-exports.isAppMode = isAppMode;
-exports.isEmpty = isEmpty;
-exports.myRemoveEvent = myRemoveEvent;
-exports.propChange = propChange;
-exports.pushMessage = pushMessage;
-exports.removejscssfile = removejscssfile;
-exports["以sql向思源请求块数据"] = 以sql向思源请求块数据;
-exports["通知"] = 通知;
+export { Account, AddEvent, Asset, Attr, Av, Bazaar, Block, Bookmark, CopyDOM, Export, Filetree, Format, Graph, History, Import, Inbox, Lute, MoveChildren, MoveDOM, Notebook, Notification, Outline, Query, RangeLimitedInt, Ref, Repo, Riff, Search, Setting, Snippet, Storage, Sync, System, Tag, Template, _File, addinsertCreateElement, checkedChange, checkedInit, compareVersion, diguiTooONE, insertCreateAfter, insertCreateBefore, isEmpty, myRemoveEvent, propChange, pushMessage, removejscssfile, 以sql向思源请求块数据, 通知 };

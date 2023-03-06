@@ -10,18 +10,63 @@
   "exports": {
     ".": {
       "types": "./index.d.ts",
-      "require": "./lib/cjs/index.cjs",
-      "import": "./lib/es/index.mjs"
+      "require": "./_lib/cjs/index.cjs",
+      "import": "./_lib/es/index.mjs"
     },
     "./api": {
       "types": "./api/index.d.ts",
-      "require": "./lib/cjs/api.cjs",
-      "import": "./lib/es/api.mjs"
+      "require": "./_lib/cjs/api.cjs",
+      "import": "./_lib/es/api.mjs"
     },
-    "./config": {
-      "types": "./config/index.d.ts",
-      "require": "./lib/cjs/config.cjs",
-      "import": "./lib/es/config.mjs"
+    "./color": {
+      "types": "./color/index.d.ts",
+      "require": "./_lib/cjs/color.cjs",
+      "import": "./_lib/es/color.mjs"
+    },
+    "./com": {
+      "types": "./com/index.d.ts",
+      "require": "./_lib/cjs/com.cjs",
+      "import": "./_lib/es/com.mjs"
+    },
+    "./core": {
+      "types": "./core/index.d.ts",
+      "require": "./_lib/cjs/core.cjs",
+      "import": "./_lib/es/core.mjs"
+    },
+    "./db": {
+      "types": "./db/index.d.ts",
+      "require": "./_lib/cjs/db.cjs",
+      "import": "./_lib/es/db.mjs"
+    },
+    "./env": {
+      "types": "./env/index.d.ts",
+      "require": "./_lib/cjs/env.cjs",
+      "import": "./_lib/es/env.mjs"
+    },
+    "./hook": {
+      "types": "./hook/index.d.ts",
+      "require": "./_lib/cjs/hook.cjs",
+      "import": "./_lib/es/hook.mjs"
+    },
+    "./im": {
+      "types": "./im/index.d.ts",
+      "require": "./_lib/cjs/im.cjs",
+      "import": "./_lib/es/im.mjs"
+    },
+    "./ref": {
+      "types": "./ref/index.d.ts",
+      "require": "./_lib/cjs/ref.cjs",
+      "import": "./_lib/es/ref.mjs"
+    },
+    "./state": {
+      "types": "./state/index.d.ts",
+      "require": "./_lib/cjs/state.cjs",
+      "import": "./_lib/es/state.mjs"
+    },
+    "./style": {
+      "types": "./style/index.d.ts",
+      "require": "./_lib/cjs/style.cjs",
+      "import": "./_lib/es/style.mjs"
     }
   },
   "dependencies": {

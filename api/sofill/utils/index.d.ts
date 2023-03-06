@@ -1,11 +1,10 @@
-export { compareVersion, isEmpty, RangeLimitedInt, MoveDOM, MoveChildren, CopyDOM, isAppMode, removejscssfile, AddEvent, myRemoveEvent, diguiTooONE, };
+export { compareVersion, isEmpty, RangeLimitedInt, MoveDOM, MoveChildren, CopyDOM, removejscssfile, AddEvent, myRemoveEvent, diguiTooONE, };
 declare function compareVersion(version1: any, version2: any): 0 | 1 | -1;
 declare function isEmpty(obj: any): boolean;
 declare function RangeLimitedInt(min: any, value1: any, max: any): number;
 declare function CopyDOM(from: any, to: any): void;
 declare function MoveDOM(from: any, to: any): void;
 declare function MoveChildren(from: any, to: any): void;
-declare function isAppMode(): boolean;
 declare function removejscssfile(filename: any, filetype: any): void;
 /**
  * 为元素注册监听事件
