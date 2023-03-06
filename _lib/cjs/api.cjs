@@ -1,5 +1,5 @@
 /*!
-* sofill v1.0.11
+* sofill v1.0.13
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
@@ -202,6 +202,8 @@ function diguiTooONE(element, judgeFun) {
 }
 
 var Account = {};
+
+var AI = {};
 
 var Asset = {};
 
@@ -858,6 +860,7 @@ async function checkedChange(obj, YesFn, NoFn) {
     });
 }
 
+exports.AI = AI;
 exports.Account = Account;
 exports.AddEvent = AddEvent;
 exports.Asset = Asset;

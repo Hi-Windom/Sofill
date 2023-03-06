@@ -1,5 +1,5 @@
 /*!
-* sofill v1.0.11
+* sofill v1.0.13
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
@@ -200,6 +200,8 @@ function diguiTooONE(element, judgeFun) {
 }
 
 var Account = {};
+
+var AI = {};
 
 var Asset = {};
 
@@ -856,4 +858,4 @@ async function checkedChange(obj, YesFn, NoFn) {
     });
 }
 
-export { Account, AddEvent, Asset, Attr, Av, Bazaar, Block, Bookmark, CopyDOM, Export, Filetree, Format, Graph, History, Import, Inbox, Lute, MoveChildren, MoveDOM, Notebook, Notification, Outline, Query, RangeLimitedInt, Ref, Repo, Riff, Search, Setting, Snippet, Storage, Sync, System, Tag, Template, _File, addinsertCreateElement, checkedChange, checkedInit, compareVersion, diguiTooONE, insertCreateAfter, insertCreateBefore, isEmpty, myRemoveEvent, propChange, pushMessage, removejscssfile, 以sql向思源请求块数据, 通知 };
+export { AI, Account, AddEvent, Asset, Attr, Av, Bazaar, Block, Bookmark, CopyDOM, Export, Filetree, Format, Graph, History, Import, Inbox, Lute, MoveChildren, MoveDOM, Notebook, Notification, Outline, Query, RangeLimitedInt, Ref, Repo, Riff, Search, Setting, Snippet, Storage, Sync, System, Tag, Template, _File, addinsertCreateElement, checkedChange, checkedInit, compareVersion, diguiTooONE, insertCreateAfter, insertCreateBefore, isEmpty, myRemoveEvent, propChange, pushMessage, removejscssfile, 以sql向思源请求块数据, 通知 };
