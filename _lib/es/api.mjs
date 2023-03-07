@@ -1,10 +1,10 @@
 /*!
-* sofill v1.0.26
+* sofill v1.0.27
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
-import { p as parseResponse, a as post2Siyuan } from '../../index-c0d91c8e.js';
-export { C as CopyDOM, c as MoveChildren, M as MoveDOM, b as addinsertCreateElement, d as diguiTooONE, g as getActualWidthOfChars, i as insertCreateAfter, e as isMobile, f as isWindow } from '../../index-c0d91c8e.js';
+import { p as parseResponse, a as post2Siyuan } from '../../index-6881a45f.js';
+export { C as CopyDOM, c as MoveChildren, M as MoveDOM, b as addinsertCreateElement, d as diguiTooONE, g as getActualWidthOfChars, i as insertCreateAfter, e as isMobile, f as isWindow } from '../../index-6881a45f.js';
 import { apitoken } from './env.mjs';
 
 function 通知(text, timeout = 7000) {

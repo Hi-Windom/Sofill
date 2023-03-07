@@ -1,11 +1,16 @@
 {
   "name": "sofill",
-  "version": "1.0.26",
-  "description": "",
+  "version": "1.0.27",
+  "description": "Sofill内核适用于思源笔记，并为其最流行的汐洛分支提供额外支持",
   "main": "index.cjs",
   "module": "index.mjs",
-  "keywords": [],
-  "author": "Soltus",
+  "keywords": ["siyuan","sillot"],
+  "author": "Soltus <694357845@qq.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Hi-Windom/Sofill"
+  },
+  "homepage": "https://github.com/Hi-Windom/Sofill",
   "license": "ISC",
   "exports": {
     ".": {
@@ -81,13 +86,17 @@
   },
   "peerDependencies": {
     "@sillot/bridge": "^0.0.3",
-    "localforage": "^1.10.0"
+    "localforage": "^1.10.0",
+    "typescript": ">=3.7.0"
   },
   "peerDependenciesMeta": {
     "@sillot/bridge": {
-      "optional": true
+      "optional": false
      },
      "localforage": {
+      "optional": false
+     },
+     "typescript": {
       "optional": false
      }
    }
