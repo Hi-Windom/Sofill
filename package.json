@@ -1,6 +1,6 @@
 {
   "name": "sofill",
-  "version": "1.0.23",
+  "version": "1.0.24",
   "description": "",
   "main": "index.cjs",
   "module": "index.mjs",
@@ -80,6 +80,7 @@
     }
   },
   "dependencies": {
-    "@sillot/bridge": "^0.0.3"
+    "@sillot/bridge": "^0.0.3",
+    "localforage": "^1.10.0"
   }
 }

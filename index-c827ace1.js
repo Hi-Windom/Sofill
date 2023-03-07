@@ -1,5 +1,5 @@
 /*!
-* sofill v1.0.23
+* sofill v1.0.24
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
@@ -124,10 +124,5 @@ const isMobile = () => {
 const isWindow = () => {
     return document.getElementById("toolbar") ? false : true;
 };
-var Util = {
-    // 对外暴露与对内暴露不算重复导出？
-    isMobile,
-    isWindow,
-};
 
-export { CopyDOM as C, MoveDOM as M, Util as U, post2Siyuan as a, addinsertCreateElement as b, MoveChildren as c, diguiTooONE as d, isMobile as e, isWindow as f, getActualWidthOfChars as g, insertCreateAfter as i, parseResponse as p };
+export { CopyDOM as C, MoveDOM as M, post2Siyuan as a, addinsertCreateElement as b, MoveChildren as c, diguiTooONE as d, isMobile as e, isWindow as f, getActualWidthOfChars as g, insertCreateAfter as i, parseResponse as p };

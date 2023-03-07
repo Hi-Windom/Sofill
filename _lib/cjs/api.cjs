@@ -1,11 +1,11 @@
 /*!
-* sofill v1.0.23
+* sofill v1.0.24
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
 'use strict';
 
-var index$1 = require('../../index-cbcbbfca.js');
+var index$1 = require('../../index-a6f85fa5.js');
 var env = require('./env.cjs');
 
 function 通知(text, timeout = 7000) {
@@ -84,9 +84,20 @@ function compareVersion(version1, version2) {
     }
     return 0;
 }
-//判断字符是否为空
+const isPromise = (val) => {
+    return typeof val.then === "function";
+};
+//判断对象是否为空
 function isEmpty(obj) {
-    return (typeof obj === "undefined" || obj === null || obj === "" || obj === "null");
+    return typeof obj === "undefined" || obj === null || obj === "";
+}
+//判断字符串是否为空
+function isEmptyString(obj) {
+    return (typeof obj !== "string" ||
+        obj === null ||
+        obj === "" ||
+        obj === "null" ||
+        obj === "NULL");
 }
 function RangeLimitedInt(min, value1, max) {
     var v1 = parseInt(min, 10);
@@ -258,7 +269,18 @@ async function 设置思源块属性(内容块id, 属性对象) {
 
 var Av = {};
 
-var Bazaar = {};
+var Bazaar = {
+    getBazaarTheme,
+    getInstalledTheme,
+};
+async function getBazaarTheme(ip, data) {
+    let url = "http://" + ip + "/api/bazaar/getBazaarTheme";
+    return index$1.post2Siyuan(url, data);
+}
+async function getInstalledTheme(ip, data) {
+    let url = "http://" + ip + "/api/bazaar/getInstalledTheme";
+    return index$1.post2Siyuan(url, data);
+}
 
 var Block = {
     getBlockKramdown: 获取块kramdown源码,
@@ -680,7 +702,6 @@ async function 渲染模板(data) {
     return index$1.parseResponse(index$1.post2Siyuan(url, data));
 }
 
-// import { siyuan } from "./siyuan";
 /**
  * 向指定元素前创建插入一个元素，可选添加ID
  * @param {*} targetElement 目标元素
@@ -698,92 +719,10 @@ function insertCreateBefore(targetElement, addElementTxt, setId = null) {
     targetElement.parentElement.insertBefore(element, targetElement);
     return element;
 }
-var obj = {};
-async function bindDomWithObject(options) {
-    var dom = document.getElementById(options.id); // 获取dom id
-    var obj = options.obj; // 需要绑定的obj
-    var prop = options.prop; // 需要绑定的obj 的属性
-    var callback = options.callback; // 绑定成功后调用
-    var type = options.type; // 绑定的事件类型
-    var updated = options.updated; // 更新成功后调用
-    Object.defineProperty(obj, prop, {
-        get: function () {
-            return dom.value;
-        },
-        set: function (value) {
-            dom.value = value;
-            localStorage.setItem(prop, value);
-        },
-        configurable: true,
-    });
-    dom.addEventListener(type, function () {
-        obj[prop] = obj[prop];
-        if (typeof updated === "function") {
-            updated(obj, prop, dom); // 传入对象， 修改的属性， 以及dom节点
-        }
-    });
-    if (typeof callback === "function") {
-        callback(options, obj, dom);
-    }
-}
-// export async function propInit(id, type) {
-//   bindDomWithObject({
-//     id: id,
-//     obj: obj,
-//     prop: id,
-//     type: type,
-//     callback: function (options, obj, dom) {
-//       if (!sofill.Utils.isEmpty(localStorage.getItem(id))) {
-//         obj[options.prop] = localStorage.getItem(id);
-//       }
-//     },
-//   });
-//   console.log(`${id} binded successfully`);
-// }
-async function propChange(id, changeFn) {
-    bindDomWithObject({
-        id: id,
-        obj: obj,
-        prop: id,
-        type: "change",
-        updated: changeFn,
-    });
-    changeFn();
-}
-async function checkedInit(obj) {
-    if (localStorage.getItem(obj.id) === "true") {
-        obj.checked = true;
-    }
-    else {
-        obj.checked = false;
-    }
-    console.log(`${obj.id} binded successfully`);
-}
-async function checkedChange(obj, YesFn, NoFn) {
-    if (obj.checked && obj.checked === true) {
-        localStorage.setItem(obj.id, "true");
-        YesFn();
-    }
-    else {
-        localStorage.setItem(obj.id, "false");
-        NoFn();
-    }
-    obj.addEventListener("click", function () {
-        if (obj.checked === true) {
-            localStorage.setItem(obj.id, "true");
-            YesFn();
-        }
-        else {
-            localStorage.setItem(obj.id, "false");
-            NoFn();
-        }
-    });
-}
 
 exports.CopyDOM = index$1.CopyDOM;
 exports.MoveChildren = index$1.MoveChildren;
 exports.MoveDOM = index$1.MoveDOM;
-exports.Util = index$1.Util;
 exports.addinsertCreateElement = index$1.addinsertCreateElement;
 exports.diguiTooONE = index$1.diguiTooONE;
 exports.getActualWidthOfChars = index$1.getActualWidthOfChars;
@@ -827,15 +766,16 @@ exports.System = System;
 exports.Tag = Tag;
 exports.Template = Template;
 exports.addURLParam = addURLParam;
-exports.checkedChange = checkedChange;
-exports.checkedInit = checkedInit;
 exports.compareVersion = compareVersion;
+exports.getBazaarTheme = getBazaarTheme;
+exports.getInstalledTheme = getInstalledTheme;
 exports.insertCreateBefore = insertCreateBefore;
 exports.isEmpty = isEmpty;
+exports.isEmptyString = isEmptyString;
+exports.isPromise = isPromise;
 exports.loadScript = loadScript;
 exports.loadStyle = loadStyle;
 exports.myRemoveEvent = myRemoveEvent;
-exports.propChange = propChange;
 exports.pushMessage = pushMessage;
 exports.removejscssfile = removejscssfile;
 exports.updateStyle = updateStyle;

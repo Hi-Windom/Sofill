@@ -8,6 +8,3 @@ export { insertCreateBefore, };
  * @param {*} setId 为创建元素设置ID
  */
 declare function insertCreateBefore(targetElement: any, addElementTxt: any, setId?: any): any;
-export declare function propChange(id: any, changeFn: any): Promise<void>;
-export declare function checkedInit(obj: any): Promise<void>;
-export declare function checkedChange(obj: any, YesFn: any, NoFn: any): Promise<void>;

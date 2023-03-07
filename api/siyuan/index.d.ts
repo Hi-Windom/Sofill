@@ -30,4 +30,4 @@ export * from "./sync";
 export * from "./system";
 export * from "./tag";
 export * from "./template";
-export * from "./util/index";
+export * from "./util";
