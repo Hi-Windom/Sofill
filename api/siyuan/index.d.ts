@@ -7,7 +7,7 @@ export * from "./bazaar";
 export * from "./block";
 export * from "./bookmark";
 export * from "./export";
-export * from "./file";
+export * as File from "./file";
 export * from "./filetree";
 export * from "./format";
 export * from "./graph";

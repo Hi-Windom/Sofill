@@ -1,10 +1,10 @@
 /*!
-* sofill v1.0.21
+* sofill v1.0.22
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
-import { p as parseResponse, a as post2Siyuan } from '../../index-8ab151da.js';
-export { i as isMobile, b as isWindow } from '../../index-8ab151da.js';
+import { p as parseResponse, a as post2Siyuan } from '../../index-84c920e7.js';
+export { C as CopyDOM, c as MoveChildren, M as MoveDOM, U as Util, b as addinsertCreateElement, d as diguiTooONE, g as getActualWidthOfChars, i as insertCreateAfter, e as isMobile, f as isWindow } from '../../index-84c920e7.js';
 import { apitoken } from './env.mjs';
 
 function 通知(text, timeout = 7000) {
@@ -374,6 +374,11 @@ async function 写入文件(path, filedata, isDir = false, modTime = Date.now())
     else
         return null;
 }
+
+var index = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    _File: _File
+});
 
 var Filetree = {
     createDocWithMd: 通过markdown创建文档,
@@ -777,4 +782,4 @@ async function checkedChange(obj, YesFn, NoFn) {
     });
 }
 
-export { AI, Account, AddEvent, Asset, Attr, Av, Bazaar, Block, Bookmark, Export, Filetree, Format, Graph, History, Import, Inbox, Lute, Notebook, Notification, Outline, Query, RangeLimitedInt, Ref, Repo, Riff, Search, Setting, Snippet, Storage, Sync, System, Tag, Template, _File, addURLParam, checkedChange, checkedInit, compareVersion, insertCreateBefore, isEmpty, loadScript, loadStyle, myRemoveEvent, parseResponse, post2Siyuan, propChange, pushMessage, removejscssfile, updateStyle, 以sql向思源请求块数据, 通知 };
+export { AI, Account, AddEvent, Asset, Attr, Av, Bazaar, Block, Bookmark, Export, index as File, Filetree, Format, Graph, History, Import, Inbox, Lute, Notebook, Notification, Outline, Query, RangeLimitedInt, Ref, Repo, Riff, Search, Setting, Snippet, Storage, Sync, System, Tag, Template, addURLParam, checkedChange, checkedInit, compareVersion, insertCreateBefore, isEmpty, loadScript, loadStyle, myRemoveEvent, parseResponse, post2Siyuan, propChange, pushMessage, removejscssfile, updateStyle, 以sql向思源请求块数据, 通知 };

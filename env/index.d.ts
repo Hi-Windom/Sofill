@@ -1,4 +1,4 @@
-export * from './platform';
+export { isAppMode } from './platform';
 declare const config_Custom = "/conf/appearance/themes/Sofill-/config/Custom.json";
 declare const config_UI = "/conf/appearance/themes/Sofill-/config/UI.json";
 declare const themeStyle: HTMLLinkElement;

@@ -1,11 +1,11 @@
 /*!
-* sofill v1.0.21
+* sofill v1.0.22
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
 'use strict';
 
-var index = require('../../index-f6fdf1f2.js');
+var index$1 = require('../../index-04f55589.js');
 var env = require('./env.cjs');
 
 function 通知(text, timeout = 7000) {
@@ -228,7 +228,7 @@ async function 以sql向思源请求块数据(sql) {
         stmt: sql,
     };
     let url = "/api/query/sql";
-    return index.parseResponse(index.post2Siyuan(url, sqldata));
+    return index$1.parseResponse(index$1.post2Siyuan(url, sqldata));
 }
 
 var Attr = {
@@ -241,7 +241,7 @@ async function 以id获取思源块属性(内容块id) {
         id: 内容块id,
     };
     let url = "/api/attr/getBlockAttrs";
-    return index.parseResponse(index.post2Siyuan(url, data));
+    return index$1.parseResponse(index$1.post2Siyuan(url, data));
 }
 async function 以id获取思源块信息(内容块id) {
     let sql = `select * from blocks where id ='${内容块id}'`;
@@ -250,7 +250,7 @@ async function 以id获取思源块信息(内容块id) {
 }
 async function 设置思源块属性(内容块id, 属性对象) {
     let url = "/api/attr/setBlockAttrs";
-    return index.parseResponse(index.post2Siyuan(url, {
+    return index$1.parseResponse(index$1.post2Siyuan(url, {
         id: 内容块id,
         attrs: 属性对象,
     }));
@@ -274,18 +274,18 @@ async function 获取块kramdown源码(内容块id) {
         id: 内容块id,
     };
     const url = "/api/block/getBlockKramdown";
-    return index.parseResponse(index.post2Siyuan(url, data));
+    return index$1.parseResponse(index$1.post2Siyuan(url, data));
 }
 async function 获取块面包屑(ID) {
     const data = {
         id: ID,
     };
     const url = "/api/block/getBlockBreadcrumb";
-    return index.parseResponse(index.post2Siyuan(url, data));
+    return index$1.parseResponse(index$1.post2Siyuan(url, data));
 }
 async function 插入块(previousID, dataType, data) {
     let url = "/api/block/insertBlock";
-    return index.parseResponse(index.post2Siyuan((url = url), (data = {
+    return index$1.parseResponse(index$1.post2Siyuan((url = url), (data = {
         previousID: previousID,
         dataType: dataType,
         data: data,
@@ -293,7 +293,7 @@ async function 插入块(previousID, dataType, data) {
 }
 async function 插入前置子块(parentID, dataType, data) {
     let url = "/api/block/prependBlock";
-    return index.parseResponse(index.post2Siyuan((url = url), (data = {
+    return index$1.parseResponse(index$1.post2Siyuan((url = url), (data = {
         parentID: parentID,
         dataType: dataType,
         data: data,
@@ -301,7 +301,7 @@ async function 插入前置子块(parentID, dataType, data) {
 }
 async function 插入后置子块(parentID, dataType, data) {
     let url = "/api/block/appendBlock";
-    return index.parseResponse(index.post2Siyuan((url = url), (data = {
+    return index$1.parseResponse(index$1.post2Siyuan((url = url), (data = {
         parentID: parentID,
         dataType: dataType,
         data: data,
@@ -309,7 +309,7 @@ async function 插入后置子块(parentID, dataType, data) {
 }
 async function 更新块(id, dataType, data) {
     let url = "/api/block/updateBlock";
-    return index.parseResponse(index.post2Siyuan((url = url), (data = {
+    return index$1.parseResponse(index$1.post2Siyuan((url = url), (data = {
         id: id,
         dataType: dataType,
         data: data,
@@ -317,7 +317,7 @@ async function 更新块(id, dataType, data) {
 }
 async function 删除块(id) {
     let url = "/api/block/deleteBlock";
-    return index.parseResponse(index.post2Siyuan(url, {
+    return index$1.parseResponse(index$1.post2Siyuan(url, {
         id: id,
     }));
 }
@@ -332,7 +332,7 @@ async function 以id获取文档块markdown(文档id) {
         id: 文档id,
     };
     let url = "/api/export/exportMdContent";
-    return index.parseResponse(index.post2Siyuan(url, data));
+    return index$1.parseResponse(index$1.post2Siyuan(url, data));
     //文档hepath与Markdown 内容
 }
 
@@ -376,6 +376,11 @@ async function 写入文件(path, filedata, isDir = false, modTime = Date.now())
         return null;
 }
 
+var index = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    _File: _File
+});
+
 var Filetree = {
     createDocWithMd: 通过markdown创建文档,
     removeDoc: 删除思源文档,
@@ -394,7 +399,7 @@ async function 重命名思源文档(笔记本id, 文档路径, 文档新标题)
         title: 文档新标题,
     };
     let url = "/api/filetree/renameDoc";
-    return index.parseResponse(index.post2Siyuan(url, data));
+    return index$1.parseResponse(index$1.post2Siyuan(url, data));
     //返回空数据
 }
 async function 删除思源文档(笔记本id, 文档路径) {
@@ -403,7 +408,7 @@ async function 删除思源文档(笔记本id, 文档路径) {
         path: 文档路径,
     };
     let url = "/api/filetree/removeDoc";
-    return index.parseResponse(index.post2Siyuan(url, data));
+    return index$1.parseResponse(index$1.post2Siyuan(url, data));
     //返回空数据
 }
 async function 移动思源文档(源笔记本ID, 源路径, 目标笔记本ID, 目标路径) {
@@ -414,7 +419,7 @@ async function 移动思源文档(源笔记本ID, 源路径, 目标笔记本ID, 
         toPath: 目标路径,
     };
     let url = "/api/filetree/moveDoc";
-    return index.parseResponse(index.post2Siyuan(url, data));
+    return index$1.parseResponse(index$1.post2Siyuan(url, data));
     //返回空数据
 }
 async function 根据思源路径获取人类可读路径(笔记本ID, 路径) {
@@ -423,7 +428,7 @@ async function 根据思源路径获取人类可读路径(笔记本ID, 路径) {
         Path: 路径,
     };
     let url = "/api/filetree/getHPathByPath";
-    return index.parseResponse(index.post2Siyuan(url, data));
+    return index$1.parseResponse(index$1.post2Siyuan(url, data));
     //返回路径
 }
 async function 根据块ID查询文档人类可读完整路径(ID) {
@@ -431,7 +436,7 @@ async function 根据块ID查询文档人类可读完整路径(ID) {
         id: ID,
     };
     let url = "/api/filetree/getHPathByID";
-    return index.parseResponse(index.post2Siyuan(url, data));
+    return index$1.parseResponse(index$1.post2Siyuan(url, data));
 }
 async function 通过markdown创建文档(notebook, path, markdown) {
     let data = {
@@ -440,14 +445,14 @@ async function 通过markdown创建文档(notebook, path, markdown) {
         markdown: markdown,
     };
     let url = "/api/filetree/createDocWithMd";
-    return index.parseResponse(index.post2Siyuan(url, data));
+    return index$1.parseResponse(index$1.post2Siyuan(url, data));
 }
 async function 列出指定路径下文档(路径) {
     let data = {
         path: 路径,
     };
     let url = "/api/filetree/listDocsByPath";
-    return index.parseResponse(index.post2Siyuan(url, data));
+    return index$1.parseResponse(index$1.post2Siyuan(url, data));
     //文档hepath与Markdown 内容
 }
 async function 以id获取文档内容(id) {
@@ -458,14 +463,14 @@ async function 以id获取文档内容(id) {
         size: 36,
     };
     let url = "/api/filetree/getDoc";
-    return index.parseResponse(index.post2Siyuan(url, data));
+    return index$1.parseResponse(index$1.post2Siyuan(url, data));
 }
 async function 以关键词搜索文档(k) {
     let data = {
         k: k,
     };
     let url = "/api/filetree/searchDocs";
-    return index.parseResponse(index.post2Siyuan(url, data));
+    return index$1.parseResponse(index$1.post2Siyuan(url, data));
 }
 
 var Format = {};
@@ -482,7 +487,7 @@ async function 以id获取局部图谱(k, id, conf, reqId) {
         reqId: reqId,
     };
     let url = "/api/graph/getLocalGraph";
-    return index.parseResponse(index.post2Siyuan(url, data));
+    return index$1.parseResponse(index$1.post2Siyuan(url, data));
 }
 async function 获取全局图谱(k, conf, reqId) {
     let data = {
@@ -491,7 +496,7 @@ async function 获取全局图谱(k, conf, reqId) {
         reqId: reqId,
     };
     let url = "/api/graph/getGraph";
-    return index.parseResponse(index.post2Siyuan(url, data));
+    return index$1.parseResponse(index$1.post2Siyuan(url, data));
 }
 
 var History = {};
@@ -516,7 +521,7 @@ async function 打开思源笔记本(笔记本id) {
         notebook: 笔记本id,
     };
     let url = "/api/notebook/openNotebook";
-    return index.parseResponse(index.post2Siyuan(url, data));
+    return index$1.parseResponse(index$1.post2Siyuan(url, data));
     //返回空数据
 }
 async function 关闭思源笔记本(笔记本id) {
@@ -524,7 +529,7 @@ async function 关闭思源笔记本(笔记本id) {
         notebook: 笔记本id,
     };
     let url = "/api/notebook/closeNotebook";
-    return index.parseResponse(index.post2Siyuan(url, data));
+    return index$1.parseResponse(index$1.post2Siyuan(url, data));
     //返回空数据
 }
 async function 重命名思源笔记本(笔记本id, 笔记本的新名称) {
@@ -533,7 +538,7 @@ async function 重命名思源笔记本(笔记本id, 笔记本的新名称) {
         name: 笔记本的新名称,
     };
     let url = "/api/notebook/renameNotebook";
-    return index.parseResponse(index.post2Siyuan(url, data));
+    return index$1.parseResponse(index$1.post2Siyuan(url, data));
     //返回空数据
 }
 async function 新建思源笔记本(笔记本名称) {
@@ -541,25 +546,25 @@ async function 新建思源笔记本(笔记本名称) {
         name: 笔记本名称,
     };
     let url = "/api/notebook/createNotebook";
-    return index.parseResponse(index.post2Siyuan(url, data));
+    return index$1.parseResponse(index$1.post2Siyuan(url, data));
     //返回空数据
 }
 async function 删除思源笔记本(笔记本id) {
     let data = { notebook: 笔记本id };
     let url = "/api/notebook/removeNotebook";
-    return index.parseResponse(index.post2Siyuan(url, data));
+    return index$1.parseResponse(index$1.post2Siyuan(url, data));
     //返回空数据
 }
 async function 获取思源笔记本配置(笔记本id) {
     let data = { notebook: 笔记本id };
     let url = "/api/notebook/getNotebookConf";
-    return index.parseResponse(index.post2Siyuan(url, data));
+    return index$1.parseResponse(index$1.post2Siyuan(url, data));
     //返回笔记本配置
 }
 async function 保存思源笔记本配置(笔记本id) {
     let data = { notebook: 笔记本id };
     let url = "/api/notebook/setNotebookConf";
-    return index.parseResponse(index.post2Siyuan(url, data));
+    return index$1.parseResponse(index$1.post2Siyuan(url, data));
     //返回笔记本配置
 }
 
@@ -574,7 +579,7 @@ async function 推送消息(message = null, text = null, timeout = 7000) {
         msg: message ? message[language] || message.other : text,
         timeout: timeout,
     };
-    return index.parseResponse(index.post2Siyuan(url, data));
+    return index$1.parseResponse(index$1.post2Siyuan(url, data));
 }
 async function 推送报错消息(message = null, text = null, timeout = 7000) {
     const url = "/api/notification/pushErrMsg";
@@ -582,7 +587,7 @@ async function 推送报错消息(message = null, text = null, timeout = 7000) {
         msg: message ? message[language] || message.other : text,
         timeout: timeout,
     };
-    return index.parseResponse(index.post2Siyuan(url, data));
+    return index$1.parseResponse(index$1.post2Siyuan(url, data));
 }
 
 var Outline = {
@@ -593,7 +598,7 @@ async function 以id获取文档大纲(文档id) {
         id: 文档id,
     };
     let url = "/api/outline/getDocOutline";
-    return index.parseResponse(index.post2Siyuan(url, data));
+    return index$1.parseResponse(index$1.post2Siyuan(url, data));
 }
 
 var Ref = {
@@ -607,7 +612,7 @@ async function 以id获取反向链接(id) {
         mk: "",
     };
     let url = "/api/ref/getBacklink";
-    return index.parseResponse(index.post2Siyuan(url, data));
+    return index$1.parseResponse(index$1.post2Siyuan(url, data));
 }
 
 var Repo = {};
@@ -625,21 +630,21 @@ async function 以sql获取嵌入块内容(外部id数组, sql) {
         excludeIDs: 外部id数组,
     };
     let url = "/api/search/searchEmbedBlock";
-    return index.parseResponse(index.post2Siyuan(url, data));
+    return index$1.parseResponse(index$1.post2Siyuan(url, data));
 }
 async function 以关键词搜索块(query) {
     let data = {
         query: query,
     };
     let url = "/api/search/searchBlock";
-    return index.parseResponse(index.post2Siyuan(url, data));
+    return index$1.parseResponse(index$1.post2Siyuan(url, data));
 }
 async function 以关键词搜索模板(k) {
     let data = {
         k: k,
     };
     let url = "/api/search/searchTemplate";
-    return index.parseResponse(index.post2Siyuan(url, data));
+    return index$1.parseResponse(index$1.post2Siyuan(url, data));
 }
 
 var Setting = {};
@@ -658,7 +663,7 @@ var Tag = {
 async function 获取标签列表() {
     let data = {};
     let url = "/api/tag/getTag";
-    return index.parseResponse(index.post2Siyuan(url, data));
+    return index$1.parseResponse(index$1.post2Siyuan(url, data));
 }
 
 var Template = {
@@ -671,11 +676,11 @@ async function 导出模板(id, overwrite = false) {
         id: id,
         overwrite: overwrite,
     };
-    return index.parseResponse(index.post2Siyuan(url, data));
+    return index$1.parseResponse(index$1.post2Siyuan(url, data));
 }
 async function 渲染模板(data) {
     let url = "/api/template/render";
-    return index.parseResponse(index.post2Siyuan(url, data));
+    return index$1.parseResponse(index$1.post2Siyuan(url, data));
 }
 
 // import { siyuan } from "./siyuan";
@@ -778,10 +783,18 @@ async function checkedChange(obj, YesFn, NoFn) {
     });
 }
 
-exports.isMobile = index.isMobile;
-exports.isWindow = index.isWindow;
-exports.parseResponse = index.parseResponse;
-exports.post2Siyuan = index.post2Siyuan;
+exports.CopyDOM = index$1.CopyDOM;
+exports.MoveChildren = index$1.MoveChildren;
+exports.MoveDOM = index$1.MoveDOM;
+exports.Util = index$1.Util;
+exports.addinsertCreateElement = index$1.addinsertCreateElement;
+exports.diguiTooONE = index$1.diguiTooONE;
+exports.getActualWidthOfChars = index$1.getActualWidthOfChars;
+exports.insertCreateAfter = index$1.insertCreateAfter;
+exports.isMobile = index$1.isMobile;
+exports.isWindow = index$1.isWindow;
+exports.parseResponse = index$1.parseResponse;
+exports.post2Siyuan = index$1.post2Siyuan;
 exports.AI = AI;
 exports.Account = Account;
 exports.AddEvent = AddEvent;
@@ -792,6 +805,7 @@ exports.Bazaar = Bazaar;
 exports.Block = Block;
 exports.Bookmark = Bookmark;
 exports.Export = Export;
+exports.File = index;
 exports.Filetree = Filetree;
 exports.Format = Format;
 exports.Graph = Graph;
@@ -815,7 +829,6 @@ exports.Sync = Sync;
 exports.System = System;
 exports.Tag = Tag;
 exports.Template = Template;
-exports._File = _File;
 exports.addURLParam = addURLParam;
 exports.checkedChange = checkedChange;
 exports.checkedInit = checkedInit;

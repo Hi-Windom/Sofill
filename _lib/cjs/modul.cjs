@@ -1,56 +1,11 @@
 /*!
-* sofill v1.0.21
+* sofill v1.0.22
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
 'use strict';
 
-var index = require('../../index-f6fdf1f2.js');
-
-function getActualWidthOfChars(text, options) {
-    // ref https://juejin.cn/post/7091990279565082655
-    const { size, family = "Microsoft YaHei" } = options;
-    const canvas = document.createElement("canvas");
-    const ctx = canvas.getContext("2d");
-    ctx.font = `${size}px ${family}`;
-    const metrics = ctx.measureText(text);
-    const actual = Math.abs(metrics.actualBoundingBoxLeft) + Math.abs(metrics.actualBoundingBoxRight);
-    return Math.max(metrics.width, actual);
-}
-/**
- * 向指定父级创建追加一个子元素，并可选添加ID,
- * @param {Element} fatherElement
- * @param {string} addElementTxt 要创建添加的元素标签
- * @param {string} setId
- * @returns addElementObject
- */
-function addinsertCreateElement(fatherElement, addElementTxt, setId = null) {
-    var element = document.createElement(addElementTxt);
-    if (setId)
-        element.id = setId;
-    fatherElement.appendChild(element);
-    return element;
-}
-/**
- * 向指定元素后创建插入一个元素，可选添加ID
- * @param {*} targetElement 目标元素
- * @param {*} addElementTxt 要创建添加的元素标签
- * @param {*} setId 为创建元素设置ID
- */
-function insertCreateAfter(targetElement, addElementTxt, setId = null) {
-    var element = document.createElement(addElementTxt);
-    if (setId)
-        element.id = setId;
-    var parent = targetElement.parentNode; //得到父节点
-    if (parent.lastChild === targetElement) {
-        parent.appendChild(element);
-        return element;
-    }
-    else {
-        parent.insertBefore(element, targetElement.nextSibling); //否则，当前节点的下一个节点之前添加
-        return element;
-    }
-}
+var index = require('../../index-04f55589.js');
 
 function showDocCreatedDate() {
     /** 为打开文档的标题下显示文档创建日期 */
@@ -82,7 +37,7 @@ function showDocCreatedDate() {
                 return element;
             }
         }
-        var documentCreatTimeElement = addinsertCreateElement(tilteElement, "span");
+        var documentCreatTimeElement = index.addinsertCreateElement(tilteElement, "span");
         documentCreatTimeElement.setAttribute("documentCreatTimeElement", "true");
         documentCreatTimeElement.style.display = "block";
         documentCreatTimeElement.style.marginLeft = "7px";
@@ -217,14 +172,14 @@ function dynamicTitleUnderline() {
     }
     function dynamicUnderline() {
         var AllDocumentTitleElement = getAllDocumentTitleElement();
-        for (let index = 0; index < AllDocumentTitleElement.length; index++) {
-            const element = AllDocumentTitleElement[index];
+        for (let index$1 = 0; index$1 < AllDocumentTitleElement.length; index$1++) {
+            const element = AllDocumentTitleElement[index$1];
             var line = createLine(element);
             var txt = getTileTxt(element);
             var maxWidth = element.offsetWidth;
             var Style = getComputedStyle(element, null);
             var font = Style.font;
-            var width = getActualWidthOfChars(txt, { size: font }) + 13;
+            var width = index.getActualWidthOfChars(txt, { size: font }) + 13;
             if (width < 58) {
                 width = 58;
             } //动态下划线最小宽度
@@ -242,7 +197,7 @@ function dynamicTitleUnderline() {
                 return element;
             }
         }
-        var line = insertCreateAfter(TitleElement, "div");
+        var line = index.insertCreateAfter(TitleElement, "div");
         line.setAttribute("Line", "true");
         line.setAttribute("class", "scc-dynamic");
         line.setAttribute("id", "doc-underline");
