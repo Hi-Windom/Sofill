@@ -1,11 +1,11 @@
 /*!
-* sofill v1.0.17
+* sofill v1.0.18
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
 'use strict';
 
-var util = require('../../util-dfe781b8.js');
+var util = require('../../util-42409fb9.js');
 var env = require('./env.cjs');
 
 function 通知(text, timeout = 7000) {
@@ -148,6 +148,69 @@ function myRemoveEvent(element, strType, fun) {
     else {
         //删除事件用null
         element["on" + strType] = null;
+    }
+}
+function loadStyle(href, id = null) {
+    let style = document.createElement("link");
+    if (id)
+        style.id = id;
+    style.type = "text/css";
+    style.rel = "stylesheet";
+    style.href = href;
+    document.head.appendChild(style);
+}
+function updateStyle(id, href) {
+    let style = document.getElementById(id);
+    if (style) {
+        style.setAttribute("href", href);
+    }
+    else {
+        loadStyle(href, id);
+    }
+}
+function loadScript(src, type = "module", async = false, defer = false) {
+    const script = document.createElement("script");
+    if (type)
+        script.type = type;
+    if (async)
+        script.async = true;
+    if (defer)
+        script.defer = true;
+    script.src = src;
+    document.head.appendChild(script);
+}
+function addURLParam(url, param = {
+    v: window.siyuan.config.appearance.themeVer,
+}) {
+    let new_url;
+    switch (true) {
+        case url.startsWith("//"):
+            new_url = new URL(`https:${url}`);
+            break;
+        case url.startsWith("http://"):
+        case url.startsWith("https://"):
+            new_url = new URL(url);
+            break;
+        case url.startsWith("/"):
+            new_url = new URL(url, window.location.origin);
+            break;
+        default:
+            new_url = new URL(url, window.location.origin + window.location.pathname);
+            break;
+    }
+    for (let [key, value] of Object.entries(param)) {
+        new_url.searchParams.set(key, value);
+    }
+    switch (true) {
+        case url.startsWith("//"):
+            return new_url.href.substring(new_url.protocol.length);
+        case url.startsWith("http://"):
+        case url.startsWith("https://"):
+            return new_url.href;
+        case url.startsWith("/"):
+            return new_url.href.substring(new_url.origin.length);
+        default:
+            return new_url.href.substring((window.location.origin + window.location.pathname).length);
     }
 }
 
@@ -749,14 +812,18 @@ exports.System = System;
 exports.Tag = Tag;
 exports.Template = Template;
 exports._File = _File;
+exports.addURLParam = addURLParam;
 exports.checkedChange = checkedChange;
 exports.checkedInit = checkedInit;
 exports.compareVersion = compareVersion;
 exports.insertCreateBefore = insertCreateBefore;
 exports.isEmpty = isEmpty;
+exports.loadScript = loadScript;
+exports.loadStyle = loadStyle;
 exports.myRemoveEvent = myRemoveEvent;
 exports.propChange = propChange;
 exports.pushMessage = pushMessage;
 exports.removejscssfile = removejscssfile;
+exports.updateStyle = updateStyle;
 exports["以sql向思源请求块数据"] = 以sql向思源请求块数据;
 exports["通知"] = 通知;
