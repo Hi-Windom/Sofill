@@ -1,11 +1,11 @@
 /*!
-* sofill v1.0.15
+* sofill v1.0.17
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
 'use strict';
 
-var util = require('../../util-d12a9386.js');
+var util = require('../../util-dfe781b8.js');
 var env = require('./env.cjs');
 
 function 通知(text, timeout = 7000) {

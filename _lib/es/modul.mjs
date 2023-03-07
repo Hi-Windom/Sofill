@@ -1,9 +1,120 @@
 /*!
-* sofill v1.0.15
+* sofill v1.0.17
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
-import { i as isMobile } from '../../util-9b524964.js';
+import { i as isMobile } from '../../util-d7d27406.js';
+
+function getActualWidthOfChars(text, options) {
+    // ref https://juejin.cn/post/7091990279565082655
+    const { size, family = "Microsoft YaHei" } = options;
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+    ctx.font = `${size}px ${family}`;
+    const metrics = ctx.measureText(text);
+    const actual = Math.abs(metrics.actualBoundingBoxLeft) + Math.abs(metrics.actualBoundingBoxRight);
+    return Math.max(metrics.width, actual);
+}
+/**
+ * 向指定父级创建追加一个子元素，并可选添加ID,
+ * @param {Element} fatherElement
+ * @param {string} addElementTxt 要创建添加的元素标签
+ * @param {string} setId
+ * @returns addElementObject
+ */
+function addinsertCreateElement(fatherElement, addElementTxt, setId = null) {
+    var element = document.createElement(addElementTxt);
+    if (setId)
+        element.id = setId;
+    fatherElement.appendChild(element);
+    return element;
+}
+/**
+ * 向指定元素后创建插入一个元素，可选添加ID
+ * @param {*} targetElement 目标元素
+ * @param {*} addElementTxt 要创建添加的元素标签
+ * @param {*} setId 为创建元素设置ID
+ */
+function insertCreateAfter(targetElement, addElementTxt, setId = null) {
+    var element = document.createElement(addElementTxt);
+    if (setId)
+        element.id = setId;
+    var parent = targetElement.parentNode; //得到父节点
+    if (parent.lastChild === targetElement) {
+        parent.appendChild(element);
+        return element;
+    }
+    else {
+        parent.insertBefore(element, targetElement.nextSibling); //否则，当前节点的下一个节点之前添加
+        return element;
+    }
+}
+
+function showDocCreatedDate() {
+    /** 为打开文档的标题下显示文档创建日期 */
+    function showDocumentCreationDate() {
+        setInterval(DocumentCreationDate, 300);
+    }
+    function DocumentCreationDate() {
+        var allDocumentTitleElement = getAllDocumentTitleElement();
+        for (let index = 0; index < allDocumentTitleElement.length; index++) {
+            const element = allDocumentTitleElement[index];
+            var documentCreatTimeElement = creatTimeSpanElement(element.parentElement);
+            var spanTxt = documentCreatTimeElement.innerText;
+            if (spanTxt === "" || spanTxt === "日期获取中……") {
+                var documentCreatTimeTxt = getDocumentTime(element);
+                documentCreatTimeElement.innerText = documentCreatTimeTxt;
+            }
+        }
+    }
+    /**获取所有打开文档的标题元素 */
+    function getAllDocumentTitleElement() {
+        return document.querySelectorAll(".protyle-title__input");
+    }
+    /**为文档标题元素下创建时间容器元素 */
+    function creatTimeSpanElement(tilteElement) {
+        var item = tilteElement.children;
+        for (let index = 0; index < item.length; index++) {
+            const element = item[index];
+            if (element.getAttribute("documentCreatTimeElement") != null) {
+                return element;
+            }
+        }
+        var documentCreatTimeElement = addinsertCreateElement(tilteElement, "span");
+        documentCreatTimeElement.setAttribute("documentCreatTimeElement", "true");
+        documentCreatTimeElement.style.display = "block";
+        documentCreatTimeElement.style.marginLeft = "7px";
+        documentCreatTimeElement.style.marginBottom = "0px";
+        documentCreatTimeElement.style.fontSize = "70%";
+        documentCreatTimeElement.style.color = "#484550";
+        documentCreatTimeElement.style.opacity = "0.58";
+        return documentCreatTimeElement;
+    }
+    /** 获得这个文档的创建时间 */
+    function getDocumentTime(tilteElement) {
+        var tS = tilteElement.parentElement.previousElementSibling.getAttribute("data-node-id");
+        if (tS == null) {
+            return "";
+        }
+        var year = tS.substring(0, 4);
+        var moon = tS.substring(4, 6);
+        var day = tS.substring(6, 8);
+        tS.substring(8, 10);
+        tS.substring(10, 12);
+        tS.substring(12, 14);
+        return "since " + year + "-" + moon + "-" + day;
+    }
+    (function (w, und) {
+        Refresh();
+    })();
+    function Refresh() {
+        if (!isMobile()) {
+            setTimeout(() => {
+                showDocumentCreationDate(); //为打开文档标题下面显示文档创建日期
+            }, 500);
+        }
+    }
+}
 
 function changeFontSizeScroller() {
     const config = {
@@ -93,37 +204,6 @@ function changeFontSizeScroller() {
     }, true);
 }
 
-function getActualWidthOfChars(text, options) {
-    // ref https://juejin.cn/post/7091990279565082655
-    const { size, family = "Microsoft YaHei" } = options;
-    const canvas = document.createElement("canvas");
-    const ctx = canvas.getContext("2d");
-    ctx.font = `${size}px ${family}`;
-    const metrics = ctx.measureText(text);
-    const actual = Math.abs(metrics.actualBoundingBoxLeft) + Math.abs(metrics.actualBoundingBoxRight);
-    return Math.max(metrics.width, actual);
-}
-/**
- * 向指定元素后创建插入一个元素，可选添加ID
- * @param {*} targetElement 目标元素
- * @param {*} addElementTxt 要创建添加的元素标签
- * @param {*} setId 为创建元素设置ID
- */
-function insertCreateAfter(targetElement, addElementTxt, setId = null) {
-    var element = document.createElement(addElementTxt);
-    if (setId)
-        element.id = setId;
-    var parent = targetElement.parentNode; //得到父节点
-    if (parent.lastChild === targetElement) {
-        parent.appendChild(element);
-        return element;
-    }
-    else {
-        parent.insertBefore(element, targetElement.nextSibling); //否则，当前节点的下一个节点之前添加
-        return element;
-    }
-}
-
 function dynamicTitleUnderline() {
     /**获取所有打开文档的标题元素 */
     function getAllDocumentTitleElement() {
@@ -187,4 +267,4 @@ function dynamicTitleUnderline() {
     }
 }
 
-export { changeFontSizeScroller, dynamicTitleUnderline };
+export { changeFontSizeScroller, dynamicTitleUnderline, showDocCreatedDate };
