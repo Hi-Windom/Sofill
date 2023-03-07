@@ -1,11 +1,11 @@
 /*!
-* sofill v1.0.19
+* sofill v1.0.20
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
 'use strict';
 
-var util = require('../../util-aca30bda.js');
+var util = require('../../util-90409783.js');
 var env = require('./env.cjs');
 
 function 通知(text, timeout = 7000) {
@@ -778,6 +778,7 @@ async function checkedChange(obj, YesFn, NoFn) {
     });
 }
 
+exports.isMobile = util.isMobile;
 exports.AI = AI;
 exports.Account = Account;
 exports.AddEvent = AddEvent;

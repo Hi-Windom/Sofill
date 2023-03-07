@@ -30,3 +30,4 @@ export * from "./sync";
 export * from "./system";
 export * from "./tag";
 export * from "./template";
+export { isMobile } from "./util";

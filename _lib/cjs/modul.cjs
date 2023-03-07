@@ -1,11 +1,11 @@
 /*!
-* sofill v1.0.19
+* sofill v1.0.20
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
 'use strict';
 
-var util = require('../../util-aca30bda.js');
+var util = require('../../util-90409783.js');
 
 function getActualWidthOfChars(text, options) {
     // ref https://juejin.cn/post/7091990279565082655

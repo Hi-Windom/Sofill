@@ -1,9 +1,9 @@
 /*!
-* sofill v1.0.19
+* sofill v1.0.20
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
-import { i as isMobile } from '../../util-001003ad.js';
+import { i as isMobile } from '../../util-21cbf0c5.js';
 
 function getActualWidthOfChars(text, options) {
     // ref https://juejin.cn/post/7091990279565082655
