@@ -1,5 +1,5 @@
 /*!
-* sofill v1.0.20
+* sofill v1.0.21
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
@@ -25,5 +25,8 @@ async function parseResponse(response) {
 const isMobile = () => {
     return document.getElementById("sidebar") ? true : false;
 };
+const isWindow = () => {
+    return document.getElementById("toolbar") ? false : true;
+};
 
-export { post2Siyuan as a, isMobile as i, parseResponse as p };
+export { post2Siyuan as a, isWindow as b, isMobile as i, parseResponse as p };

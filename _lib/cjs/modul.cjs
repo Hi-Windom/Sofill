@@ -1,11 +1,11 @@
 /*!
-* sofill v1.0.20
+* sofill v1.0.21
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
 'use strict';
 
-var util = require('../../util-90409783.js');
+var index = require('../../index-f6fdf1f2.js');
 
 function getActualWidthOfChars(text, options) {
     // ref https://juejin.cn/post/7091990279565082655
@@ -110,7 +110,7 @@ function showDocCreatedDate() {
         Refresh();
     })();
     function Refresh() {
-        if (!util.isMobile()) {
+        if (!index.isMobile()) {
             setTimeout(() => {
                 showDocumentCreationDate(); //为打开文档标题下面显示文档创建日期
             }, 500);
@@ -261,7 +261,7 @@ function dynamicTitleUnderline() {
         Refresh();
     })();
     function Refresh() {
-        if (!util.isMobile()) {
+        if (!index.isMobile()) {
             setTimeout(() => {
                 rundynamicUnderline(); //为文档标题创建动态下划线
             }, 500);

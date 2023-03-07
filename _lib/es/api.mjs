@@ -1,10 +1,10 @@
 /*!
-* sofill v1.0.20
+* sofill v1.0.21
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
-import { p as parseResponse, a as post2Siyuan } from '../../util-21cbf0c5.js';
-export { i as isMobile } from '../../util-21cbf0c5.js';
+import { p as parseResponse, a as post2Siyuan } from '../../index-8ab151da.js';
+export { i as isMobile, b as isWindow } from '../../index-8ab151da.js';
 import { apitoken } from './env.mjs';
 
 function 通知(text, timeout = 7000) {
@@ -777,4 +777,4 @@ async function checkedChange(obj, YesFn, NoFn) {
     });
 }
 
-export { AI, Account, AddEvent, Asset, Attr, Av, Bazaar, Block, Bookmark, Export, Filetree, Format, Graph, History, Import, Inbox, Lute, Notebook, Notification, Outline, Query, RangeLimitedInt, Ref, Repo, Riff, Search, Setting, Snippet, Storage, Sync, System, Tag, Template, _File, addURLParam, checkedChange, checkedInit, compareVersion, insertCreateBefore, isEmpty, loadScript, loadStyle, myRemoveEvent, propChange, pushMessage, removejscssfile, updateStyle, 以sql向思源请求块数据, 通知 };
+export { AI, Account, AddEvent, Asset, Attr, Av, Bazaar, Block, Bookmark, Export, Filetree, Format, Graph, History, Import, Inbox, Lute, Notebook, Notification, Outline, Query, RangeLimitedInt, Ref, Repo, Riff, Search, Setting, Snippet, Storage, Sync, System, Tag, Template, _File, addURLParam, checkedChange, checkedInit, compareVersion, insertCreateBefore, isEmpty, loadScript, loadStyle, myRemoveEvent, parseResponse, post2Siyuan, propChange, pushMessage, removejscssfile, updateStyle, 以sql向思源请求块数据, 通知 };
