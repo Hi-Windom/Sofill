@@ -1,8 +1,21 @@
 /*!
-* sofill v1.0.18
+* sofill v1.0.19
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
+function isAppMode() {
+    return document.getElementsByTagName("body")[0].classList.contains("android")
+        ? false
+        : document
+            .getElementsByTagName("body")[0]
+            .classList.contains("body--desktop")
+            ? false
+            : window.siyuan.config.system.os === "windows" ||
+                window.siyuan.config.system.os === "darwin"
+                ? true
+                : false;
+}
+
 const config_Custom = "/conf/appearance/themes/Sofill-/config/Custom.json";
 const config_UI = "/conf/appearance/themes/Sofill-/config/UI.json";
 const themeStyle = document.getElementById("themeStyle"); // 当前主题引用路径
@@ -81,4 +94,4 @@ document.body.classList.add(clientMode);
 document.body.classList.add(window.theme.OS);
 var apitoken = window.siyuan.config.api.token;
 
-export { AliaName, ID_COLOR_STYLE, IDs, Iterator, Iterator2, S2_BASE, S2_BASE_ABS, THEME_ROOT, ThemeName, apitoken, clientMode, colors, colors2, config_Custom, config_UI, latest_DC_ID, latest_LC_ID, themeStyle, winsay_ROOT, winsay_ROOT_ABS };
+export { AliaName, ID_COLOR_STYLE, IDs, Iterator, Iterator2, S2_BASE, S2_BASE_ABS, THEME_ROOT, ThemeName, apitoken, clientMode, colors, colors2, config_Custom, config_UI, isAppMode, latest_DC_ID, latest_LC_ID, themeStyle, winsay_ROOT, winsay_ROOT_ABS };

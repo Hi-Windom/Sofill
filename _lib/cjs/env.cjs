@@ -1,9 +1,22 @@
 /*!
-* sofill v1.0.18
+* sofill v1.0.19
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
 'use strict';
+
+function isAppMode() {
+    return document.getElementsByTagName("body")[0].classList.contains("android")
+        ? false
+        : document
+            .getElementsByTagName("body")[0]
+            .classList.contains("body--desktop")
+            ? false
+            : window.siyuan.config.system.os === "windows" ||
+                window.siyuan.config.system.os === "darwin"
+                ? true
+                : false;
+}
 
 const config_Custom = "/conf/appearance/themes/Sofill-/config/Custom.json";
 const config_UI = "/conf/appearance/themes/Sofill-/config/UI.json";
@@ -96,6 +109,7 @@ exports.colors = colors;
 exports.colors2 = colors2;
 exports.config_Custom = config_Custom;
 exports.config_UI = config_UI;
+exports.isAppMode = isAppMode;
 exports.latest_DC_ID = latest_DC_ID;
 exports.latest_LC_ID = latest_LC_ID;
 exports.themeStyle = themeStyle;

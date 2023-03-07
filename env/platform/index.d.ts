@@ -1,2 +1,1 @@
-export { isAppMode, };
-declare function isAppMode(): boolean;
+export declare function isAppMode(): boolean;

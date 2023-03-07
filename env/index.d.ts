@@ -26,3 +26,4 @@ declare var Iterator2: (items: any) => Generator<any, never, unknown>;
 declare var clientMode: string;
 declare var apitoken: string;
 export { clientMode, Iterator2, Iterator, latest_DC_ID, latest_LC_ID, colors2, colors, IDs, ID_COLOR_STYLE, THEME_ROOT, winsay_ROOT, winsay_ROOT_ABS, S2_BASE, S2_BASE_ABS, themeStyle, config_UI, config_Custom, ThemeName, AliaName, apitoken, };
+export * from './platform';

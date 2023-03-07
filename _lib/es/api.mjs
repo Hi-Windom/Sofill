@@ -1,9 +1,9 @@
 /*!
-* sofill v1.0.18
+* sofill v1.0.19
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
-import { p as parseResponse, a as post2Siyuan } from '../../util-1e0cbfa0.js';
+import { p as parseResponse, a as post2Siyuan } from '../../util-001003ad.js';
 import { apitoken } from './env.mjs';
 
 function 通知(text, timeout = 7000) {
