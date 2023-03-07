@@ -1,5 +1,5 @@
 /*!
-* sofill v1.0.24
+* sofill v1.0.25
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
@@ -16,6 +16,27 @@ function isAppMode() {
                 window.siyuan.config.system.os === "darwin"
                 ? true
                 : false;
+}
+function isDesktopAppMode() {
+    let cl = window.document.body.classList;
+    return cl.contains("android")
+        ? false
+        : cl.contains("client--browser")
+            ? false
+            : window.siyuan.config.system.os === "windows" ||
+                window.siyuan.config.system.os === "darwin"
+                ? true
+                : false;
+}
+function isPhoneAppMode() {
+    let x = document.body.classList.contains("body--mobile");
+    let y = document.body.classList.contains("client--siyuan");
+    if (x && y) {
+        return true;
+    }
+    else {
+        return false;
+    }
 }
 
 const config_Custom = "/conf/appearance/themes/Sofill-/config/Custom.json";
@@ -110,6 +131,8 @@ exports.colors2 = colors2;
 exports.config_Custom = config_Custom;
 exports.config_UI = config_UI;
 exports.isAppMode = isAppMode;
+exports.isDesktopAppMode = isDesktopAppMode;
+exports.isPhoneAppMode = isPhoneAppMode;
 exports.latest_DC_ID = latest_DC_ID;
 exports.latest_LC_ID = latest_LC_ID;
 exports.themeStyle = themeStyle;

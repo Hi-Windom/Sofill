@@ -1,5 +1,5 @@
 /*!
-* sofill v1.0.24
+* sofill v1.0.25
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
