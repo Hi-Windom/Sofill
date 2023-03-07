@@ -1,6 +1,6 @@
 {
   "name": "sofill",
-  "version": "1.0.25",
+  "version": "1.0.26",
   "description": "",
   "main": "index.cjs",
   "module": "index.mjs",
@@ -79,8 +79,16 @@
       "import": "./_lib/es/style.mjs"
     }
   },
-  "dependencies": {
+  "peerDependencies": {
     "@sillot/bridge": "^0.0.3",
     "localforage": "^1.10.0"
-  }
+  },
+  "peerDependenciesMeta": {
+    "@sillot/bridge": {
+      "optional": true
+     },
+     "localforage": {
+      "optional": false
+     }
+   }
 }
