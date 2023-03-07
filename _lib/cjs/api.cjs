@@ -1,11 +1,11 @@
 /*!
-* sofill v1.0.22
+* sofill v1.0.23
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
 'use strict';
 
-var index$1 = require('../../index-04f55589.js');
+var index$1 = require('../../index-cbcbbfca.js');
 var env = require('./env.cjs');
 
 function 通知(text, timeout = 7000) {
@@ -336,11 +336,7 @@ async function 以id获取文档块markdown(文档id) {
     //文档hepath与Markdown 内容
 }
 
-var _File = {
-    getFile: 获取文件,
-    putFile: 写入文件,
-};
-async function 获取文件(path) {
+async function getFile(path) {
     const response = await fetch("/api/file/getFile", {
         method: "POST",
         headers: {
@@ -355,7 +351,7 @@ async function 获取文件(path) {
     else
         return null;
 }
-async function 写入文件(path, filedata, isDir = false, modTime = Date.now()) {
+async function putFile(path, filedata, isDir = false, modTime = Date.now()) {
     let blob = new Blob([filedata]);
     let file = new File([blob], path.split("/").pop());
     let formdata = new FormData();
@@ -378,7 +374,8 @@ async function 写入文件(path, filedata, isDir = false, modTime = Date.now())
 
 var index = /*#__PURE__*/Object.freeze({
     __proto__: null,
-    _File: _File
+    getFile: getFile,
+    putFile: putFile
 });
 
 var Filetree = {

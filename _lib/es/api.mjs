@@ -1,10 +1,10 @@
 /*!
-* sofill v1.0.22
+* sofill v1.0.23
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
-import { p as parseResponse, a as post2Siyuan } from '../../index-84c920e7.js';
-export { C as CopyDOM, c as MoveChildren, M as MoveDOM, U as Util, b as addinsertCreateElement, d as diguiTooONE, g as getActualWidthOfChars, i as insertCreateAfter, e as isMobile, f as isWindow } from '../../index-84c920e7.js';
+import { p as parseResponse, a as post2Siyuan } from '../../index-8d8d565d.js';
+export { C as CopyDOM, c as MoveChildren, M as MoveDOM, U as Util, b as addinsertCreateElement, d as diguiTooONE, g as getActualWidthOfChars, i as insertCreateAfter, e as isMobile, f as isWindow } from '../../index-8d8d565d.js';
 import { apitoken } from './env.mjs';
 
 function 通知(text, timeout = 7000) {
@@ -335,11 +335,7 @@ async function 以id获取文档块markdown(文档id) {
     //文档hepath与Markdown 内容
 }
 
-var _File = {
-    getFile: 获取文件,
-    putFile: 写入文件,
-};
-async function 获取文件(path) {
+async function getFile(path) {
     const response = await fetch("/api/file/getFile", {
         method: "POST",
         headers: {
@@ -354,7 +350,7 @@ async function 获取文件(path) {
     else
         return null;
 }
-async function 写入文件(path, filedata, isDir = false, modTime = Date.now()) {
+async function putFile(path, filedata, isDir = false, modTime = Date.now()) {
     let blob = new Blob([filedata]);
     let file = new File([blob], path.split("/").pop());
     let formdata = new FormData();
@@ -377,7 +373,8 @@ async function 写入文件(path, filedata, isDir = false, modTime = Date.now())
 
 var index = /*#__PURE__*/Object.freeze({
     __proto__: null,
-    _File: _File
+    getFile: getFile,
+    putFile: putFile
 });
 
 var Filetree = {
