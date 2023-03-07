@@ -1,1 +1,1 @@
-export * from '../runtime/index';
+export * from '../_runtime';

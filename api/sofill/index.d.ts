@@ -1,2 +1,2 @@
-export * from "./alert/index";
-export * from "./utils/index";
+export * from "./alert";
+export * from "./utils";

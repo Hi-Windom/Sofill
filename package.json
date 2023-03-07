@@ -1,6 +1,6 @@
 {
   "name": "sofill",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "description": "",
   "main": "index.cjs",
   "module": "index.mjs",
@@ -57,6 +57,11 @@
       "types": "./im/index.d.ts",
       "require": "./_lib/cjs/im.cjs",
       "import": "./_lib/es/im.mjs"
+    },
+    "./modul": {
+      "types": "./modul/index.d.ts",
+      "require": "./_lib/cjs/modul.cjs",
+      "import": "./_lib/es/modul.mjs"
     },
     "./ref": {
       "types": "./ref/index.d.ts",
