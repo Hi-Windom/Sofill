@@ -1,7 +1,6 @@
-export declare var Notification: {
-    pushMsg: typeof 推送消息;
-    pushErrMsg: typeof 推送报错消息;
-};
-declare function 推送消息(message?: any, text?: any, timeout?: number): Promise<any>;
-declare function 推送报错消息(message?: any, text?: any, timeout?: number): Promise<any>;
-export {};
+export { 通知, pushMessage, };
+declare function 通知(text: any, timeout?: number): void;
+/**
+ * @deprecated 过时的
+ */
+declare function pushMessage(text: any): void;

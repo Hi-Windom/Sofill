@@ -1,51 +1,11 @@
 /*!
-* sofill v1.0.29
+* sofill v1.0.30
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
-import { p as parseResponse, a as post2Siyuan } from '../../index-5df69b0b.js';
-export { C as CopyDOM, c as MoveChildren, M as MoveDOM, b as addinsertCreateElement, d as diguiTooONE, g as getActualWidthOfChars, i as insertCreateAfter, e as isMobile, f as isWindow } from '../../index-5df69b0b.js';
+import { p as parseResponse, a as post2Siyuan } from '../../index-97aa72bc.js';
+export { C as CopyDOM, c as MoveChildren, M as MoveDOM, b as addinsertCreateElement, d as diguiTooONE, g as getActualWidthOfChars, i as insertCreateAfter, e as isMobile, f as isWindow } from '../../index-97aa72bc.js';
 import { apitoken } from './env.mjs';
-
-function 通知(text, timeout = 7000) {
-    var url = "http://127.0.0.1:6806/api/notification/pushMsg";
-    var httpRequest = new XMLHttpRequest();
-    httpRequest.open("POST", url, true);
-    httpRequest.setRequestHeader("Content-type", "application/json");
-    var obj = {
-        msg: text,
-        timeout: 7000,
-    };
-    httpRequest.send(JSON.stringify(obj));
-    // 响应后的回调函数
-    httpRequest.onreadystatechange = function () {
-        if (httpRequest.readyState === 4 && httpRequest.status === 200) {
-            var json = httpRequest.responseText;
-            console.log(json);
-        }
-    };
-}
-/**
- * @deprecated 过时的
- */
-function pushMessage(text) {
-    var url = "http://127.0.0.1:6806/api/notification/pushMsg";
-    var httpRequest = new XMLHttpRequest();
-    httpRequest.open("POST", url, true);
-    httpRequest.setRequestHeader("Content-type", "application/json");
-    var obj = {
-        msg: text,
-        timeout: 7000,
-    };
-    httpRequest.send(JSON.stringify(obj));
-    // 响应后的回调函数
-    httpRequest.onreadystatechange = function () {
-        if (httpRequest.readyState === 4 && httpRequest.status === 200) {
-            var json = httpRequest.responseText;
-            console.log(json);
-        }
-    };
-}
 
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
@@ -3508,9 +3468,9 @@ async function putFile(path, filedata, isDir = false, modTime = Date.now()) {
 }
 
 var index = /*#__PURE__*/Object.freeze({
-    __proto__: null,
-    getFile: getFile,
-    putFile: putFile
+	__proto__: null,
+	getFile: getFile,
+	putFile: putFile
 });
 
 var Filetree = {
@@ -3700,26 +3660,44 @@ async function 保存思源笔记本配置(笔记本id) {
     //返回笔记本配置
 }
 
-var Notification = {
-    pushMsg: 推送消息,
-    pushErrMsg: 推送报错消息,
-};
-const language = window.theme.languageMode;
-async function 推送消息(message = null, text = null, timeout = 7000) {
-    const url = "/api/notification/pushMsg";
-    const data = {
-        msg: message ? message[language] || message.other : text,
-        timeout: timeout,
+function 通知(text, timeout = 7000) {
+    var url = "http://127.0.0.1:6806/api/notification/pushMsg";
+    var httpRequest = new XMLHttpRequest();
+    httpRequest.open("POST", url, true);
+    httpRequest.setRequestHeader("Content-type", "application/json");
+    var obj = {
+        msg: text,
+        timeout: 7000,
     };
-    return parseResponse(post2Siyuan(url, data));
+    httpRequest.send(JSON.stringify(obj));
+    // 响应后的回调函数
+    httpRequest.onreadystatechange = function () {
+        if (httpRequest.readyState === 4 && httpRequest.status === 200) {
+            var json = httpRequest.responseText;
+            console.log(json);
+        }
+    };
 }
-async function 推送报错消息(message = null, text = null, timeout = 7000) {
-    const url = "/api/notification/pushErrMsg";
-    const data = {
-        msg: message ? message[language] || message.other : text,
-        timeout: timeout,
+/**
+ * @deprecated 过时的
+ */
+function pushMessage(text) {
+    var url = "http://127.0.0.1:6806/api/notification/pushMsg";
+    var httpRequest = new XMLHttpRequest();
+    httpRequest.open("POST", url, true);
+    httpRequest.setRequestHeader("Content-type", "application/json");
+    var obj = {
+        msg: text,
+        timeout: 7000,
     };
-    return parseResponse(post2Siyuan(url, data));
+    httpRequest.send(JSON.stringify(obj));
+    // 响应后的回调函数
+    httpRequest.onreadystatechange = function () {
+        if (httpRequest.readyState === 4 && httpRequest.status === 200) {
+            var json = httpRequest.responseText;
+            console.log(json);
+        }
+    };
 }
 
 var Outline = {
@@ -3833,4 +3811,4 @@ function insertCreateBefore(targetElement, addElementTxt, setId = null) {
     return element;
 }
 
-export { AI, Account, AddEvent, Asset, Attr, Av, Bazaar, Block, Bookmark, Export, index as File, Filetree, Format, Graph, History, Import, Inbox, Lute, Notebook, Notification, Outline, Query, RangeLimitedInt, Ref, Repo, Riff, Search, Setting, Snippet, SofillDate, Storage, Sync, System, Tag, Template, addURLParam, checkedChange, compareVersion, getBazaarTheme, getFocusedBlock, getFocusedBlockID, getFocusedDoc, getFocusedDocBackground, getFocusedDocID, getFocusedID, getInstalledTheme, getNewValueFromDomByID, getTooltipDirection, getUrlParam, getUrlParams, initAllPropFromIDBAsync, insertCreateBefore, isEmpty, isEmptyString, isPromise, loadScript, loadStyle, myRemoveEvent, parseResponse, post2Siyuan, propChange, pushMessage, removejscssfile, setTooltipDirection, sleep, updateStyle, 以sql向思源请求块数据, 通知 };
+export { AI, Account, AddEvent, Asset, Attr, Av, Bazaar, Block, Bookmark, Export, index as File, Filetree, Format, Graph, History, Import, Inbox, Lute, Notebook, Outline, Query, RangeLimitedInt, Ref, Repo, Riff, Search, Setting, Snippet, SofillDate, Storage, Sync, System, Tag, Template, addURLParam, checkedChange, compareVersion, getBazaarTheme, getFocusedBlock, getFocusedBlockID, getFocusedDoc, getFocusedDocBackground, getFocusedDocID, getFocusedID, getInstalledTheme, getNewValueFromDomByID, getTooltipDirection, getUrlParam, getUrlParams, initAllPropFromIDBAsync, insertCreateBefore, isEmpty, isEmptyString, isPromise, loadScript, loadStyle, myRemoveEvent, parseResponse, post2Siyuan, propChange, pushMessage, removejscssfile, setTooltipDirection, sleep, updateStyle, 以sql向思源请求块数据, 通知 };

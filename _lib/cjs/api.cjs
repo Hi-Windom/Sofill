@@ -1,52 +1,12 @@
 /*!
-* sofill v1.0.29
+* sofill v1.0.30
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
 'use strict';
 
-var index$1 = require('../../index-5afcb583.js');
+var index$1 = require('../../index-6899f704.js');
 var env = require('./env.cjs');
-
-function 通知(text, timeout = 7000) {
-    var url = "http://127.0.0.1:6806/api/notification/pushMsg";
-    var httpRequest = new XMLHttpRequest();
-    httpRequest.open("POST", url, true);
-    httpRequest.setRequestHeader("Content-type", "application/json");
-    var obj = {
-        msg: text,
-        timeout: 7000,
-    };
-    httpRequest.send(JSON.stringify(obj));
-    // 响应后的回调函数
-    httpRequest.onreadystatechange = function () {
-        if (httpRequest.readyState === 4 && httpRequest.status === 200) {
-            var json = httpRequest.responseText;
-            console.log(json);
-        }
-    };
-}
-/**
- * @deprecated 过时的
- */
-function pushMessage(text) {
-    var url = "http://127.0.0.1:6806/api/notification/pushMsg";
-    var httpRequest = new XMLHttpRequest();
-    httpRequest.open("POST", url, true);
-    httpRequest.setRequestHeader("Content-type", "application/json");
-    var obj = {
-        msg: text,
-        timeout: 7000,
-    };
-    httpRequest.send(JSON.stringify(obj));
-    // 响应后的回调函数
-    httpRequest.onreadystatechange = function () {
-        if (httpRequest.readyState === 4 && httpRequest.status === 200) {
-            var json = httpRequest.responseText;
-            console.log(json);
-        }
-    };
-}
 
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
@@ -3509,9 +3469,9 @@ async function putFile(path, filedata, isDir = false, modTime = Date.now()) {
 }
 
 var index = /*#__PURE__*/Object.freeze({
-    __proto__: null,
-    getFile: getFile,
-    putFile: putFile
+	__proto__: null,
+	getFile: getFile,
+	putFile: putFile
 });
 
 var Filetree = {
@@ -3701,26 +3661,44 @@ async function 保存思源笔记本配置(笔记本id) {
     //返回笔记本配置
 }
 
-var Notification = {
-    pushMsg: 推送消息,
-    pushErrMsg: 推送报错消息,
-};
-const language = window.theme.languageMode;
-async function 推送消息(message = null, text = null, timeout = 7000) {
-    const url = "/api/notification/pushMsg";
-    const data = {
-        msg: message ? message[language] || message.other : text,
-        timeout: timeout,
+function 通知(text, timeout = 7000) {
+    var url = "http://127.0.0.1:6806/api/notification/pushMsg";
+    var httpRequest = new XMLHttpRequest();
+    httpRequest.open("POST", url, true);
+    httpRequest.setRequestHeader("Content-type", "application/json");
+    var obj = {
+        msg: text,
+        timeout: 7000,
     };
-    return index$1.parseResponse(index$1.post2Siyuan(url, data));
+    httpRequest.send(JSON.stringify(obj));
+    // 响应后的回调函数
+    httpRequest.onreadystatechange = function () {
+        if (httpRequest.readyState === 4 && httpRequest.status === 200) {
+            var json = httpRequest.responseText;
+            console.log(json);
+        }
+    };
 }
-async function 推送报错消息(message = null, text = null, timeout = 7000) {
-    const url = "/api/notification/pushErrMsg";
-    const data = {
-        msg: message ? message[language] || message.other : text,
-        timeout: timeout,
+/**
+ * @deprecated 过时的
+ */
+function pushMessage(text) {
+    var url = "http://127.0.0.1:6806/api/notification/pushMsg";
+    var httpRequest = new XMLHttpRequest();
+    httpRequest.open("POST", url, true);
+    httpRequest.setRequestHeader("Content-type", "application/json");
+    var obj = {
+        msg: text,
+        timeout: 7000,
     };
-    return index$1.parseResponse(index$1.post2Siyuan(url, data));
+    httpRequest.send(JSON.stringify(obj));
+    // 响应后的回调函数
+    httpRequest.onreadystatechange = function () {
+        if (httpRequest.readyState === 4 && httpRequest.status === 200) {
+            var json = httpRequest.responseText;
+            console.log(json);
+        }
+    };
 }
 
 var Outline = {
@@ -3864,7 +3842,6 @@ exports.Import = Import;
 exports.Inbox = Inbox;
 exports.Lute = Lute;
 exports.Notebook = Notebook;
-exports.Notification = Notification;
 exports.Outline = Outline;
 exports.Query = Query;
 exports.RangeLimitedInt = RangeLimitedInt;
