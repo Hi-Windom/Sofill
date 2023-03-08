@@ -1,11 +1,11 @@
 /*!
-* sofill v1.0.27
+* sofill v1.0.28
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
 'use strict';
 
-var index$1 = require('../../index-4761e6ee.js');
+var index$1 = require('../../index-345623f8.js');
 var env = require('./env.cjs');
 
 function 通知(text, timeout = 7000) {
@@ -2737,6 +2737,7 @@ function loadScript(src, type = "module", async = false, defer = false) {
         script.defer = true;
     script.src = src;
     document.head.appendChild(script);
+    return script;
 }
 function addURLParam(url, param = {
     v: window.siyuan.config.appearance.themeVer,

@@ -21,7 +21,7 @@ export declare function AddEvent(element: any, strType: any, fun: any): void;
 export declare function myRemoveEvent(element: any, strType: any, fun: any): void;
 export declare function loadStyle(href: any, id?: any): void;
 export declare function updateStyle(id: any, href: any): void;
-export declare function loadScript(src: any, type?: string, async?: boolean, defer?: boolean): void;
+export declare function loadScript(src: any, type?: string, async?: boolean, defer?: boolean): HTMLScriptElement;
 export declare function addURLParam(url: any, param?: {
     v: string;
 }): any;

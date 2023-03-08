@@ -1,10 +1,10 @@
 /*!
-* sofill v1.0.27
+* sofill v1.0.28
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
-import { p as parseResponse, a as post2Siyuan } from '../../index-6881a45f.js';
-export { C as CopyDOM, c as MoveChildren, M as MoveDOM, b as addinsertCreateElement, d as diguiTooONE, g as getActualWidthOfChars, i as insertCreateAfter, e as isMobile, f as isWindow } from '../../index-6881a45f.js';
+import { p as parseResponse, a as post2Siyuan } from '../../index-8c93b98f.js';
+export { C as CopyDOM, c as MoveChildren, M as MoveDOM, b as addinsertCreateElement, d as diguiTooONE, g as getActualWidthOfChars, i as insertCreateAfter, e as isMobile, f as isWindow } from '../../index-8c93b98f.js';
 import { apitoken } from './env.mjs';
 
 function 通知(text, timeout = 7000) {
@@ -2736,6 +2736,7 @@ function loadScript(src, type = "module", async = false, defer = false) {
         script.defer = true;
     script.src = src;
     document.head.appendChild(script);
+    return script;
 }
 function addURLParam(url, param = {
     v: window.siyuan.config.appearance.themeVer,
