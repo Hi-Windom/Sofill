@@ -1,11 +1,11 @@
 /*!
-* sofill v1.0.31
+* sofill v1.0.32
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
 'use strict';
 
-var index$1 = require('../../index-f057566c.js');
+var index$1 = require('../../index-3bf08c42.js');
 var env = require('./env.cjs');
 
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
@@ -2592,6 +2592,17 @@ function compareVersion(version1, version2) {
     }
     return 0;
 }
+const getThemeMode = (() => {
+    /* 根据配置选项判断主题 */
+    switch (window.siyuan.config.appearance.mode) {
+        case 0:
+            return "light";
+        case 1:
+            return "dark";
+        default:
+            return null;
+    }
+})();
 const isPromise = (val) => {
     return typeof val.then === "function";
 };
@@ -3869,6 +3880,7 @@ exports.getFocusedDocID = getFocusedDocID;
 exports.getFocusedID = getFocusedID;
 exports.getInstalledTheme = getInstalledTheme;
 exports.getNewValueFromDomByID = getNewValueFromDomByID;
+exports.getThemeMode = getThemeMode;
 exports.getTooltipDirection = getTooltipDirection;
 exports.getUrlParam = getUrlParam;
 exports.getUrlParams = getUrlParams;

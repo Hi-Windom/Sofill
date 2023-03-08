@@ -1,10 +1,10 @@
 /*!
-* sofill v1.0.31
+* sofill v1.0.32
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
-import { p as parseResponse, a as post2Siyuan } from '../../index-a5038e18.js';
-export { C as CopyDOM, c as MoveChildren, M as MoveDOM, b as addinsertCreateElement, d as diguiTooONE, g as getActualWidthOfChars, i as insertCreateAfter, e as isMobile, f as isWindow } from '../../index-a5038e18.js';
+import { p as parseResponse, a as post2Siyuan } from '../../index-a576edc8.js';
+export { C as CopyDOM, c as MoveChildren, M as MoveDOM, b as addinsertCreateElement, d as diguiTooONE, g as getActualWidthOfChars, i as insertCreateAfter, e as isMobile, f as isWindow } from '../../index-a576edc8.js';
 import { apitoken } from './env.mjs';
 
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
@@ -2591,6 +2591,17 @@ function compareVersion(version1, version2) {
     }
     return 0;
 }
+const getThemeMode = (() => {
+    /* 根据配置选项判断主题 */
+    switch (window.siyuan.config.appearance.mode) {
+        case 0:
+            return "light";
+        case 1:
+            return "dark";
+        default:
+            return null;
+    }
+})();
 const isPromise = (val) => {
     return typeof val.then === "function";
 };
@@ -3811,4 +3822,4 @@ function insertCreateBefore(targetElement, addElementTxt, setId = null) {
     return element;
 }
 
-export { AI, Account, AddEvent, Asset, Attr, Av, Bazaar, Block, Bookmark, Export, index as File, Filetree, Format, Graph, History, Import, Inbox, Lute, Notebook, Outline, Query, RangeLimitedInt, Ref, Repo, Riff, Search, Setting, Snippet, SofillDate, Storage, Sync, System, Tag, Template, addURLParam, checkedChange, compareVersion, getBazaarTheme, getFocusedBlock, getFocusedBlockID, getFocusedDoc, getFocusedDocBackground, getFocusedDocID, getFocusedID, getInstalledTheme, getNewValueFromDomByID, getTooltipDirection, getUrlParam, getUrlParams, initAllPropFromIDBAsync, insertCreateBefore, isEmpty, isEmptyString, isPromise, loadScript, loadStyle, myRemoveEvent, parseResponse, post2Siyuan, propChange, pushMessage, removejscssfile, setTooltipDirection, sleep, updateStyle, 以sql向思源请求块数据, 通知 };
+export { AI, Account, AddEvent, Asset, Attr, Av, Bazaar, Block, Bookmark, Export, index as File, Filetree, Format, Graph, History, Import, Inbox, Lute, Notebook, Outline, Query, RangeLimitedInt, Ref, Repo, Riff, Search, Setting, Snippet, SofillDate, Storage, Sync, System, Tag, Template, addURLParam, checkedChange, compareVersion, getBazaarTheme, getFocusedBlock, getFocusedBlockID, getFocusedDoc, getFocusedDocBackground, getFocusedDocID, getFocusedID, getInstalledTheme, getNewValueFromDomByID, getThemeMode, getTooltipDirection, getUrlParam, getUrlParams, initAllPropFromIDBAsync, insertCreateBefore, isEmpty, isEmptyString, isPromise, loadScript, loadStyle, myRemoveEvent, parseResponse, post2Siyuan, propChange, pushMessage, removejscssfile, setTooltipDirection, sleep, updateStyle, 以sql向思源请求块数据, 通知 };
