@@ -1,5 +1,5 @@
 /*!
-* sofill v1.0.28
+* sofill v1.0.29
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
@@ -111,8 +111,8 @@ var clientMode = (() => {
             return null;
     }
 })();
-document.body.classList.add(clientMode);
-document.body.classList.add(window.theme.OS);
+// document.body.classList.add(clientMode);
+// document.body.classList.add(window.theme.OS);
 var apitoken = window.siyuan.config.api.token;
 
 export { AliaName, ID_COLOR_STYLE, IDs, Iterator, Iterator2, S2_BASE, S2_BASE_ABS, THEME_ROOT, ThemeName, apitoken, clientMode, colors, colors2, config_Custom, config_UI, isAppMode, isDesktopAppMode, isPhoneAppMode, latest_DC_ID, latest_LC_ID, themeStyle, winsay_ROOT, winsay_ROOT_ABS };

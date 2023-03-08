@@ -1,5 +1,5 @@
 /*!
-* sofill v1.0.28
+* sofill v1.0.29
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
@@ -113,8 +113,8 @@ var clientMode = (() => {
             return null;
     }
 })();
-document.body.classList.add(clientMode);
-document.body.classList.add(window.theme.OS);
+// document.body.classList.add(clientMode);
+// document.body.classList.add(window.theme.OS);
 var apitoken = window.siyuan.config.api.token;
 
 exports.ID_COLOR_STYLE = ID_COLOR_STYLE;
