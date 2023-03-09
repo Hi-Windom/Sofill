@@ -1,6 +1,6 @@
 {
   "name": "sofill",
-  "version": "1.0.33",
+  "version": "1.0.35",
   "description": "Sofill内核适用于思源笔记，并为其最流行的汐洛分支提供额外支持",
   "main": "index.cjs",
   "module": "index.mjs",
@@ -82,6 +82,10 @@
       "types": "./style/index.d.ts",
       "require": "./_lib/cjs/style.cjs",
       "import": "./_lib/es/style.mjs"
+    },
+    "./css/init": {
+      "types": "./css/init/index.d.ts",
+      "import": "./_lib/css/init.css"
     }
   },
   "peerDependencies": {
