@@ -1,10 +1,10 @@
 /*!
-* sofill v1.0.32
+* sofill v1.0.33
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
-import { p as parseResponse, a as post2Siyuan } from '../../index-a576edc8.js';
-export { C as CopyDOM, c as MoveChildren, M as MoveDOM, b as addinsertCreateElement, d as diguiTooONE, g as getActualWidthOfChars, i as insertCreateAfter, e as isMobile, f as isWindow } from '../../index-a576edc8.js';
+import { p as parseResponse, a as post2Siyuan } from '../../index-5249fd09.js';
+export { C as CopyDOM, c as MoveChildren, M as MoveDOM, b as addinsertCreateElement, d as diguiTooONE, g as getActualWidthOfChars, i as insertCreateAfter, e as isMobile, f as isWindow } from '../../index-5249fd09.js';
 import { apitoken } from './env.mjs';
 
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
