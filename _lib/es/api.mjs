@@ -1,10 +1,10 @@
 /*!
-* sofill v1.0.36
+* sofill v1.0.37
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
-import { p as parseResponse, a as post2Siyuan } from '../../index-21946d22.js';
-export { C as CopyDOM, c as MoveChildren, M as MoveDOM, b as addinsertCreateElement, d as diguiTooONE, g as getActualWidthOfChars, i as insertCreateAfter, e as isMobile, f as isWindow } from '../../index-21946d22.js';
+import { p as parseResponse, a as post2Siyuan } from '../../index-89ae60a0.js';
+export { C as CopyDOM, c as MoveChildren, M as MoveDOM, b as addinsertCreateElement, d as diguiTooONE, g as getActualWidthOfChars, i as insertCreateAfter, e as isMobile, f as isWindow } from '../../index-89ae60a0.js';
 import { apitoken } from './env.mjs';
 
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
@@ -3313,9 +3313,9 @@ var AI = {};
 var Asset = {};
 
 var Query = {
-    sql: 以sql向思源请求块数据,
+    sql: querySQL,
 };
-async function 以sql向思源请求块数据(sql) {
+async function querySQL(sql) {
     let sqldata = {
         stmt: sql,
     };
@@ -3324,23 +3324,23 @@ async function 以sql向思源请求块数据(sql) {
 }
 
 var Attr = {
-    getBlockAttrs: 以id获取思源块属性,
-    setBlockAttrs: 设置思源块属性,
-    getBlockByID: 以id获取思源块信息,
+    getBlockAttrs,
+    setBlockAttrs,
+    queryBlockById,
 };
-async function 以id获取思源块属性(内容块id) {
+async function getBlockAttrs(内容块id) {
     let data = {
         id: 内容块id,
     };
     let url = "/api/attr/getBlockAttrs";
     return parseResponse(post2Siyuan(url, data));
 }
-async function 以id获取思源块信息(内容块id) {
+async function queryBlockById(内容块id) {
     let sql = `select * from blocks where id ='${内容块id}'`;
-    let data = await 以sql向思源请求块数据(sql);
+    let data = await querySQL(sql);
     return data[0];
 }
-async function 设置思源块属性(内容块id, 属性对象) {
+async function setBlockAttrs(内容块id, 属性对象) {
     let url = "/api/attr/setBlockAttrs";
     return parseResponse(post2Siyuan(url, {
         id: 内容块id,
@@ -3720,9 +3720,9 @@ async function 以id获取文档大纲(文档id) {
 }
 
 var Ref = {
-    getBacklink: 以id获取反向链接,
+    getBacklink: getBacklink,
 };
-async function 以id获取反向链接(id) {
+async function getBacklink(id) {
     let data = {
         id: id,
         beforeLen: 10,
@@ -3738,26 +3738,26 @@ var Repo = {};
 var Riff = {};
 
 var Search = {
-    searchEmbedBlock: 以sql获取嵌入块内容,
-    searchBlock: 以关键词搜索块,
-    searchTemplate: 以关键词搜索模板,
+    searchEmbedBlock: queryEmbedBlock,
+    searchBlock: queryBlock,
+    searchTemplate: queryTemplate,
 };
-async function 以sql获取嵌入块内容(外部id数组, sql) {
+async function queryEmbedBlock(ids, sql) {
     let data = {
         stmt: sql,
-        excludeIDs: 外部id数组,
+        excludeIDs: ids,
     };
     let url = "/api/search/searchEmbedBlock";
     return parseResponse(post2Siyuan(url, data));
 }
-async function 以关键词搜索块(query) {
+async function queryBlock(query) {
     let data = {
         query: query,
     };
     let url = "/api/search/searchBlock";
     return parseResponse(post2Siyuan(url, data));
 }
-async function 以关键词搜索模板(k) {
+async function queryTemplate(k) {
     let data = {
         k: k,
     };
@@ -3776,19 +3776,19 @@ var Sync = {};
 var System = {};
 
 var Tag = {
-    getTag: 获取标签列表,
+    getTag,
 };
-async function 获取标签列表() {
+async function getTag() {
     let data = {};
     let url = "/api/tag/getTag";
     return parseResponse(post2Siyuan(url, data));
 }
 
 var Template = {
-    docSaveAsTemplate: 导出模板,
-    renderTemplate: 渲染模板,
+    docSaveAsTemplate,
+    renderTemplate,
 };
-async function 导出模板(id, overwrite = false) {
+async function docSaveAsTemplate(id, overwrite = false) {
     let url = "/api/template/docSaveAsTemplate";
     let data = {
         id: id,
@@ -3796,7 +3796,7 @@ async function 导出模板(id, overwrite = false) {
     };
     return parseResponse(post2Siyuan(url, data));
 }
-async function 渲染模板(data) {
+async function renderTemplate(data) {
     let url = "/api/template/render";
     return parseResponse(post2Siyuan(url, data));
 }
@@ -3819,4 +3819,4 @@ function insertCreateBefore(targetElement, addElementTxt, setId = null) {
     return element;
 }
 
-export { AI, Account, AddEvent, Asset, Attr, Av, Bazaar, Block, Bookmark, Export, index as File, Filetree, Format, Graph, History, Import, Inbox, Lute, Notebook, Outline, Query, RangeLimitedInt, Ref, Repo, Riff, Search, Setting, Snippet, SofillDate, Storage, Sync, System, Tag, Template, addURLParam, checkedChange, compareVersion, getBazaarTheme, getFocusedBlock, getFocusedBlockID, getFocusedDoc, getFocusedDocBackground, getFocusedDocID, getFocusedID, getInstalledTheme, getNewValueFromDomByID, getThemeMode, getTooltipDirection, getUrlParam, getUrlParams, initAllPropFromIDBAsync, insertCreateBefore, isEmpty, isEmptyString, isPromise, loadScript, loadStyle, myRemoveEvent, parseResponse, post2Siyuan, propChange, pushMessage, removejscssfile, setTooltipDirection, updateStyle, 以sql向思源请求块数据, 通知 };
+export { AI, Account, AddEvent, Asset, Attr, Av, Bazaar, Block, Bookmark, Export, index as File, Filetree, Format, Graph, History, Import, Inbox, Lute, Notebook, Outline, Query, RangeLimitedInt, Ref, Repo, Riff, Search, Setting, Snippet, SofillDate, Storage, Sync, System, Tag, Template, addURLParam, checkedChange, compareVersion, getBazaarTheme, getFocusedBlock, getFocusedBlockID, getFocusedDoc, getFocusedDocBackground, getFocusedDocID, getFocusedID, getInstalledTheme, getNewValueFromDomByID, getThemeMode, getTooltipDirection, getUrlParam, getUrlParams, initAllPropFromIDBAsync, insertCreateBefore, isEmpty, isEmptyString, isPromise, loadScript, loadStyle, myRemoveEvent, parseResponse, post2Siyuan, propChange, pushMessage, querySQL, removejscssfile, setTooltipDirection, updateStyle, 通知 };

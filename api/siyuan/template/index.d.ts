@@ -1,7 +1,7 @@
 export declare var Template: {
-    docSaveAsTemplate: typeof 导出模板;
-    renderTemplate: typeof 渲染模板;
+    docSaveAsTemplate: typeof docSaveAsTemplate;
+    renderTemplate: typeof renderTemplate;
 };
-declare function 导出模板(id: any, overwrite?: boolean): Promise<any>;
-declare function 渲染模板(data: any): Promise<any>;
+declare function docSaveAsTemplate(id: any, overwrite?: boolean): Promise<any>;
+declare function renderTemplate(data: any): Promise<any>;
 export {};
