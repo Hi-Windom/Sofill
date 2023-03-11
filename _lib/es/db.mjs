@@ -91,7 +91,8 @@ async function exportToJson(idbDatabase) {
 }
 
 async function importIDB(result) {
-    if (window.Sillot.status.IDBloaded && !window.location.search.startsWith("?b=Sillot")) {
+    if (window.Sillot.status.IDBloaded &&
+        !window.location.search.startsWith("?b=Sillot")) {
         return;
     }
     const importObject = result.data;
@@ -99,7 +100,7 @@ async function importIDB(result) {
     let resolved = 0;
     let waittime = 0.0;
     return new Promise(async (resolve, reject) => {
-        dbList.forEach(dbName => {
+        dbList.forEach((dbName) => {
             if (Object.keys(importObject[dbName]).length === 0) {
                 resolved += 1;
             }
@@ -118,7 +119,11 @@ async function importIDB(result) {
                 };
                 DBOpenRequest.onsuccess = function (event) {
                     // 第一次打开数据库时，会先触发upgradeneeded事件，然后触发success事件
-                    importFromJson(DBOpenRequest, importObject[dbName]).then(() => { resolved += 1; }).catch((e) => {
+                    importFromJson(DBOpenRequest, importObject[dbName])
+                        .then(() => {
+                        resolved += 1;
+                    })
+                        .catch((e) => {
                         window.sout.error(e);
                         resolved += 1;
                     });
@@ -146,12 +151,12 @@ async function exportIDB() {
     if (window.location.search.startsWith("?b=Sillot")) {
         return;
     }
-    const dbList = (await window.indexedDB.databases()).map(db => db.name);
+    const dbList = (await window.indexedDB.databases()).map((db) => db.name);
     return new Promise(async (resolve, reject) => {
         resolve(dbList);
     }).then(async (resolve) => {
         const exData = {};
-        resolve.forEach(dbName => {
+        resolve.forEach((dbName) => {
             const DBOpenRequest = window.indexedDB.open(dbName);
             DBOpenRequest.onsuccess = (e) => {
                 exportToJson(DBOpenRequest).then((response) => {
@@ -179,8 +184,7 @@ async function exportIDB() {
         fetch(url, {
             body: formdata,
             method: "POST",
-        }).then(function (response) {
-        });
+        }).then(function (response) { });
     });
 }
 
