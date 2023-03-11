@@ -5,8 +5,8 @@
 */
 'use strict';
 
-var sleep = require('../../sleep-846e4454.js');
+const sleep = (ms) => {
+    return new Promise(resolve => setTimeout(resolve, ms));
+};
 
-
-
-exports.sleep = sleep.sleep;
+exports.sleep = sleep;

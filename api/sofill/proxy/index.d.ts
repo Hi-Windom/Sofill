@@ -8,5 +8,4 @@ export declare const SofillDate: {
     isDuringTime: (beginTimeStr: any, endTimeStr: any) => boolean;
 };
 export declare function getUrlParam(urlStr: any, urlKey: any): string;
-export declare const sleep: (ms: any) => Promise<unknown>;
 export declare function getUrlParams(urlStr: any): string[];

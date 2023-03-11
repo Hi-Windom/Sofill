@@ -1,11 +1,11 @@
 /*!
-* sofill v1.0.35
+* sofill v1.0.36
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
 'use strict';
 
-var index$1 = require('../../index-fba39623.js');
+var index$1 = require('../../index-6163f23e.js');
 var env = require('./env.cjs');
 
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
@@ -3146,9 +3146,6 @@ function getUrlParam(urlStr, urlKey) {
         }
     }
 }
-const sleep = (ms) => {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-};
 function getUrlParams(urlStr) {
     const url = new URL(urlStr); // 字符串转换成url格式
     const paramsStr = url.search.slice(1); // 获取'?'后面的参数字符串
@@ -3896,7 +3893,6 @@ exports.propChange = propChange;
 exports.pushMessage = pushMessage;
 exports.removejscssfile = removejscssfile;
 exports.setTooltipDirection = setTooltipDirection;
-exports.sleep = sleep;
 exports.updateStyle = updateStyle;
 exports["以sql向思源请求块数据"] = 以sql向思源请求块数据;
 exports["通知"] = 通知;
