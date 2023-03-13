@@ -1,11 +1,11 @@
 /*!
-* sofill v1.0.37
+* sofill v1.0.38
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
 'use strict';
 
-var index$1 = require('../../index-945e65bd.js');
+var index$1 = require('../../index-44494978.js');
 var env = require('./env.cjs');
 
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
