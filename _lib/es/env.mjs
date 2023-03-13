@@ -1,5 +1,5 @@
 /*!
-* sofill v1.0.39
+* sofill v1.0.40
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
@@ -28,7 +28,7 @@ function isDesktopAppMode() {
 }
 function isPhoneAppMode() {
     let x = document.body.classList.contains("body--mobile");
-    let y = document.body.classList.contains("client--siyuan");
+    let y = navigator.userAgent.toLowerCase().startsWith("siyuan");
     if (x && y) {
         return true;
     }
