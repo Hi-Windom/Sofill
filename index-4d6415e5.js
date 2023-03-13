@@ -1,10 +1,8 @@
 /*!
-* sofill v1.0.41
+* sofill v1.0.42
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
-'use strict';
-
 function getActualWidthOfChars(text, options) {
     // ref https://juejin.cn/post/7091990279565082655
     const { size, family = "Microsoft YaHei" } = options;
@@ -100,41 +98,14 @@ function MoveChildren(from, to) {
         belowNode.appendChild(upperUl[0]);
     }
 }
-
-async function post2Siyuan(url, data = {}) {
-    let resData = null;
-    await fetch(url, {
-        body: JSON.stringify(data),
-        method: "POST",
-        headers: {
-            Authorization: `Token '${window.siyuan.config.api.token}'`,
-        },
-    }).then(function (response) {
-        resData = response.json();
-    });
-    console.log(resData);
-    return resData;
-}
-async function parseResponse(response) {
-    let r = await response;
-    // console.log(r)
-    return r.code === 0 ? r.data : null;
-}
-const isMobile = () => {
-    return document.getElementById("sidebar") ? true : false;
+const bodyAC = (N) => {
+    document.body.classList.add(N);
 };
-const isWindow = () => {
-    return document.getElementById("toolbar") ? false : true;
+const bodyRC = (N) => {
+    document.body.classList.remove(N);
+};
+const bodyCC = (N) => {
+    return document.body.classList.contains(N);
 };
 
-exports.CopyDOM = CopyDOM;
-exports.MoveChildren = MoveChildren;
-exports.MoveDOM = MoveDOM;
-exports.addinsertCreateElement = addinsertCreateElement;
-exports.diguiTooONE = diguiTooONE;
-exports.getActualWidthOfChars = getActualWidthOfChars;
-exports.insertCreateAfter = insertCreateAfter;
-exports.isMobile = isMobile;
-exports.isWindow = isWindow;
-exports.parseResponse = parseResponse;
-exports.post2Siyuan = post2Siyuan;
+export { CopyDOM as C, MoveDOM as M, addinsertCreateElement as a, MoveChildren as b, bodyAC as c, diguiTooONE as d, bodyRC as e, bodyCC as f, getActualWidthOfChars as g, insertCreateAfter as i };

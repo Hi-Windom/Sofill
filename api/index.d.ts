@@ -1,3 +1,4 @@
+export * from './sillot';
 export * from "./sofill";
 export * from "./siyuan";
 export { insertCreateBefore, };

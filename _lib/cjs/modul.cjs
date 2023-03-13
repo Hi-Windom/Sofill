@@ -1,11 +1,12 @@
 /*!
-* sofill v1.0.41
+* sofill v1.0.42
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
 'use strict';
 
-var index = require('../../index-ccbb3fc4.js');
+var index$1 = require('../../index-b94a99e7.js');
+var index = require('../../index-d5d2edd9.js');
 
 function showDocCreatedDate() {
     /** 为打开文档的标题下显示文档创建日期 */
@@ -37,7 +38,7 @@ function showDocCreatedDate() {
                 return element;
             }
         }
-        var documentCreatTimeElement = index.addinsertCreateElement(tilteElement, "span");
+        var documentCreatTimeElement = index$1.addinsertCreateElement(tilteElement, "span");
         documentCreatTimeElement.setAttribute("documentCreatTimeElement", "true");
         documentCreatTimeElement.style.display = "block";
         documentCreatTimeElement.style.marginLeft = "7px";
@@ -172,14 +173,14 @@ function dynamicTitleUnderline() {
     }
     function dynamicUnderline() {
         var AllDocumentTitleElement = getAllDocumentTitleElement();
-        for (let index$1 = 0; index$1 < AllDocumentTitleElement.length; index$1++) {
-            const element = AllDocumentTitleElement[index$1];
+        for (let index = 0; index < AllDocumentTitleElement.length; index++) {
+            const element = AllDocumentTitleElement[index];
             var line = createLine(element);
             var txt = getTileTxt(element);
             var maxWidth = element.offsetWidth;
             var Style = getComputedStyle(element, null);
             var font = Style.font;
-            var width = index.getActualWidthOfChars(txt, { size: font }) + 13;
+            var width = index$1.getActualWidthOfChars(txt, { size: font }) + 13;
             if (width < 58) {
                 width = 58;
             } //动态下划线最小宽度
@@ -197,7 +198,7 @@ function dynamicTitleUnderline() {
                 return element;
             }
         }
-        var line = index.insertCreateAfter(TitleElement, "div");
+        var line = index$1.insertCreateAfter(TitleElement, "div");
         line.setAttribute("Line", "true");
         line.setAttribute("class", "scc-dynamic");
         line.setAttribute("id", "doc-underline");

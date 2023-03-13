@@ -1,4 +1,5 @@
 export declare function compareVersion(version1: any, version2: any): 0 | 1 | -1;
+export declare const sleep: (ms: number) => Promise<unknown>;
 export declare const getThemeMode: string;
 export declare const isPromise: (val: any) => boolean;
 export declare function isEmpty(obj: any): boolean;
