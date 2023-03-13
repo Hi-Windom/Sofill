@@ -1,10 +1,8 @@
 /*!
-* sofill v1.0.42
+* sofill v1.0.43
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
-'use strict';
-
 async function post2Siyuan(url, data = {}) {
     let resData = null;
     await fetch(url, {
@@ -31,7 +29,4 @@ const isWindow = () => {
     return document.getElementById("toolbar") ? false : true;
 };
 
-exports.isMobile = isMobile;
-exports.isWindow = isWindow;
-exports.parseResponse = parseResponse;
-exports.post2Siyuan = post2Siyuan;
+export { post2Siyuan as a, isWindow as b, isMobile as i, parseResponse as p };
