@@ -1,12 +1,11 @@
 /*!
-* sofill v1.0.38
+* sofill v1.0.39
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
 'use strict';
 
-var index$1 = require('../../index-44494978.js');
-var env = require('./env.cjs');
+var index$1 = require('../../index-8d963abd.js');
 
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
@@ -3444,7 +3443,7 @@ async function getFile(path) {
     const response = await fetch("/api/file/getFile", {
         method: "POST",
         headers: {
-            Authorization: `Token ${env.apitoken}`,
+            Authorization: `Token ${window.siyuan.config.api.token}`,
         },
         body: JSON.stringify({
             path: path,
@@ -3467,7 +3466,7 @@ async function putFile(path, filedata, isDir = false, modTime = Date.now()) {
         body: formdata,
         method: "POST",
         headers: {
-            Authorization: `Token ${env.apitoken}`,
+            Authorization: `Token ${window.siyuan.config.api.token}`,
         },
     });
     if (response.status === 200)

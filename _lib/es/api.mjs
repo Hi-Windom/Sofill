@@ -1,11 +1,10 @@
 /*!
-* sofill v1.0.38
+* sofill v1.0.39
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
-import { p as parseResponse, a as post2Siyuan } from '../../index-e52ed94c.js';
-export { C as CopyDOM, c as MoveChildren, M as MoveDOM, b as addinsertCreateElement, d as diguiTooONE, g as getActualWidthOfChars, i as insertCreateAfter, e as isMobile, f as isWindow } from '../../index-e52ed94c.js';
-import { apitoken } from './env.mjs';
+import { p as parseResponse, a as post2Siyuan } from '../../index-a79c0689.js';
+export { C as CopyDOM, c as MoveChildren, M as MoveDOM, b as addinsertCreateElement, d as diguiTooONE, g as getActualWidthOfChars, i as insertCreateAfter, e as isMobile, f as isWindow } from '../../index-a79c0689.js';
 
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
@@ -3443,7 +3442,7 @@ async function getFile(path) {
     const response = await fetch("/api/file/getFile", {
         method: "POST",
         headers: {
-            Authorization: `Token ${apitoken}`,
+            Authorization: `Token ${window.siyuan.config.api.token}`,
         },
         body: JSON.stringify({
             path: path,
@@ -3466,7 +3465,7 @@ async function putFile(path, filedata, isDir = false, modTime = Date.now()) {
         body: formdata,
         method: "POST",
         headers: {
-            Authorization: `Token ${apitoken}`,
+            Authorization: `Token ${window.siyuan.config.api.token}`,
         },
     });
     if (response.status === 200)

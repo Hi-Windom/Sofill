@@ -1,10 +1,8 @@
 /*!
-* sofill v1.0.38
+* sofill v1.0.39
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
-'use strict';
-
 function getActualWidthOfChars(text, options) {
     // ref https://juejin.cn/post/7091990279565082655
     const { size, family = "Microsoft YaHei" } = options;
@@ -127,14 +125,4 @@ const isWindow = () => {
     return document.getElementById("toolbar") ? false : true;
 };
 
-exports.CopyDOM = CopyDOM;
-exports.MoveChildren = MoveChildren;
-exports.MoveDOM = MoveDOM;
-exports.addinsertCreateElement = addinsertCreateElement;
-exports.diguiTooONE = diguiTooONE;
-exports.getActualWidthOfChars = getActualWidthOfChars;
-exports.insertCreateAfter = insertCreateAfter;
-exports.isMobile = isMobile;
-exports.isWindow = isWindow;
-exports.parseResponse = parseResponse;
-exports.post2Siyuan = post2Siyuan;
+export { CopyDOM as C, MoveDOM as M, post2Siyuan as a, addinsertCreateElement as b, MoveChildren as c, diguiTooONE as d, isMobile as e, isWindow as f, getActualWidthOfChars as g, insertCreateAfter as i, parseResponse as p };
