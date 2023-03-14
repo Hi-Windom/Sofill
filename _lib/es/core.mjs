@@ -1,10 +1,10 @@
 /*!
-* sofill v1.0.43
+* sofill v1.0.44
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
-import { f as bodyCC, e as bodyRC, c as bodyAC } from '../../index-cf1b7ab6.js';
-import '../../index-90e40422.js';
+import { f as bodyCC, e as bodyRC, c as bodyAC } from '../../index-86befef6.js';
+import '../../index-7fd273af.js';
 
 function addUC() {
     if (window.siyuan.user == null) {

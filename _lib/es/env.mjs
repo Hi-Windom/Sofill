@@ -1,5 +1,5 @@
 /*!
-* sofill v1.0.43
+* sofill v1.0.44
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
@@ -17,5 +17,8 @@ function isDesktopAppMode() {
 function isPhoneAppMode() {
     return document.body.classList.contains("body--mobile") && isAppMode();
 }
+function isPadAppMode() {
+    return document.body.classList.contains("body--desktop") && isAppMode();
+}
 
-export { isAppMode, isDesktopAppMode, isPhoneAppMode };
+export { isAppMode, isDesktopAppMode, isPadAppMode, isPhoneAppMode };

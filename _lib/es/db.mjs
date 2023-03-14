@@ -1,10 +1,10 @@
 /*!
-* sofill v1.0.43
+* sofill v1.0.44
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
 import * as path from 'path';
-import { s as sleep } from '../../sleep-ca1463ba.js';
+import { s as sleep } from '../../sleep-a2cd8558.js';
 
 function importFromJson(idbDatabase, importObject) {
     return new Promise((resolve, reject) => {
