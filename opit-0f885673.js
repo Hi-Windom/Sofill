@@ -1,15 +1,13 @@
 /*!
-* sofill v1.0.51
+* sofill v1.0.52
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
-'use strict';
-
-var localforage = require('./localforage-e8d37b12.js');
+import { l as localforageExports } from './localforage-b8a9e2e7.js';
 
 async function setItem(key, value, cb) {
     try {
-        const v = await localforage.localforageExports.setItem(key, value);
+        const v = await localforageExports.setItem(key, value);
         cb ? cb() : console.log(v);
         v(true);
     }
@@ -19,7 +17,7 @@ async function setItem(key, value, cb) {
     }
 }
 function getItem(key, cb) {
-    return localforage.localforageExports.getItem(key)
+    return localforageExports.getItem(key)
         .then((v) => {
         cb ? cb() : console.log(v);
     })
@@ -28,5 +26,4 @@ function getItem(key, cb) {
     });
 }
 
-exports.getItem = getItem;
-exports.setItem = setItem;
+export { getItem as g, setItem as s };

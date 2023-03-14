@@ -1,12 +1,12 @@
 /*!
-* sofill v1.0.51
+* sofill v1.0.52
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
-import { basename } from 'path';
-import { s as sleep } from '../../sleep-9dbf733a.js';
-import '../../localforage-f04fbcca.js';
-export { g as getItem, s as setItem } from '../../opit-3b634b44.js';
+import * as path from 'path';
+import { s as sleep } from '../../sleep-d38c8a38.js';
+import '../../localforage-b8a9e2e7.js';
+export { g as getItem, s as setItem } from '../../opit-0f885673.js';
 
 function importFromJson(idbDatabase, importObject) {
     return new Promise((resolve, reject) => {
@@ -178,7 +178,7 @@ async function exportIDB() {
                 await sleep(100);
             }
         }
-        const workspaceName = basename(window.siyuan?.config.system.workspaceDir);
+        const workspaceName = path.basename(window.siyuan?.config.system.workspaceDir);
         const formdata = new FormData();
         formdata.append("f", `IDB__${workspaceName}__.json`);
         formdata.append("data", JSON.stringify(exData));

@@ -1,14 +1,33 @@
 /*!
-* sofill v1.0.51
+* sofill v1.0.52
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
 'use strict';
 
 var path = require('path');
-var sleep = require('../../sleep-f09f2832.js');
-require('../../localforage-e8d37b12.js');
-var opit = require('../../opit-97ed0d6d.js');
+var sleep = require('../../sleep-75c5e99d.js');
+require('../../localforage-4125f6fb.js');
+var opit = require('../../opit-b645d80e.js');
+
+function _interopNamespaceDefault(e) {
+    var n = Object.create(null);
+    if (e) {
+        Object.keys(e).forEach(function (k) {
+            if (k !== 'default') {
+                var d = Object.getOwnPropertyDescriptor(e, k);
+                Object.defineProperty(n, k, d.get ? d : {
+                    enumerable: true,
+                    get: function () { return e[k]; }
+                });
+            }
+        });
+    }
+    n.default = e;
+    return Object.freeze(n);
+}
+
+var path__namespace = /*#__PURE__*/_interopNamespaceDefault(path);
 
 function importFromJson(idbDatabase, importObject) {
     return new Promise((resolve, reject) => {
@@ -180,7 +199,7 @@ async function exportIDB() {
                 await sleep.sleep(100);
             }
         }
-        const workspaceName = path.basename(window.siyuan?.config.system.workspaceDir);
+        const workspaceName = path__namespace.basename(window.siyuan?.config.system.workspaceDir);
         const formdata = new FormData();
         formdata.append("f", `IDB__${workspaceName}__.json`);
         formdata.append("data", JSON.stringify(exData));
