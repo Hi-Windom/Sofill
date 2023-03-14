@@ -1,13 +1,13 @@
 /*!
-* sofill v1.0.45
+* sofill v1.0.46
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
 'use strict';
 
-var index$1 = require('../../index-89de16fe.js');
-var index$2 = require('../../index-2ac388d9.js');
-var index$3 = require('../../index-60358e4d.js');
+var index$1 = require('../../index-14ecdf13.js');
+var index$2 = require('../../index-be4be988.js');
+var index$3 = require('../../index-0defddb2.js');
 
 // export class LimitPromise {
 //   constructor(max) {
@@ -1110,6 +1110,7 @@ exports.myRemoveEvent = index$2.myRemoveEvent;
 exports.removejscssfile = index$2.removejscssfile;
 exports.sleep = index$2.sleep;
 exports.updateStyle = index$2.updateStyle;
+exports.genUUID = index$3.genUUID;
 exports.isMobile = index$3.isMobile;
 exports.isWindow = index$3.isWindow;
 exports.parseResponse = index$3.parseResponse;
