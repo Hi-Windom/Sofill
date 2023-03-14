@@ -91,22 +91,21 @@ async function exportToJson(idbDatabase) {
     });
 }
 
-function setItem(key, value, cb) {
-    localforageExports.setItem(key, value)
-        .then((v) => {
+async function setItem(key, value, cb) {
+    try {
+        const v = await localforageExports.setItem(key, value);
         cb ? cb() : console.log(v);
-        return true;
-    })
-        .catch((e) => {
+        v(true);
+    }
+    catch (e) {
         console.error(e);
-        return false;
-    });
+        e(false);
+    }
 }
 function getItem(key, cb) {
-    localforageExports.getItem(key)
+    return localforageExports.getItem(key)
         .then((v) => {
         cb ? cb() : console.log(v);
-        return v;
     })
         .catch((e) => {
         console.error(e);

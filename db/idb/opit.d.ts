@@ -1,2 +1,2 @@
-export declare function setItem(key: any, value: any, cb?: any): void;
-export declare function getItem(key: any, cb?: any): void;
+export declare function setItem(key: string, value: any, cb?: () => any): Promise<void>;
+export declare function getItem(key: string, cb?: () => any): Promise<unknown>;
