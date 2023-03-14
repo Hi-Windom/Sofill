@@ -1,113 +1,3 @@
-@layer {
-  /* 所有边距初始化 */
-  * {
-    margin: 0px;
-    padding: 0px;
-  }
-}
-body.body--win32 {
-  -webkit-font-smoothing: antialiased;
-  border: none !important;
-  /* 去掉软件的边框线 */
-}
-/* https://www.zhangxinxu.com/wordpress/2019/03/css-focus-visible */
-:focus:not(:focus-visible) {
-  outline: 0;
-}
-html,
-body {
-  overflow: hidden;
-}
-.fn__flex-1,
-.layout__wnd--active {
-  overflow-x: hidden;
-}
-ul {
-  /* https://www.zhangxinxu.com/wordpress/2018/10/scroll-behavior-scrollintoview-%e5%b9%b3%e6%bb%91%e6%bb%9a%e5%8a%a8/# */
-  scroll-behavior: smooth;
-  scroll-snap-type: x mandatory;
-  /* 把滚动条的位置提前预留好（空白） */
-  scrollbar-gutter: stable;
-  overflow-anchor: auto;
-}
-ul li {
-  /* https://www.zhangxinxu.com/wordpress/2018/11/know-css-scroll-snap/ */
-  scroll-snap-align: start;
-}
-/* 可能对解决动画动效抖动抽搐有帮助 */
-#layouts,
-#layouts > div.fn__flex.fn__flex-1,
-#layouts > div.fn__flex.fn__flex-1 > div.layout__center.fn__flex.fn__flex-1 {
-  transition-delay: 0.31s !important;
-}
-/* 块添加圆角 */
-.protyle-wysiwyg [data-node-id] {
-  border-radius: 1px;
-}
-/* 块标提示不被窗口线遮挡 */
-.protyle-gutters {
-  z-index: 2;
-}
-/* 表单设置不能拖拽缩放 */
-textarea.b3-text-field.fn__flex-1 {
-  border: 1px solid transparent;
-  resize: none;
-}
-@font-face {
-  font-family: "SC BASE";
-  src: local("PingFang SC"), local("Microsoft Yahei");
-}
-@font-face {
-  font-family: quote;
-  src: local("SimSun");
-  unicode-range: U+201c, U+201d;
-  /* 中文双引号使用宋体样式 #162 */
-}
-:root {
-  /* 字体 */
-  --b3-font-family: quote, "Inter", "Inter-Regular", "HarmonyOS Sans SC", "Noto Sans", "Noto Sans CJK SC", "SC BASE", "WenQuanYi Micro Hei", sans-serif, "Segoe UI", Roboto, "Helvetica Neue",
-    Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --b3-font-family-code: "JetBrainsMono-Regular", mononoki, Consolas, "Liberation Mono", Menlo, Courier, monospace, "Apple Color Emoji",
-    "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols", "SC BASE";
-  --b3-font-family-graph: mononoki;
-  --b3-font-family-emoji: "Segoe UI Emoji", "Segoe UI Symbol", "Segoe UI", "Apple Color Emoji", "Twemoji Mozilla", "Noto Color Emoji", "Android Emoji";
-  --b3-font-family-math: KaTeX_Math;
-}
-/* 容器 */
-.b3-typography,
-.protyle-wysiwyg.protyle-wysiwyg--attr {
-  container-type: inline-size;
-  container-name: doc;
-}
-.protyle-wysiwyg__embed {
-  container-type: inline-size;
-  container-name: embedBreadrumb;
-}
-.file-tree.sy__file {
-  container-type: inline-size;
-  container-name: FileTree;
-  overflow-y: hidden;
-}
-.b3-tab-bar.b3-list--background:has(li[data-name="editor"]) {
-  container-type: size;
-  container-name: settingLeft;
-}
-/* @media screen and (min-width: 700px) {
-  #toolbar {
-    container-type: inline-size;
-    container-name: toolbar;
-    z-index: 999;
-    padding-right: 3px;
-  }
-} 没有明显效果*/
-/* @container (min-width: 100px) {
-  #toolbar .toolbar__item {
-     flex-shrink: 0;
-     padding: 9px max(min(0.58cqw,9px),4px) 9px max(min(0.58cqw,9px),4px);
-     box-sizing: border-box;
- }
- } */
-
 :root {
   /* 绛色 */
   --SCColor: #484550;
@@ -472,3 +362,112 @@ textarea.b3-text-field.fn__flex-1 {
   --SCC-SGTC-32G: #004b37;
   --SCC-SGTC-32H: #003539;
 }
+@layer {
+  /* 所有边距初始化 */
+  * {
+    margin: 0px;
+    padding: 0px;
+  }
+}
+body.body--win32 {
+  -webkit-font-smoothing: antialiased;
+  border: none !important;
+  /* 去掉软件的边框线 */
+}
+/* https://www.zhangxinxu.com/wordpress/2019/03/css-focus-visible */
+:focus:not(:focus-visible) {
+  outline: 0;
+}
+html,
+body {
+  overflow: hidden;
+}
+.fn__flex-1,
+.layout__wnd--active {
+  overflow-x: hidden;
+}
+ul {
+  /* https://www.zhangxinxu.com/wordpress/2018/10/scroll-behavior-scrollintoview-%e5%b9%b3%e6%bb%91%e6%bb%9a%e5%8a%a8/# */
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  /* 把滚动条的位置提前预留好（空白） */
+  scrollbar-gutter: stable;
+  overflow-anchor: auto;
+}
+ul li {
+  /* https://www.zhangxinxu.com/wordpress/2018/11/know-css-scroll-snap/ */
+  scroll-snap-align: start;
+}
+/* 可能对解决动画动效抖动抽搐有帮助 */
+#layouts,
+#layouts > div.fn__flex.fn__flex-1,
+#layouts > div.fn__flex.fn__flex-1 > div.layout__center.fn__flex.fn__flex-1 {
+  transition-delay: 0.31s !important;
+}
+/* 块添加圆角 */
+.protyle-wysiwyg [data-node-id] {
+  border-radius: 1px;
+}
+/* 块标提示不被窗口线遮挡 */
+.protyle-gutters {
+  z-index: 2;
+}
+/* 表单设置不能拖拽缩放 */
+textarea.b3-text-field.fn__flex-1 {
+  border: 1px solid transparent;
+  resize: none;
+}
+@font-face {
+  font-family: "SC BASE";
+  src: local("PingFang SC"), local("Microsoft Yahei");
+}
+@font-face {
+  font-family: quote;
+  src: local("SimSun");
+  unicode-range: U+201c, U+201d;
+  /* 中文双引号使用宋体样式 #162 */
+}
+:root {
+  /* 字体 */
+  --b3-font-family: quote, "Inter", "Inter-Regular", "HarmonyOS Sans SC", "Noto Sans", "Noto Sans CJK SC", "SC BASE", "WenQuanYi Micro Hei", sans-serif, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --b3-font-family-code: "JetBrainsMono-Regular", mononoki, Consolas, "Liberation Mono", Menlo, Courier, monospace, "Apple Color Emoji",
+    "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols", "SC BASE";
+  --b3-font-family-graph: mononoki;
+  --b3-font-family-emoji: "Segoe UI Emoji", "Segoe UI Symbol", "Segoe UI", "Apple Color Emoji", "Twemoji Mozilla", "Noto Color Emoji", "Android Emoji";
+  --b3-font-family-math: KaTeX_Math;
+}
+/* 容器 */
+.b3-typography,
+.protyle-wysiwyg.protyle-wysiwyg--attr {
+  container-type: inline-size;
+  container-name: doc;
+}
+.protyle-wysiwyg__embed {
+  container-type: inline-size;
+  container-name: embedBreadrumb;
+}
+.file-tree.sy__file {
+  container-type: inline-size;
+  container-name: FileTree;
+  overflow-y: hidden;
+}
+.b3-tab-bar.b3-list--background:has(li[data-name="editor"]) {
+  container-type: size;
+  container-name: settingLeft;
+}
+/* @media screen and (min-width: 700px) {
+  #toolbar {
+    container-type: inline-size;
+    container-name: toolbar;
+    z-index: 999;
+    padding-right: 3px;
+  }
+} 没有明显效果*/
+/* @container (min-width: 100px) {
+  #toolbar .toolbar__item {
+     flex-shrink: 0;
+     padding: 9px max(min(0.58cqw,9px),4px) 9px max(min(0.58cqw,9px),4px);
+     box-sizing: border-box;
+ }
+ } */

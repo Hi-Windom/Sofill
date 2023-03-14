@@ -1,10 +1,11 @@
 /*!
-* sofill v1.0.49
+* sofill v1.0.50
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
-import * as path from 'path';
-import { s as sleep } from '../../sleep-f18cb706.js';
+import { basename } from 'path';
+import { s as sleep } from '../../sleep-d791c939.js';
+import { l as localforageExports } from '../../localforage-55c06e02.js';
 
 function importFromJson(idbDatabase, importObject) {
     return new Promise((resolve, reject) => {
@@ -87,6 +88,25 @@ async function exportToJson(idbDatabase) {
                 });
             });
         }
+    });
+}
+
+function setItem(key, value, cb) {
+    localforageExports.setItem(key, value)
+        .then((v) => {
+        cb ? cb() : console.log(v);
+    })
+        .catch((e) => {
+        console.error(e);
+    });
+}
+function getItem(key, cb) {
+    localforageExports.getItem(key)
+        .then((v) => {
+        cb ? cb() : console.log(v);
+    })
+        .catch((e) => {
+        console.error(e);
     });
 }
 
@@ -176,7 +196,7 @@ async function exportIDB() {
                 await sleep(100);
             }
         }
-        const workspaceName = path.basename(window.siyuan?.config.system.workspaceDir);
+        const workspaceName = basename(window.siyuan?.config.system.workspaceDir);
         const formdata = new FormData();
         formdata.append("f", `IDB__${workspaceName}__.json`);
         formdata.append("data", JSON.stringify(exData));
@@ -188,4 +208,4 @@ async function exportIDB() {
     });
 }
 
-export { exportIDB, importIDB };
+export { exportIDB, getItem, importIDB, setItem };

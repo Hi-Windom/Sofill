@@ -1,13 +1,14 @@
 /*!
-* sofill v1.0.49
+* sofill v1.0.50
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
 'use strict';
 
-var index$1 = require('../../index-fc512684.js');
-var index$2 = require('../../index-61b9973c.js');
-var index$3 = require('../../index-f9195783.js');
+var index$1 = require('../../index-16a15ead.js');
+var localforage = require('../../localforage-a51d576a.js');
+var index$2 = require('../../index-6282d96b.js');
+var index$3 = require('../../index-00f8bd0b.js');
 
 // export class LimitPromise {
 //   constructor(max) {
@@ -164,7 +165,7 @@ async function initAllPropFromIDBAsync(dom) {
                 else {
                     DOM.value = value;
                 }
-                index$2.localforageExports.setItem(id, value);
+                localforage.localforageExports.setItem(id, value);
                 return true;
             },
             configurable: true,
@@ -201,7 +202,7 @@ async function initAllPropFromIDBAsync(dom) {
             return;
         }
         await _bind(obj.id);
-        return index$2.localforageExports.getItem(obj.id).then(async (v) => {
+        return localforage.localforageExports.getItem(obj.id).then(async (v) => {
             if (!index$2.isEmptyString(v)) {
                 obj.bindIDB = "true";
             }
@@ -217,7 +218,7 @@ async function initAllPropFromIDBAsync(dom) {
             return;
         }
         await _bind(id);
-        return index$2.localforageExports.getItem(id).then(async (v) => {
+        return localforage.localforageExports.getItem(id).then(async (v) => {
             let dom = document.getElementById(id);
             if (!index$2.isEmptyString(v)) {
                 dom.bindIDB = v;
