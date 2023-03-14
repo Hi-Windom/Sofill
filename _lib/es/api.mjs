@@ -1,18 +1,15 @@
 /*!
-* sofill v1.0.52
+* sofill v1.0.53
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
-export { C as CopyDOM, b as MoveChildren, M as MoveDOM, a as addinsertCreateElement, c as bodyAC, f as bodyCC, e as bodyRC, d as diguiTooONE, j as eRemoveProperty, h as eSetProperty, g as getActualWidthOfChars, i as insertCreateAfter } from '../../index-8edd8b6c.js';
-import 'path';
-import { g as getItem, s as setItem } from '../../opit-0f885673.js';
-import { i as isEmptyString } from '../../index-461e05da.js';
-export { A as AddEvent, R as RangeLimitedInt, e as addURLParam, c as compareVersion, g as getThemeMode, b as isEmpty, a as isPromise, d as loadScript, l as loadStyle, m as myRemoveEvent, r as removejscssfile, s as sleep, u as updateStyle } from '../../index-461e05da.js';
-import { p as parseResponse, a as post2Siyuan } from '../../index-2ad88945.js';
-export { g as genUUID, i as isMobile, b as isWindow } from '../../index-2ad88945.js';
-import '../../localforage-b8a9e2e7.js';
+export { C as CopyDOM, b as MoveChildren, M as MoveDOM, a as addinsertCreateElement, c as bodyAC, f as bodyCC, e as bodyRC, d as diguiTooONE, j as eRemoveProperty, h as eSetProperty, g as getActualWidthOfChars, i as insertCreateAfter } from '../../index-e38713ae.js';
+import { l as localforageExports } from '../../localforage-7d5adc63.js';
+import { i as isEmptyString } from '../../index-4c37ee61.js';
+export { A as AddEvent, R as RangeLimitedInt, e as addURLParam, c as compareVersion, g as getThemeMode, b as isEmpty, a as isPromise, d as loadScript, l as loadStyle, m as myRemoveEvent, r as removejscssfile, s as sleep, u as updateStyle } from '../../index-4c37ee61.js';
+import { p as parseResponse, a as post2Siyuan } from '../../index-2932b246.js';
+export { g as genUUID, i as isMobile, b as isWindow } from '../../index-2932b246.js';
 
-// import * as idb from 'localforage';
 // export class LimitPromise {
 //   constructor(max) {
 //     // 异步任务“并发”上限
@@ -168,7 +165,7 @@ async function initAllPropFromIDBAsync(dom) {
                 else {
                     DOM.value = value;
                 }
-                setItem(id, value);
+                localforageExports.setItem(id, value);
                 return true;
             },
             configurable: true,
@@ -205,7 +202,7 @@ async function initAllPropFromIDBAsync(dom) {
             return;
         }
         await _bind(obj.id);
-        return getItem(obj.id).then(async (v) => {
+        return localforageExports.getItem(obj.id).then(async (v) => {
             if (!isEmptyString(v)) {
                 obj.bindIDB = "true";
             }
@@ -221,7 +218,7 @@ async function initAllPropFromIDBAsync(dom) {
             return;
         }
         await _bind(id);
-        return getItem(id).then(async (v) => {
+        return localforageExports.getItem(id).then(async (v) => {
             let dom = document.getElementById(id);
             if (!isEmptyString(v)) {
                 dom.bindIDB = v;

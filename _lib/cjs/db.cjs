@@ -1,33 +1,13 @@
 /*!
-* sofill v1.0.52
+* sofill v1.0.53
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
 'use strict';
 
 var path = require('path');
-var sleep = require('../../sleep-75c5e99d.js');
-require('../../localforage-4125f6fb.js');
-var opit = require('../../opit-b645d80e.js');
-
-function _interopNamespaceDefault(e) {
-    var n = Object.create(null);
-    if (e) {
-        Object.keys(e).forEach(function (k) {
-            if (k !== 'default') {
-                var d = Object.getOwnPropertyDescriptor(e, k);
-                Object.defineProperty(n, k, d.get ? d : {
-                    enumerable: true,
-                    get: function () { return e[k]; }
-                });
-            }
-        });
-    }
-    n.default = e;
-    return Object.freeze(n);
-}
-
-var path__namespace = /*#__PURE__*/_interopNamespaceDefault(path);
+var sleep = require('../../sleep-60d58d02.js');
+var localforage = require('../../localforage-df6835ec.js');
 
 function importFromJson(idbDatabase, importObject) {
     return new Promise((resolve, reject) => {
@@ -199,7 +179,7 @@ async function exportIDB() {
                 await sleep.sleep(100);
             }
         }
-        const workspaceName = path__namespace.basename(window.siyuan?.config.system.workspaceDir);
+        const workspaceName = path.basename(window.siyuan?.config.system.workspaceDir);
         const formdata = new FormData();
         formdata.append("f", `IDB__${workspaceName}__.json`);
         formdata.append("data", JSON.stringify(exData));
@@ -211,7 +191,28 @@ async function exportIDB() {
     });
 }
 
-exports.getItem = opit.getItem;
-exports.setItem = opit.setItem;
+async function setItem(key, value, cb) {
+    try {
+        const v = await localforage.localforageExports.setItem(key, value);
+        cb ? cb() : console.log(v);
+        v(true);
+    }
+    catch (e) {
+        console.error(e);
+        e(false);
+    }
+}
+function getItem(key, cb) {
+    return localforage.localforageExports.getItem(key)
+        .then((v) => {
+        cb ? cb() : console.log(v);
+    })
+        .catch((e) => {
+        console.error(e);
+    });
+}
+
 exports.exportIDB = exportIDB;
+exports.getItem = getItem;
 exports.importIDB = importIDB;
+exports.setItem = setItem;

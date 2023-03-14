@@ -1,18 +1,20 @@
 /*!
-* sofill v1.0.52
+* sofill v1.0.53
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
+'use strict';
+
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
 function commonjsRequire(path) {
 	throw new Error('Could not dynamically require "' + path + '". Please configure the dynamicRequireTargets or/and ignoreDynamicRequires option of @rollup/plugin-commonjs appropriately for this require call to work.');
 }
 
-var localforageExports = {};
+exports.localforageExports = {};
 var localforage = {
-  get exports(){ return localforageExports; },
-  set exports(v){ localforageExports = v; },
+  get exports(){ return exports.localforageExports; },
+  set exports(v){ exports.localforageExports = v; },
 };
 
 /*!
@@ -2550,5 +2552,3 @@ var localforage = {
     }, {}, [4])(4);
   });
 })(localforage);
-
-export { localforageExports as l };
