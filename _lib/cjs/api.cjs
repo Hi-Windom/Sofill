@@ -1,13 +1,13 @@
 /*!
-* sofill v1.0.47
+* sofill v1.0.48
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
 'use strict';
 
-var index$1 = require('../../index-d21cba5a.js');
-var index$2 = require('../../index-dbf281fc.js');
-var index$3 = require('../../index-9df481d6.js');
+var index$1 = require('../../index-ffb8a20a.js');
+var index$2 = require('../../index-0dde9523.js');
+var index$3 = require('../../index-e813fe41.js');
 
 // export class LimitPromise {
 //   constructor(max) {

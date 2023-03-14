@@ -1,12 +1,12 @@
 /*!
-* sofill v1.0.47
+* sofill v1.0.48
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
 'use strict';
 
 var path = require('path');
-var sleep = require('../../sleep-0832bb00.js');
+var sleep = require('../../sleep-d511e8d8.js');
 
 function _interopNamespaceDefault(e) {
     var n = Object.create(null);
