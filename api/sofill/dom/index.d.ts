@@ -30,3 +30,5 @@ export declare function MoveChildren(from: any, to: any): void;
 export declare const bodyAC: (N: string) => void;
 export declare const bodyRC: (N: string) => void;
 export declare const bodyCC: (N: string) => boolean;
+export declare const eSetProperty: (p: string, pv: string) => void;
+export declare const eRemoveProperty: (p: string) => void;

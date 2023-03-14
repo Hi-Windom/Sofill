@@ -1,13 +1,13 @@
 /*!
-* sofill v1.0.44
+* sofill v1.0.45
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
 'use strict';
 
-var index$1 = require('../../index-d92b6516.js');
-var index$2 = require('../../index-f91424eb.js');
-var index$3 = require('../../index-e23048b7.js');
+var index$1 = require('../../index-89de16fe.js');
+var index$2 = require('../../index-2ac388d9.js');
+var index$3 = require('../../index-60358e4d.js');
 
 // export class LimitPromise {
 //   constructor(max) {
@@ -1092,6 +1092,8 @@ exports.bodyAC = index$1.bodyAC;
 exports.bodyCC = index$1.bodyCC;
 exports.bodyRC = index$1.bodyRC;
 exports.diguiTooONE = index$1.diguiTooONE;
+exports.eRemoveProperty = index$1.eRemoveProperty;
+exports.eSetProperty = index$1.eSetProperty;
 exports.getActualWidthOfChars = index$1.getActualWidthOfChars;
 exports.insertCreateAfter = index$1.insertCreateAfter;
 exports.AddEvent = index$2.AddEvent;

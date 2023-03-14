@@ -1,5 +1,5 @@
 /*!
-* sofill v1.0.44
+* sofill v1.0.45
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
@@ -109,6 +109,12 @@ const bodyRC = (N) => {
 const bodyCC = (N) => {
     return document.body.classList.contains(N);
 };
+const eSetProperty = (p, pv) => {
+    document.documentElement.style.setProperty(p, pv);
+};
+const eRemoveProperty = (p) => {
+    document.documentElement.style.removeProperty(p);
+};
 
 exports.CopyDOM = CopyDOM;
 exports.MoveChildren = MoveChildren;
@@ -118,5 +124,7 @@ exports.bodyAC = bodyAC;
 exports.bodyCC = bodyCC;
 exports.bodyRC = bodyRC;
 exports.diguiTooONE = diguiTooONE;
+exports.eRemoveProperty = eRemoveProperty;
+exports.eSetProperty = eSetProperty;
 exports.getActualWidthOfChars = getActualWidthOfChars;
 exports.insertCreateAfter = insertCreateAfter;
