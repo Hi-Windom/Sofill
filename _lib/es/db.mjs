@@ -95,15 +95,18 @@ function setItem(key, value, cb) {
     localforageExports.setItem(key, value)
         .then((v) => {
         cb ? cb() : console.log(v);
+        return true;
     })
         .catch((e) => {
         console.error(e);
+        return false;
     });
 }
 function getItem(key, cb) {
     localforageExports.getItem(key)
         .then((v) => {
         cb ? cb() : console.log(v);
+        return v;
     })
         .catch((e) => {
         console.error(e);
