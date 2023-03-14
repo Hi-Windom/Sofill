@@ -1,11 +1,12 @@
 /*!
-* sofill v1.0.50
+* sofill v1.0.51
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
 import { basename } from 'path';
-import { s as sleep } from '../../sleep-d791c939.js';
-import { l as localforageExports } from '../../localforage-55c06e02.js';
+import { s as sleep } from '../../sleep-9dbf733a.js';
+import '../../localforage-f04fbcca.js';
+export { g as getItem, s as setItem } from '../../opit-3b634b44.js';
 
 function importFromJson(idbDatabase, importObject) {
     return new Promise((resolve, reject) => {
@@ -88,27 +89,6 @@ async function exportToJson(idbDatabase) {
                 });
             });
         }
-    });
-}
-
-async function setItem(key, value, cb) {
-    try {
-        const v = await localforageExports.setItem(key, value);
-        cb ? cb() : console.log(v);
-        v(true);
-    }
-    catch (e) {
-        console.error(e);
-        e(false);
-    }
-}
-function getItem(key, cb) {
-    return localforageExports.getItem(key)
-        .then((v) => {
-        cb ? cb() : console.log(v);
-    })
-        .catch((e) => {
-        console.error(e);
     });
 }
 
@@ -210,4 +190,4 @@ async function exportIDB() {
     });
 }
 
-export { exportIDB, getItem, importIDB, setItem };
+export { exportIDB, importIDB };

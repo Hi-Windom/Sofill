@@ -1,15 +1,18 @@
 /*!
-* sofill v1.0.50
+* sofill v1.0.51
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
 'use strict';
 
-var index$1 = require('../../index-16a15ead.js');
-var localforage = require('../../localforage-a51d576a.js');
-var index$2 = require('../../index-6282d96b.js');
-var index$3 = require('../../index-00f8bd0b.js');
+var index$1 = require('../../index-4a22931b.js');
+require('path');
+var opit = require('../../opit-97ed0d6d.js');
+var index$2 = require('../../index-4d9af9bb.js');
+var index$3 = require('../../index-805752df.js');
+require('../../localforage-e8d37b12.js');
 
+// import * as idb from 'localforage';
 // export class LimitPromise {
 //   constructor(max) {
 //     // 异步任务“并发”上限
@@ -165,7 +168,7 @@ async function initAllPropFromIDBAsync(dom) {
                 else {
                     DOM.value = value;
                 }
-                localforage.localforageExports.setItem(id, value);
+                opit.setItem(id, value);
                 return true;
             },
             configurable: true,
@@ -202,7 +205,7 @@ async function initAllPropFromIDBAsync(dom) {
             return;
         }
         await _bind(obj.id);
-        return localforage.localforageExports.getItem(obj.id).then(async (v) => {
+        return opit.getItem(obj.id).then(async (v) => {
             if (!index$2.isEmptyString(v)) {
                 obj.bindIDB = "true";
             }
@@ -218,7 +221,7 @@ async function initAllPropFromIDBAsync(dom) {
             return;
         }
         await _bind(id);
-        return localforage.localforageExports.getItem(id).then(async (v) => {
+        return opit.getItem(id).then(async (v) => {
             let dom = document.getElementById(id);
             if (!index$2.isEmptyString(v)) {
                 dom.bindIDB = v;

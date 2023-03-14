@@ -1,13 +1,14 @@
 /*!
-* sofill v1.0.50
+* sofill v1.0.51
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
 'use strict';
 
 var path = require('path');
-var sleep = require('../../sleep-b75bde43.js');
-var localforage = require('../../localforage-a51d576a.js');
+var sleep = require('../../sleep-f09f2832.js');
+require('../../localforage-e8d37b12.js');
+var opit = require('../../opit-97ed0d6d.js');
 
 function importFromJson(idbDatabase, importObject) {
     return new Promise((resolve, reject) => {
@@ -90,27 +91,6 @@ async function exportToJson(idbDatabase) {
                 });
             });
         }
-    });
-}
-
-async function setItem(key, value, cb) {
-    try {
-        const v = await localforage.localforageExports.setItem(key, value);
-        cb ? cb() : console.log(v);
-        v(true);
-    }
-    catch (e) {
-        console.error(e);
-        e(false);
-    }
-}
-function getItem(key, cb) {
-    return localforage.localforageExports.getItem(key)
-        .then((v) => {
-        cb ? cb() : console.log(v);
-    })
-        .catch((e) => {
-        console.error(e);
     });
 }
 
@@ -212,7 +192,7 @@ async function exportIDB() {
     });
 }
 
+exports.getItem = opit.getItem;
+exports.setItem = opit.setItem;
 exports.exportIDB = exportIDB;
-exports.getItem = getItem;
 exports.importIDB = importIDB;
-exports.setItem = setItem;
