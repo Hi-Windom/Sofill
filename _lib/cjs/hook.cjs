@@ -1,11 +1,11 @@
 /*!
-* sofill v1.0.46
+* sofill v1.0.47
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
 'use strict';
 
-var sleep = require('../../sleep-e782fffa.js');
+var sleep = require('../../sleep-0832bb00.js');
 
 
 

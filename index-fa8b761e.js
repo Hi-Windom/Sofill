@@ -1,20 +1,18 @@
 /*!
-* sofill v1.0.46
+* sofill v1.0.47
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
-'use strict';
-
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
 function commonjsRequire(path) {
 	throw new Error('Could not dynamically require "' + path + '". Please configure the dynamicRequireTargets or/and ignoreDynamicRequires option of @rollup/plugin-commonjs appropriately for this require call to work.');
 }
 
-exports.localforageExports = {};
+var localforageExports = {};
 var localforage = {
-  get exports(){ return exports.localforageExports; },
-  set exports(v){ exports.localforageExports = v; },
+  get exports(){ return localforageExports; },
+  set exports(v){ localforageExports = v; },
 };
 
 /*!
@@ -2594,7 +2592,7 @@ const sleep = (ms) => {
 };
 const getThemeMode = (() => {
     /* 根据配置选项判断主题 */
-    switch (window.siyuan.config.appearance.mode) {
+    switch (window.siyuan?.config.appearance.mode) {
         case 0:
             return "light";
         case 1:
@@ -2711,7 +2709,7 @@ function loadScript(src, type = "module", async = false, defer = false) {
     return script;
 }
 function addURLParam(url, param = {
-    v: window.siyuan.config.appearance.themeVer,
+    v: window.siyuan?.config.appearance.themeVer,
 }) {
     let new_url;
     switch (true) {
@@ -2745,17 +2743,4 @@ function addURLParam(url, param = {
     }
 }
 
-exports.AddEvent = AddEvent;
-exports.RangeLimitedInt = RangeLimitedInt;
-exports.addURLParam = addURLParam;
-exports.compareVersion = compareVersion;
-exports.getThemeMode = getThemeMode;
-exports.isEmpty = isEmpty;
-exports.isEmptyString = isEmptyString;
-exports.isPromise = isPromise;
-exports.loadScript = loadScript;
-exports.loadStyle = loadStyle;
-exports.myRemoveEvent = myRemoveEvent;
-exports.removejscssfile = removejscssfile;
-exports.sleep = sleep;
-exports.updateStyle = updateStyle;
+export { AddEvent as A, RangeLimitedInt as R, isPromise as a, isEmpty as b, compareVersion as c, loadStyle as d, loadScript as e, addURLParam as f, getThemeMode as g, isEmptyString as i, localforageExports as l, myRemoveEvent as m, removejscssfile as r, sleep as s, updateStyle as u };

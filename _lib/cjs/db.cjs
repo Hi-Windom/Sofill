@@ -1,12 +1,12 @@
 /*!
-* sofill v1.0.46
+* sofill v1.0.47
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
 'use strict';
 
 var path = require('path');
-var sleep = require('../../sleep-e782fffa.js');
+var sleep = require('../../sleep-0832bb00.js');
 
 function _interopNamespaceDefault(e) {
     var n = Object.create(null);
@@ -197,7 +197,7 @@ async function exportIDB() {
                 await sleep.sleep(100);
             }
         }
-        const workspaceName = path__namespace.basename(window.siyuan.config.system.workspaceDir);
+        const workspaceName = path__namespace.basename(window.siyuan?.config.system.workspaceDir);
         const formdata = new FormData();
         formdata.append("f", `IDB__${workspaceName}__.json`);
         formdata.append("data", JSON.stringify(exData));

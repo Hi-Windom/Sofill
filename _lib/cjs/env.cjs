@@ -1,5 +1,5 @@
 /*!
-* sofill v1.0.46
+* sofill v1.0.47
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
@@ -11,8 +11,8 @@ function isAppMode() {
 function isDesktopAppMode() {
     return !isAppMode()
         ? false
-        : window.siyuan.config.system.os === "windows" ||
-            window.siyuan.config.system.os === "darwin"
+        : window.siyuan?.config.system.os === "windows" ||
+            window.siyuan?.config.system.os === "darwin"
             ? true
             : false;
 }

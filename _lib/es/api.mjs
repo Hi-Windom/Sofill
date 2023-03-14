@@ -1,13 +1,13 @@
 /*!
-* sofill v1.0.46
+* sofill v1.0.47
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
-export { C as CopyDOM, b as MoveChildren, M as MoveDOM, a as addinsertCreateElement, c as bodyAC, f as bodyCC, e as bodyRC, d as diguiTooONE, j as eRemoveProperty, h as eSetProperty, g as getActualWidthOfChars, i as insertCreateAfter } from '../../index-82d76574.js';
-import { i as isEmptyString, l as localforageExports } from '../../index-409e0c03.js';
-export { A as AddEvent, R as RangeLimitedInt, f as addURLParam, c as compareVersion, g as getThemeMode, b as isEmpty, a as isPromise, e as loadScript, d as loadStyle, m as myRemoveEvent, r as removejscssfile, s as sleep, u as updateStyle } from '../../index-409e0c03.js';
-import { p as parseResponse, a as post2Siyuan } from '../../index-f70f4fae.js';
-export { g as genUUID, i as isMobile, b as isWindow } from '../../index-f70f4fae.js';
+export { C as CopyDOM, b as MoveChildren, M as MoveDOM, a as addinsertCreateElement, c as bodyAC, f as bodyCC, e as bodyRC, d as diguiTooONE, j as eRemoveProperty, h as eSetProperty, g as getActualWidthOfChars, i as insertCreateAfter } from '../../index-82a6bf6d.js';
+import { i as isEmptyString, l as localforageExports } from '../../index-fa8b761e.js';
+export { A as AddEvent, R as RangeLimitedInt, f as addURLParam, c as compareVersion, g as getThemeMode, b as isEmpty, a as isPromise, e as loadScript, d as loadStyle, m as myRemoveEvent, r as removejscssfile, s as sleep, u as updateStyle } from '../../index-fa8b761e.js';
+import { p as parseResponse, a as post2Siyuan } from '../../index-b7fc91cc.js';
+export { g as genUUID, i as isMobile, b as isWindow } from '../../index-b7fc91cc.js';
 
 // export class LimitPromise {
 //   constructor(max) {
@@ -708,7 +708,7 @@ async function getFile(path) {
     const response = await fetch("/api/file/getFile", {
         method: "POST",
         headers: {
-            Authorization: `Token ${window.siyuan.config.api.token}`,
+            Authorization: `Token ${window.siyuan?.config.api.token}`,
         },
         body: JSON.stringify({
             path: path,
@@ -731,7 +731,7 @@ async function putFile(path, filedata, isDir = false, modTime = Date.now()) {
         body: formdata,
         method: "POST",
         headers: {
-            Authorization: `Token ${window.siyuan.config.api.token}`,
+            Authorization: `Token ${window.siyuan?.config.api.token}`,
         },
     });
     if (response.status === 200)

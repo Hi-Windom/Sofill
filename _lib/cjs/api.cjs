@@ -1,13 +1,13 @@
 /*!
-* sofill v1.0.46
+* sofill v1.0.47
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
 'use strict';
 
-var index$1 = require('../../index-14ecdf13.js');
-var index$2 = require('../../index-be4be988.js');
-var index$3 = require('../../index-0defddb2.js');
+var index$1 = require('../../index-d21cba5a.js');
+var index$2 = require('../../index-dbf281fc.js');
+var index$3 = require('../../index-9df481d6.js');
 
 // export class LimitPromise {
 //   constructor(max) {
@@ -708,7 +708,7 @@ async function getFile(path) {
     const response = await fetch("/api/file/getFile", {
         method: "POST",
         headers: {
-            Authorization: `Token ${window.siyuan.config.api.token}`,
+            Authorization: `Token ${window.siyuan?.config.api.token}`,
         },
         body: JSON.stringify({
             path: path,
@@ -731,7 +731,7 @@ async function putFile(path, filedata, isDir = false, modTime = Date.now()) {
         body: formdata,
         method: "POST",
         headers: {
-            Authorization: `Token ${window.siyuan.config.api.token}`,
+            Authorization: `Token ${window.siyuan?.config.api.token}`,
         },
     });
     if (response.status === 200)

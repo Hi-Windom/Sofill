@@ -1,5 +1,5 @@
 /*!
-* sofill v1.0.46
+* sofill v1.0.47
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
@@ -11,7 +11,7 @@ async function post2Siyuan(url, data = {}) {
         body: JSON.stringify(data),
         method: "POST",
         headers: {
-            Authorization: `Token '${window.siyuan.config.api.token}'`,
+            Authorization: `Token '${window.siyuan?.config.api.token}'`,
         },
     }).then(function (response) {
         resData = response.json();
