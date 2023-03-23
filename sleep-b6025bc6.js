@@ -1,10 +1,12 @@
 /*!
-* sofill v1.0.53
+* sofill v1.0.54
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
+'use strict';
+
 const sleep = (ms) => {
     return new Promise(resolve => setTimeout(resolve, ms));
 };
 
-export { sleep as s };
+exports.sleep = sleep;

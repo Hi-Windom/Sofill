@@ -1,11 +1,11 @@
 /*!
-* sofill v1.0.53
+* sofill v1.0.54
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
 import { basename } from 'path';
-import { s as sleep } from '../../sleep-9db7c45b.js';
-import { l as localforageExports } from '../../localforage-7d5adc63.js';
+import { s as sleep } from '../../sleep-bf7d09a8.js';
+import { l as localforageExports } from '../../localforage-ccdf0ad9.js';
 
 function importFromJson(idbDatabase, importObject) {
     return new Promise((resolve, reject) => {
@@ -189,6 +189,7 @@ async function exportIDB() {
     });
 }
 
+// 不在内部使用，否则外部间接调用会报路径错误
 async function setItem(key, value, cb) {
     try {
         const v = await localforageExports.setItem(key, value);

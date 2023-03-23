@@ -1,9 +1,11 @@
 /*!
-* sofill v1.0.53
+* sofill v1.0.54
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
-function isAppMode() {
+function isAppMode(includeDocker = false) {
+    if (includeDocker)
+        return document.body.classList.contains("body--docker");
     return navigator.userAgent.toLowerCase().startsWith("siyuan");
 }
 function isDesktopAppMode() {

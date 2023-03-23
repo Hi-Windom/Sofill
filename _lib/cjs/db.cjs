@@ -1,13 +1,13 @@
 /*!
-* sofill v1.0.53
+* sofill v1.0.54
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
 'use strict';
 
 var path = require('path');
-var sleep = require('../../sleep-60d58d02.js');
-var localforage = require('../../localforage-df6835ec.js');
+var sleep = require('../../sleep-b6025bc6.js');
+var localforage = require('../../localforage-da2d886c.js');
 
 function importFromJson(idbDatabase, importObject) {
     return new Promise((resolve, reject) => {
@@ -191,6 +191,7 @@ async function exportIDB() {
     });
 }
 
+// 不在内部使用，否则外部间接调用会报路径错误
 async function setItem(key, value, cb) {
     try {
         const v = await localforage.localforageExports.setItem(key, value);

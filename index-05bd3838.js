@@ -1,8 +1,10 @@
 /*!
-* sofill v1.0.53
+* sofill v1.0.54
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
+'use strict';
+
 async function post2Siyuan(url, data = {}) {
     let resData = null;
     await fetch(url, {
@@ -30,4 +32,8 @@ const isWindow = () => {
 };
 const genUUID = () => ([1e7].toString() + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, (c) => (parseInt(c, 10) ^ (window.crypto.getRandomValues(new Uint32Array(1))[0] & (15 >> (parseInt(c, 10) / 4)))).toString(16));
 
-export { post2Siyuan as a, isWindow as b, genUUID as g, isMobile as i, parseResponse as p };
+exports.genUUID = genUUID;
+exports.isMobile = isMobile;
+exports.isWindow = isWindow;
+exports.parseResponse = parseResponse;
+exports.post2Siyuan = post2Siyuan;
