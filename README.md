@@ -1,5 +1,6 @@
 <p align="center">
 <br><br>
+<img alt="npm" src="https://img.shields.io/npm/v/sofill?color=%23338&label=version&logo=npm&style=flat-square" style="cursor:pointer;height: 38px;margin: 5px auto;">
 <img alt="npm" src="https://img.shields.io/npm/dt/sofill?color=%23186186&logo=npm&style=flat-square" style="cursor:pointer;height: 38px;margin: 5px auto;">
 <a title="Hits" target="_blank" href="https://github.com/Hi-Windom/Sofill"><img src="https://hits.b3log.org/Hi-Windom/Sofill.svg" style="cursor:pointer;height: 38px;margin: 5px auto;"></a>
 </p>
