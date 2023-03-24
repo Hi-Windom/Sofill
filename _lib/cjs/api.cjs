@@ -1,14 +1,14 @@
 /*!
-* sofill v1.0.54
+* sofill v1.0.55
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
 'use strict';
 
-var index$1 = require('../../index-05a10414.js');
-var localforage = require('../../localforage-da2d886c.js');
-var index$2 = require('../../index-024b843d.js');
-var index$3 = require('../../index-05bd3838.js');
+var index$1 = require('../../index-3ad7b505.js');
+var localforage = require('../../localforage-bd23f9e6.js');
+var index$2 = require('../../index-5d2451db.js');
+var index$3 = require('../../index-abd5e3e8.js');
 
 // export class LimitPromise {
 //   constructor(max) {
@@ -934,6 +934,9 @@ async function 保存思源笔记本配置(笔记本id) {
     //返回笔记本配置
 }
 
+/**
+ * @deprecated 过时的
+ */
 function 通知(text, timeout = 7000) {
     var url = "http://127.0.0.1:6806/api/notification/pushMsg";
     var httpRequest = new XMLHttpRequest();
@@ -952,26 +955,13 @@ function 通知(text, timeout = 7000) {
         }
     };
 }
-/**
- * @deprecated 过时的
- */
-function pushMessage(text) {
-    var url = "http://127.0.0.1:6806/api/notification/pushMsg";
-    var httpRequest = new XMLHttpRequest();
-    httpRequest.open("POST", url, true);
-    httpRequest.setRequestHeader("Content-type", "application/json");
-    var obj = {
-        msg: text,
-        timeout: 7000,
+function pushMsg(msg, timeout = 7000) {
+    let data = {
+        msg: msg,
+        timeout: timeout,
     };
-    httpRequest.send(JSON.stringify(obj));
-    // 响应后的回调函数
-    httpRequest.onreadystatechange = function () {
-        if (httpRequest.readyState === 4 && httpRequest.status === 200) {
-            var json = httpRequest.responseText;
-            console.log(json);
-        }
-    };
+    let url = "/api/notification/pushMsg";
+    return index$3.parseResponse(index$3.post2Siyuan(url, data));
 }
 
 var Outline = {
@@ -1164,7 +1154,7 @@ exports.getUrlParams = getUrlParams;
 exports.initAllPropFromIDBAsync = initAllPropFromIDBAsync;
 exports.insertCreateBefore = insertCreateBefore;
 exports.propChange = propChange;
-exports.pushMessage = pushMessage;
+exports.pushMsg = pushMsg;
 exports.querySQL = querySQL;
 exports.setTooltipDirection = setTooltipDirection;
 exports["通知"] = 通知;

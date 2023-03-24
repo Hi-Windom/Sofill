@@ -1,14 +1,14 @@
 /*!
-* sofill v1.0.54
+* sofill v1.0.55
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
-export { C as CopyDOM, b as MoveChildren, M as MoveDOM, a as addinsertCreateElement, c as bodyAC, f as bodyCC, e as bodyRC, d as diguiTooONE, j as eRemoveProperty, h as eSetProperty, g as getActualWidthOfChars, i as insertCreateAfter } from '../../index-23f7a869.js';
-import { l as localforageExports } from '../../localforage-ccdf0ad9.js';
-import { i as isEmptyString } from '../../index-f717a166.js';
-export { A as AddEvent, R as RangeLimitedInt, e as addURLParam, c as compareVersion, g as getThemeMode, b as isEmpty, a as isPromise, d as loadScript, l as loadStyle, m as myRemoveEvent, r as removejscssfile, s as sleep, u as updateStyle } from '../../index-f717a166.js';
-import { p as parseResponse, a as post2Siyuan } from '../../index-4d698337.js';
-export { g as genUUID, i as isMobile, b as isWindow } from '../../index-4d698337.js';
+export { C as CopyDOM, b as MoveChildren, M as MoveDOM, a as addinsertCreateElement, c as bodyAC, f as bodyCC, e as bodyRC, d as diguiTooONE, j as eRemoveProperty, h as eSetProperty, g as getActualWidthOfChars, i as insertCreateAfter } from '../../index-ca3ba914.js';
+import { l as localforageExports } from '../../localforage-e35896c4.js';
+import { i as isEmptyString } from '../../index-5cf5527b.js';
+export { A as AddEvent, R as RangeLimitedInt, e as addURLParam, c as compareVersion, g as getThemeMode, b as isEmpty, a as isPromise, d as loadScript, l as loadStyle, m as myRemoveEvent, r as removejscssfile, s as sleep, u as updateStyle } from '../../index-5cf5527b.js';
+import { p as parseResponse, a as post2Siyuan } from '../../index-70286536.js';
+export { g as genUUID, i as isMobile, b as isWindow } from '../../index-70286536.js';
 
 // export class LimitPromise {
 //   constructor(max) {
@@ -934,6 +934,9 @@ async function 保存思源笔记本配置(笔记本id) {
     //返回笔记本配置
 }
 
+/**
+ * @deprecated 过时的
+ */
 function 通知(text, timeout = 7000) {
     var url = "http://127.0.0.1:6806/api/notification/pushMsg";
     var httpRequest = new XMLHttpRequest();
@@ -952,26 +955,13 @@ function 通知(text, timeout = 7000) {
         }
     };
 }
-/**
- * @deprecated 过时的
- */
-function pushMessage(text) {
-    var url = "http://127.0.0.1:6806/api/notification/pushMsg";
-    var httpRequest = new XMLHttpRequest();
-    httpRequest.open("POST", url, true);
-    httpRequest.setRequestHeader("Content-type", "application/json");
-    var obj = {
-        msg: text,
-        timeout: 7000,
+function pushMsg(msg, timeout = 7000) {
+    let data = {
+        msg: msg,
+        timeout: timeout,
     };
-    httpRequest.send(JSON.stringify(obj));
-    // 响应后的回调函数
-    httpRequest.onreadystatechange = function () {
-        if (httpRequest.readyState === 4 && httpRequest.status === 200) {
-            var json = httpRequest.responseText;
-            console.log(json);
-        }
-    };
+    let url = "/api/notification/pushMsg";
+    return parseResponse(post2Siyuan(url, data));
 }
 
 var Outline = {
@@ -1085,4 +1075,4 @@ function insertCreateBefore(targetElement, addElementTxt, setId = null) {
     return element;
 }
 
-export { AI, Account, Asset, Attr, Av, Bazaar, Block, Bookmark, Export, index as File, Filetree, Format, Graph, History, Import, Inbox, Lute, Notebook, Outline, Query, Ref, Repo, Riff, Search, Setting, Snippet, SofillDate, Storage, Sync, System, Tag, Template, checkedChange, getBazaarTheme, getFocusedBlock, getFocusedBlockID, getFocusedDoc, getFocusedDocBackground, getFocusedDocID, getFocusedID, getInstalledTheme, getNewValueFromDomByID, getTooltipDirection, getUrlParam, getUrlParams, initAllPropFromIDBAsync, insertCreateBefore, isEmptyString, parseResponse, post2Siyuan, propChange, pushMessage, querySQL, setTooltipDirection, 通知 };
+export { AI, Account, Asset, Attr, Av, Bazaar, Block, Bookmark, Export, index as File, Filetree, Format, Graph, History, Import, Inbox, Lute, Notebook, Outline, Query, Ref, Repo, Riff, Search, Setting, Snippet, SofillDate, Storage, Sync, System, Tag, Template, checkedChange, getBazaarTheme, getFocusedBlock, getFocusedBlockID, getFocusedDoc, getFocusedDocBackground, getFocusedDocID, getFocusedID, getInstalledTheme, getNewValueFromDomByID, getTooltipDirection, getUrlParam, getUrlParams, initAllPropFromIDBAsync, insertCreateBefore, isEmptyString, parseResponse, post2Siyuan, propChange, pushMsg, querySQL, setTooltipDirection, 通知 };
