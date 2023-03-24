@@ -1,3 +1,10 @@
+
+<p align="center">
+<br><br>
+<img alt="npm" src="https://img.shields.io/npm/dt/sofill?color=%23186186&logo=npm&style=flat-square" style="cursor:pointer;height: 38px;margin: 5px auto;">
+<a title="Hits" target="_blank" href="https://github.com/Hi-Windom/Sofill"><img src="https://hits.b3log.org/Hi-Windom/Sofill.svg" style="cursor:pointer;height: 38px;margin: 5px auto;"></a>
+</p>
+
 # Sofill
 
 Sofill内核为一体化主题提供基于现代技术的全链路敏捷开发支持
