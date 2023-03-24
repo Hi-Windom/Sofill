@@ -38,3 +38,7 @@ Sofill内核当前的统一目标是ES2022，同时尽量避免对 node.js 的�
 Sofill内核总是跟进最新的 Chromium 版本。如果一个特性在移动端不可用，Sofill内核会额外处理，除此之外不会有更多——我们默认桌面端总是同步最新的 Chromium 版本
 
 总的来说，Sofill内核是激进的，总是青睐于采用新技术、新标准。如果你的目标是开发一个适用群体最大化的主题，请不要使用Sofill内核。
+
+## TODO
+
+* [ ] Support [https://esm.sh](https://esm.sh)

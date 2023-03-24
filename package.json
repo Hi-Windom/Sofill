@@ -1,10 +1,10 @@
 {
   "name": "sofill",
-  "version": "1.0.57",
+  "version": "1.0.58",
   "description": "Sofill 内核适用于思源笔记 siyuan-note ，并为汐洛 Sillot 提供额外支持",
   "main": "index.cjs",
   "module": "index.mjs",
-  "keywords": ["siyuan","sillot"],
+  "keywords": ["siyuan","sillot","windom","react","astro","markdown","notebook","electron","docker","framework","kernel","core","esm","deno","wasm"],
   "author": "Soltus <694357845@qq.com>",
   "repository": {
     "type": "git",
