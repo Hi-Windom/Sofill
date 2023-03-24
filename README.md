@@ -9,7 +9,7 @@
 
 Sofill内核为一体化主题提供基于现代技术的全链路敏捷开发支持
 
-Sofill内核适用于[思源笔记](https://github.com/siyuan-note/siyuan)，并为其最流行的[汐洛分支](https://github.com/Hi-Windom/Sillot)提供额外支持（Sofill内核在汐洛作为公共运行时）
+Sofill内核适用于[思源笔记](https://github.com/siyuan-note/siyuan)，并为[汐洛](https://github.com/Hi-Windom/Sillot)提供额外支持
 
 以下主题均基于Sofill内核：
 

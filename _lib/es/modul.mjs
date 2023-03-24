@@ -1,10 +1,10 @@
 /*!
-* sofill v1.0.56
+* sofill v1.0.57
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
-import { a as addinsertCreateElement, g as getActualWidthOfChars, i as insertCreateAfter } from '../../index-6f6290a3.js';
-import { i as isMobile } from '../../index-de52f68b.js';
+import { a as addinsertCreateElement, g as getActualWidthOfChars, i as insertCreateAfter } from '../../index-54352745.js';
+import { i as isMobile } from '../../index-c3a88b4a.js';
 
 function showDocCreatedDate() {
     /** 为打开文档的标题下显示文档创建日期 */
