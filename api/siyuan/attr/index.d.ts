@@ -3,7 +3,7 @@ export declare var Attr: {
     setBlockAttrs: typeof setBlockAttrs;
     queryBlockById: typeof queryBlockById;
 };
-declare function getBlockAttrs(内容块id: any): Promise<any>;
-declare function queryBlockById(内容块id: any): Promise<any>;
-declare function setBlockAttrs(内容块id: any, 属性对象: any): Promise<any>;
+declare function getBlockAttrs(id: string): Promise<any>;
+declare function queryBlockById(id: string): Promise<any>;
+declare function setBlockAttrs(id: string, attrs: any): Promise<any>;
 export {};

@@ -1,14 +1,14 @@
 /*!
-* sofill v1.0.59
+* sofill v1.0.60
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
-export { C as CopyDOM, b as MoveChildren, M as MoveDOM, a as addinsertCreateElement, c as bodyAC, f as bodyCC, e as bodyRC, d as diguiTooONE, j as eRemoveProperty, h as eSetProperty, g as getActualWidthOfChars, i as insertCreateAfter } from '../../index-e98c3ad0.js';
-import { l as localforageExports } from '../../localforage-fdd83352.js';
-import { i as isEmptyString } from '../../index-ed33a279.js';
-export { A as AddEvent, R as RangeLimitedInt, e as addURLParam, c as compareVersion, g as getThemeMode, b as isEmpty, a as isPromise, d as loadScript, l as loadStyle, m as myRemoveEvent, r as removejscssfile, s as sleep, u as updateStyle } from '../../index-ed33a279.js';
-import { p as parseResponse, a as post2Siyuan } from '../../index-67b265f7.js';
-export { g as genUUID, i as isMobile, b as isWindow } from '../../index-67b265f7.js';
+export { C as CopyDOM, b as MoveChildren, M as MoveDOM, a as addinsertCreateElement, c as bodyAC, f as bodyCC, e as bodyRC, d as diguiTooONE, j as eRemoveProperty, h as eSetProperty, g as getActualWidthOfChars, i as insertCreateAfter } from '../../index-c90815f9.js';
+import { l as localforageExports } from '../../localforage-d877a769.js';
+import { i as isEmptyString } from '../../index-4399beb6.js';
+export { A as AddEvent, R as RangeLimitedInt, e as addURLParam, c as compareVersion, g as getThemeMode, b as isEmpty, a as isPromise, d as loadScript, l as loadStyle, m as myRemoveEvent, r as removejscssfile, s as sleep, u as updateStyle } from '../../index-4399beb6.js';
+import { p as parseResponse, a as post2Siyuan } from '../../index-c17102e0.js';
+export { g as genUUID, i as isMobile, b as isWindow } from '../../index-c17102e0.js';
 
 // export class LimitPromise {
 //   constructor(max) {
@@ -594,23 +594,23 @@ var Attr = {
     setBlockAttrs,
     queryBlockById,
 };
-async function getBlockAttrs(内容块id) {
+async function getBlockAttrs(id) {
     let data = {
-        id: 内容块id,
+        id: id,
     };
     let url = "/api/attr/getBlockAttrs";
     return parseResponse(post2Siyuan(url, data));
 }
-async function queryBlockById(内容块id) {
-    let sql = `select * from blocks where id ='${内容块id}'`;
+async function queryBlockById(id) {
+    let sql = `select * from blocks where id ='${id}'`;
     let data = await querySQL(sql);
     return data[0];
 }
-async function setBlockAttrs(内容块id, 属性对象) {
+async function setBlockAttrs(id, attrs) {
     let url = "/api/attr/setBlockAttrs";
     return parseResponse(post2Siyuan(url, {
-        id: 内容块id,
-        attrs: 属性对象,
+        id: id,
+        attrs: attrs,
     }));
 }
 
@@ -630,29 +630,31 @@ async function getInstalledTheme(ip, data) {
 }
 
 var Block = {
-    getBlockKramdown: 获取块kramdown源码,
-    getBlockBreadcrumb: 获取块面包屑,
-    insertBlock: 插入块,
+    getBlockKramdown,
+    getBlockBreadcrumb,
+    insertBlock,
     prependBlock: 插入前置子块,
     appendBlock: 插入后置子块,
     deleteBlock: 删除块,
     updateBlock: 更新块,
 };
-async function 获取块kramdown源码(内容块id) {
+// 获取块kramdown源码
+async function getBlockKramdown(id) {
     const data = {
-        id: 内容块id,
+        id: id,
     };
     const url = "/api/block/getBlockKramdown";
     return parseResponse(post2Siyuan(url, data));
 }
-async function 获取块面包屑(ID) {
+// 获取块面包屑
+async function getBlockBreadcrumb(id) {
     const data = {
-        id: ID,
+        id: id,
     };
     const url = "/api/block/getBlockBreadcrumb";
     return parseResponse(post2Siyuan(url, data));
 }
-async function 插入块(previousID, dataType, data) {
+async function insertBlock(previousID, dataType, data) {
     let url = "/api/block/insertBlock";
     return parseResponse(post2Siyuan((url = url), (data = {
         previousID: previousID,
@@ -694,11 +696,12 @@ async function 删除块(id) {
 var Bookmark = {};
 
 var Export = {
-    exportMdContent: 以id获取文档块markdown,
+    exportMdContent,
 };
-async function 以id获取文档块markdown(文档id) {
+// 以id获取文档块markdown
+async function exportMdContent(id) {
     let data = {
-        id: 文档id,
+        id: id,
     };
     let url = "/api/export/exportMdContent";
     return parseResponse(post2Siyuan(url, data));
@@ -749,16 +752,17 @@ var index = /*#__PURE__*/Object.freeze({
 
 var Filetree = {
     createDocWithMd: 通过markdown创建文档,
-    removeDoc: 删除思源文档,
-    renameDoc: 重命名思源文档,
-    moveDoc: 移动思源文档,
-    getHPathByPath: 根据思源路径获取人类可读路径,
-    getHPathByID: 根据块ID查询文档人类可读完整路径,
+    removeDoc,
+    renameDoc,
+    moveDoc,
+    getHPathByPath,
+    getHPathByID,
     listDocsByPath: 列出指定路径下文档,
     getDoc: 以id获取文档内容,
     searchDocs: 以关键词搜索文档,
 };
-async function 重命名思源文档(笔记本id, 文档路径, 文档新标题) {
+// 重命名思源文档
+async function renameDoc(笔记本id, 文档路径, 文档新标题) {
     let data = {
         notebook: 笔记本id,
         path: 文档路径,
@@ -768,7 +772,8 @@ async function 重命名思源文档(笔记本id, 文档路径, 文档新标题)
     return parseResponse(post2Siyuan(url, data));
     //返回空数据
 }
-async function 删除思源文档(笔记本id, 文档路径) {
+// 删除思源文档
+async function removeDoc(笔记本id, 文档路径) {
     let data = {
         notebook: 笔记本id,
         path: 文档路径,
@@ -777,7 +782,8 @@ async function 删除思源文档(笔记本id, 文档路径) {
     return parseResponse(post2Siyuan(url, data));
     //返回空数据
 }
-async function 移动思源文档(源笔记本ID, 源路径, 目标笔记本ID, 目标路径) {
+// 移动思源文档
+async function moveDoc(源笔记本ID, 源路径, 目标笔记本ID, 目标路径) {
     let data = {
         fromNotebook: 源笔记本ID,
         fromPath: 源路径,
@@ -788,7 +794,13 @@ async function 移动思源文档(源笔记本ID, 源路径, 目标笔记本ID, 
     return parseResponse(post2Siyuan(url, data));
     //返回空数据
 }
-async function 根据思源路径获取人类可读路径(笔记本ID, 路径) {
+/**
+ * 根据思源路径获取人类可读路径
+ * @date 2023-03-25
+ * @param { * } 笔记本ID
+ * @param { * } 路径
+ */
+async function getHPathByPath(笔记本ID, 路径) {
     let data = {
         Notebook: 笔记本ID,
         Path: 路径,
@@ -797,7 +809,12 @@ async function 根据思源路径获取人类可读路径(笔记本ID, 路径) {
     return parseResponse(post2Siyuan(url, data));
     //返回路径
 }
-async function 根据块ID查询文档人类可读完整路径(ID) {
+/**
+ * 根据块ID查询文档人类可读完整路径
+ * @date 2023-03-25
+ * @param { * } ID
+ */
+async function getHPathByID(ID) {
     let data = {
         id: ID,
     };

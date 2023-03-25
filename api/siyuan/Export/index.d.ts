@@ -1,5 +1,5 @@
 export declare var Export: {
-    exportMdContent: typeof 以id获取文档块markdown;
+    exportMdContent: typeof exportMdContent;
 };
-declare function 以id获取文档块markdown(文档id: any): Promise<any>;
+declare function exportMdContent(id: string): Promise<any>;
 export {};

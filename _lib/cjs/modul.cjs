@@ -1,12 +1,12 @@
 /*!
-* sofill v1.0.59
+* sofill v1.0.60
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
 'use strict';
 
-var index$1 = require('../../index-18ef5cb2.js');
-var index = require('../../index-09561cf0.js');
+var index$1 = require('../../index-36d7ff0f.js');
+var index = require('../../index-2170d5b3.js');
 
 function showDocCreatedDate() {
     /** 为打开文档的标题下显示文档创建日期 */
