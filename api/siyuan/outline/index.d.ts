@@ -1,5 +1,10 @@
 export declare var Outline: {
-    getDocOutline: typeof 以id获取文档大纲;
+    getDocOutline: typeof getDocOutline;
 };
-declare function 以id获取文档大纲(文档id: any): Promise<any>;
+/**
+ * 以id获取文档大纲
+ * @date 2023-03-26
+ * @param { string } id
+ */
+declare function getDocOutline(id: string): Promise<any>;
 export {};

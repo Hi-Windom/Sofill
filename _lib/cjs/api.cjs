@@ -1,14 +1,14 @@
 /*!
-* sofill v1.0.60
+* sofill v1.0.61
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
 'use strict';
 
-var index$1 = require('../../index-36d7ff0f.js');
-var localforage = require('../../localforage-e0a6b1e3.js');
-var index$2 = require('../../index-a2cd7660.js');
-var index$3 = require('../../index-2170d5b3.js');
+var index$1 = require('../../index-5ea66e16.js');
+var localforage = require('../../localforage-99ced5c6.js');
+var index$2 = require('../../index-6b2d589d.js');
+var index$3 = require('../../index-f5e317ad.js');
 
 // export class LimitPromise {
 //   constructor(max) {
@@ -859,10 +859,18 @@ async function 以关键词搜索文档(k) {
 var Format = {};
 
 var Graph = {
-    getLocalGraph: 以id获取局部图谱,
-    getGraph: 获取全局图谱,
+    getLocalGraph,
+    getGraph,
 };
-async function 以id获取局部图谱(k, id, conf, reqId) {
+/**
+ * 以id获取局部图谱
+ * @date 2023-03-26
+ * @param { * } k
+ * @param { * } id
+ * @param { * } conf
+ * @param { * } reqId
+ */
+async function getLocalGraph(k, id, conf, reqId) {
     let data = {
         id: id,
         k: k,
@@ -872,7 +880,14 @@ async function 以id获取局部图谱(k, id, conf, reqId) {
     let url = "/api/graph/getLocalGraph";
     return index$3.parseResponse(index$3.post2Siyuan(url, data));
 }
-async function 获取全局图谱(k, conf, reqId) {
+/**
+ * 获取全局图谱
+ * @date 2023-03-26
+ * @param { * } k
+ * @param { * } conf
+ * @param { * } reqId
+ */
+async function getGraph(k, conf, reqId) {
     let data = {
         k: k,
         conf: conf,
@@ -895,21 +910,31 @@ var Notebook = {
     removeNotebook: 删除思源笔记本,
     setNotebookConf: 保存思源笔记本配置,
     getNotebookConf: 获取思源笔记本配置,
-    openNotebook: 打开思源笔记本,
-    closeNotebook: 关闭思源笔记本,
+    openNotebook,
+    closeNotebook,
     renameNotebook: 重命名思源笔记本,
 };
-async function 打开思源笔记本(笔记本id) {
+/**
+ * 打开思源笔记本
+ * @date 2023-03-26
+ * @param { string } id
+ */
+async function openNotebook(id) {
     let data = {
-        notebook: 笔记本id,
+        notebook: id,
     };
     let url = "/api/notebook/openNotebook";
     return index$3.parseResponse(index$3.post2Siyuan(url, data));
     //返回空数据
 }
-async function 关闭思源笔记本(笔记本id) {
+/**
+ * 关闭思源笔记本
+ * @date 2023-03-26
+ * @param { string } id
+ */
+async function closeNotebook(id) {
     let data = {
-        notebook: 笔记本id,
+        notebook: id,
     };
     let url = "/api/notebook/closeNotebook";
     return index$3.parseResponse(index$3.post2Siyuan(url, data));
@@ -982,11 +1007,16 @@ function pushMsg(msg, timeout = 7000) {
 }
 
 var Outline = {
-    getDocOutline: 以id获取文档大纲,
+    getDocOutline,
 };
-async function 以id获取文档大纲(文档id) {
+/**
+ * 以id获取文档大纲
+ * @date 2023-03-26
+ * @param { string } id
+ */
+async function getDocOutline(id) {
     let data = {
-        id: 文档id,
+        id: id,
     };
     let url = "/api/outline/getDocOutline";
     return index$3.parseResponse(index$3.post2Siyuan(url, data));

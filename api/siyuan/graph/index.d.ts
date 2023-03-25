@@ -1,7 +1,22 @@
 export declare var Graph: {
-    getLocalGraph: typeof 以id获取局部图谱;
-    getGraph: typeof 获取全局图谱;
+    getLocalGraph: typeof getLocalGraph;
+    getGraph: typeof getGraph;
 };
-declare function 以id获取局部图谱(k: any, id: any, conf: any, reqId: any): Promise<any>;
-declare function 获取全局图谱(k: any, conf: any, reqId: any): Promise<any>;
+/**
+ * 以id获取局部图谱
+ * @date 2023-03-26
+ * @param { * } k
+ * @param { * } id
+ * @param { * } conf
+ * @param { * } reqId
+ */
+declare function getLocalGraph(k: any, id: any, conf: any, reqId: any): Promise<any>;
+/**
+ * 获取全局图谱
+ * @date 2023-03-26
+ * @param { * } k
+ * @param { * } conf
+ * @param { * } reqId
+ */
+declare function getGraph(k: any, conf: any, reqId: any): Promise<any>;
 export {};
