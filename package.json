@@ -1,6 +1,6 @@
 {
   "name": "sofill",
-  "version": "1.0.58",
+  "version": "1.0.59",
   "description": "Sofill 内核适用于思源笔记 siyuan-note ，并为汐洛 Sillot 提供额外支持",
   "main": "index.cjs",
   "module": "index.mjs",
@@ -10,7 +10,7 @@
     "type": "git",
     "url": "https://github.com/Hi-Windom/Sofill"
   },
-  "homepage": "https://github.com/Hi-Windom/Sofill",
+  "homepage": "https://yy-ac.github.io/Hi-Windom/Sofill",
   "license": "ISC",
   "exports": {
     ".": {
