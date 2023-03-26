@@ -1,14 +1,14 @@
 /*!
-* sofill v1.0.63
+* sofill v1.0.64
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
 'use strict';
 
-var index$1 = require('../../index-516f0730.js');
-var localforage = require('../../localforage-74e17cf9.js');
-var index$2 = require('../../index-13b7a269.js');
-var index$3 = require('../../index-27345f76.js');
+var index$1 = require('../../index-095fe4db.js');
+var localforage = require('../../localforage-0f061b62.js');
+var index$2 = require('../../index-b4d2a491.js');
+var index$3 = require('../../index-d5d43c6f.js');
 
 // export class LimitPromise {
 //   constructor(max) {
