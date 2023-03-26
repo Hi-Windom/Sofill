@@ -1,13 +1,13 @@
 /*!
-* sofill v1.0.62
+* sofill v1.0.63
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
 'use strict';
 
-var index = require('../../index-8ef3298c.js');
-require('../../localforage-1969e33b.js');
-require('../../index-03390884.js');
+var index = require('../../index-516f0730.js');
+require('../../localforage-74e17cf9.js');
+require('../../index-13b7a269.js');
 
 function addUC() {
     if (window.siyuan.user == null) {

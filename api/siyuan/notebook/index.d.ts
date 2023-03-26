@@ -1,12 +1,30 @@
 export declare var Notebook: {
-    createNotebook: typeof 新建思源笔记本;
-    removeNotebook: typeof 删除思源笔记本;
-    setNotebookConf: typeof 保存思源笔记本配置;
-    getNotebookConf: typeof 获取思源笔记本配置;
+    createNotebook: typeof createNotebook;
+    removeNotebook: typeof removeNotebook;
+    setNotebookConf: typeof setNotebookConf;
+    getNotebookConf: typeof getNotebookConf;
     openNotebook: typeof openNotebook;
     closeNotebook: typeof closeNotebook;
-    renameNotebook: typeof 重命名思源笔记本;
+    renameNotebook: typeof renameNotebook;
 };
+/**
+ * 删除思源笔记本
+ * @date 2023-03-26
+ * @param { * } notebook 笔记本id
+ */
+declare function removeNotebook(notebook: any): Promise<any>;
+/**
+ * 获取思源笔记本配置
+ * @date 2023-03-26
+ * @param { * } notebook 笔记本id
+ */
+declare function getNotebookConf(notebook: any): Promise<any>;
+/**
+ * 保存思源笔记本配置
+ * @date 2023-03-26
+ * @param { * } notebook 笔记本id
+ */
+declare function setNotebookConf(notebook: any): Promise<any>;
 /**
  * 打开思源笔记本
  * @date 2023-03-26
@@ -19,9 +37,17 @@ declare function openNotebook(id: string): Promise<any>;
  * @param { string } id
  */
 declare function closeNotebook(id: string): Promise<any>;
-declare function 重命名思源笔记本(笔记本id: any, 笔记本的新名称: any): Promise<any>;
-declare function 新建思源笔记本(笔记本名称: any): Promise<any>;
-declare function 删除思源笔记本(笔记本id: any): Promise<any>;
-declare function 获取思源笔记本配置(笔记本id: any): Promise<any>;
-declare function 保存思源笔记本配置(笔记本id: any): Promise<any>;
+/**
+ * 重命名思源笔记本
+ * @date 2023-03-26
+ * @param { * } notebook 笔记本id
+ * @param { * } name 笔记本的新名称
+ */
+declare function renameNotebook(notebook: any, name: any): Promise<any>;
+/**
+ * 新建思源笔记本
+ * @date 2023-03-26
+ * @param { * } name
+ */
+declare function createNotebook(name: any): Promise<any>;
 export {};

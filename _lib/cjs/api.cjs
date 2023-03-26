@@ -1,14 +1,14 @@
 /*!
-* sofill v1.0.62
+* sofill v1.0.63
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
 'use strict';
 
-var index$1 = require('../../index-8ef3298c.js');
-var localforage = require('../../localforage-1969e33b.js');
-var index$2 = require('../../index-03390884.js');
-var index$3 = require('../../index-076e21d5.js');
+var index$1 = require('../../index-516f0730.js');
+var localforage = require('../../localforage-74e17cf9.js');
+var index$2 = require('../../index-13b7a269.js');
+var index$3 = require('../../index-27345f76.js');
 
 // export class LimitPromise {
 //   constructor(max) {
@@ -796,44 +796,102 @@ var index = /*#__PURE__*/Object.freeze({
 });
 
 var Filetree = {
-    createDocWithMd: 通过markdown创建文档,
+    createDocWithMd,
     removeDoc,
     renameDoc,
     moveDoc,
     getHPathByPath,
     getHPathByID,
-    listDocsByPath: 列出指定路径下文档,
-    getDoc: 以id获取文档内容,
-    searchDocs: 以关键词搜索文档,
+    listDocsByPath,
+    getDoc,
+    searchDocs,
 };
-// 重命名思源文档
-async function renameDoc(笔记本id, 文档路径, 文档新标题) {
+/**
+ * 列出指定路径下文档
+ * @date 2023-03-26
+ * @param { * } path
+ */
+async function listDocsByPath(path) {
     let data = {
-        notebook: 笔记本id,
-        path: 文档路径,
-        title: 文档新标题,
+        path: path,
+    };
+    let url = "/api/filetree/listDocsByPath";
+    return index$3.parseResponse(index$3.post2Siyuan(url, data));
+    //文档hepath与Markdown 内容
+}
+/**
+ * 以id获取文档内容
+ * @date 2023-03-26
+ * @param { * } id
+ */
+async function getDoc(id) {
+    let data = {
+        id: id,
+        k: "",
+        mode: 2,
+        size: 36,
+    };
+    let url = "/api/filetree/getDoc";
+    return index$3.parseResponse(index$3.post2Siyuan(url, data));
+}
+/**
+ * 以关键词搜索文档
+ * @date 2023-03-26
+ * @param { * } k 关键词
+ */
+async function searchDocs(k) {
+    let data = {
+        k: k,
+    };
+    let url = "/api/filetree/searchDocs";
+    return index$3.parseResponse(index$3.post2Siyuan(url, data));
+}
+/**
+ * 重命名思源文档
+ * @date 2023-03-26
+ * @param { * } notebook 笔记本id
+ * @param { * } path 文档路径
+ * @param { * } title 文档新标题
+ */
+async function renameDoc(notebook, path, title) {
+    let data = {
+        notebook,
+        path,
+        title,
     };
     let url = "/api/filetree/renameDoc";
     return index$3.parseResponse(index$3.post2Siyuan(url, data));
     //返回空数据
 }
-// 删除思源文档
-async function removeDoc(笔记本id, 文档路径) {
+/**
+ * 删除思源文档
+ * @date 2023-03-26
+ * @param { * } notebook 笔记本id
+ * @param { * } path 文档路径
+ */
+async function removeDoc(notebook, path) {
     let data = {
-        notebook: 笔记本id,
-        path: 文档路径,
+        notebook,
+        path,
     };
     let url = "/api/filetree/removeDoc";
     return index$3.parseResponse(index$3.post2Siyuan(url, data));
     //返回空数据
 }
-// 移动思源文档
-async function moveDoc(源笔记本ID, 源路径, 目标笔记本ID, 目标路径) {
+/**
+ * 移动思源文档
+ * @date 2023-03-26
+ * @param { * } fromNotebook 源笔记本ID
+ * @param { * } fromPath 源路径
+ * @param { * } toNotebook 目标笔记本ID
+ * @param { * } toPath 目标路径
+ */
+async function moveDoc(fromNotebook, fromPath, toNotebook, toPath) {
     let data = {
-        fromNotebook: 源笔记本ID,
-        fromPath: 源路径,
-        toNotebook: 目标笔记本ID,
-        toPath: 目标路径,
+        fromNotebook,
+        fromPath,
+        toNotebook,
+        toPath,
     };
     let url = "/api/filetree/moveDoc";
     return index$3.parseResponse(index$3.post2Siyuan(url, data));
@@ -842,13 +900,13 @@ async function moveDoc(源笔记本ID, 源路径, 目标笔记本ID, 目标路�
 /**
  * 根据思源路径获取人类可读路径
  * @date 2023-03-25
- * @param { * } 笔记本ID
- * @param { * } 路径
+ * @param { * } Notebook 笔记本ID
+ * @param { * } Path 路径
  */
-async function getHPathByPath(笔记本ID, 路径) {
+async function getHPathByPath(Notebook, Path) {
     let data = {
-        Notebook: 笔记本ID,
-        Path: 路径,
+        Notebook,
+        Path,
     };
     let url = "/api/filetree/getHPathByPath";
     return index$3.parseResponse(index$3.post2Siyuan(url, data));
@@ -866,38 +924,20 @@ async function getHPathByID(ID) {
     let url = "/api/filetree/getHPathByID";
     return index$3.parseResponse(index$3.post2Siyuan(url, data));
 }
-async function 通过markdown创建文档(notebook, path, markdown) {
+/**
+ * 通过markdown创建文档
+ * @date 2023-03-26
+ * @param { * } notebook
+ * @param { * } path
+ * @param { * } markdown
+ */
+async function createDocWithMd(notebook, path, markdown) {
     let data = {
         notebook: notebook,
         path: path,
         markdown: markdown,
     };
     let url = "/api/filetree/createDocWithMd";
-    return index$3.parseResponse(index$3.post2Siyuan(url, data));
-}
-async function 列出指定路径下文档(路径) {
-    let data = {
-        path: 路径,
-    };
-    let url = "/api/filetree/listDocsByPath";
-    return index$3.parseResponse(index$3.post2Siyuan(url, data));
-    //文档hepath与Markdown 内容
-}
-async function 以id获取文档内容(id) {
-    let data = {
-        id: id,
-        k: "",
-        mode: 2,
-        size: 36,
-    };
-    let url = "/api/filetree/getDoc";
-    return index$3.parseResponse(index$3.post2Siyuan(url, data));
-}
-async function 以关键词搜索文档(k) {
-    let data = {
-        k: k,
-    };
-    let url = "/api/filetree/searchDocs";
     return index$3.parseResponse(index$3.post2Siyuan(url, data));
 }
 
@@ -951,14 +991,47 @@ var Inbox = {};
 var Lute = {};
 
 var Notebook = {
-    createNotebook: 新建思源笔记本,
-    removeNotebook: 删除思源笔记本,
-    setNotebookConf: 保存思源笔记本配置,
-    getNotebookConf: 获取思源笔记本配置,
+    createNotebook,
+    removeNotebook,
+    setNotebookConf,
+    getNotebookConf,
     openNotebook,
     closeNotebook,
-    renameNotebook: 重命名思源笔记本,
+    renameNotebook,
 };
+/**
+ * 删除思源笔记本
+ * @date 2023-03-26
+ * @param { * } notebook 笔记本id
+ */
+async function removeNotebook(notebook) {
+    let data = { notebook: notebook };
+    let url = "/api/notebook/removeNotebook";
+    return index$3.parseResponse(index$3.post2Siyuan(url, data));
+    //返回空数据
+}
+/**
+ * 获取思源笔记本配置
+ * @date 2023-03-26
+ * @param { * } notebook 笔记本id
+ */
+async function getNotebookConf(notebook) {
+    let data = { notebook: notebook };
+    let url = "/api/notebook/getNotebookConf";
+    return index$3.parseResponse(index$3.post2Siyuan(url, data));
+    //返回笔记本配置
+}
+/**
+ * 保存思源笔记本配置
+ * @date 2023-03-26
+ * @param { * } notebook 笔记本id
+ */
+async function setNotebookConf(notebook) {
+    let data = { notebook: notebook };
+    let url = "/api/notebook/setNotebookConf";
+    return index$3.parseResponse(index$3.post2Siyuan(url, data));
+    //返回笔记本配置
+}
 /**
  * 打开思源笔记本
  * @date 2023-03-26
@@ -985,40 +1058,33 @@ async function closeNotebook(id) {
     return index$3.parseResponse(index$3.post2Siyuan(url, data));
     //返回空数据
 }
-async function 重命名思源笔记本(笔记本id, 笔记本的新名称) {
+/**
+ * 重命名思源笔记本
+ * @date 2023-03-26
+ * @param { * } notebook 笔记本id
+ * @param { * } name 笔记本的新名称
+ */
+async function renameNotebook(notebook, name) {
     let data = {
-        notebook: 笔记本id,
-        name: 笔记本的新名称,
+        notebook,
+        name,
     };
     let url = "/api/notebook/renameNotebook";
     return index$3.parseResponse(index$3.post2Siyuan(url, data));
     //返回空数据
 }
-async function 新建思源笔记本(笔记本名称) {
+/**
+ * 新建思源笔记本
+ * @date 2023-03-26
+ * @param { * } name
+ */
+async function createNotebook(name) {
     let data = {
-        name: 笔记本名称,
+        name: name,
     };
     let url = "/api/notebook/createNotebook";
     return index$3.parseResponse(index$3.post2Siyuan(url, data));
     //返回空数据
-}
-async function 删除思源笔记本(笔记本id) {
-    let data = { notebook: 笔记本id };
-    let url = "/api/notebook/removeNotebook";
-    return index$3.parseResponse(index$3.post2Siyuan(url, data));
-    //返回空数据
-}
-async function 获取思源笔记本配置(笔记本id) {
-    let data = { notebook: 笔记本id };
-    let url = "/api/notebook/getNotebookConf";
-    return index$3.parseResponse(index$3.post2Siyuan(url, data));
-    //返回笔记本配置
-}
-async function 保存思源笔记本配置(笔记本id) {
-    let data = { notebook: 笔记本id };
-    let url = "/api/notebook/setNotebookConf";
-    return index$3.parseResponse(index$3.post2Siyuan(url, data));
-    //返回笔记本配置
 }
 
 /**

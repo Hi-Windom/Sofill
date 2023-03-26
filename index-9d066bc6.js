@@ -1,10 +1,8 @@
 /*!
-* sofill v1.0.62
+* sofill v1.0.63
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
-'use strict';
-
 // 如果 version1 > version2 返回 1，如果 version1 < version2 返回 -1， 除此之外返回 0。
 function compareVersion(version1, version2) {
     const arr1 = version1.split(".");
@@ -197,17 +195,4 @@ function addURLParam(url, param = {
     }
 }
 
-exports.AddEvent = AddEvent;
-exports.RangeLimitedInt = RangeLimitedInt;
-exports.addURLParam = addURLParam;
-exports.compareVersion = compareVersion;
-exports.getThemeMode = getThemeMode;
-exports.isEmpty = isEmpty;
-exports.isEmptyString = isEmptyString;
-exports.isPromise = isPromise;
-exports.loadScript = loadScript;
-exports.loadStyle = loadStyle;
-exports.myRemoveEvent = myRemoveEvent;
-exports.removejscssfile = removejscssfile;
-exports.sleep = sleep;
-exports.updateStyle = updateStyle;
+export { AddEvent as A, RangeLimitedInt as R, isPromise as a, isEmpty as b, compareVersion as c, loadScript as d, addURLParam as e, getThemeMode as g, isEmptyString as i, loadStyle as l, myRemoveEvent as m, removejscssfile as r, sleep as s, updateStyle as u };
