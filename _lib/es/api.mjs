@@ -1,14 +1,14 @@
 /*!
-* sofill v1.0.61
+* sofill v1.0.62
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
-export { C as CopyDOM, b as MoveChildren, M as MoveDOM, a as addinsertCreateElement, c as bodyAC, f as bodyCC, e as bodyRC, d as diguiTooONE, j as eRemoveProperty, h as eSetProperty, g as getActualWidthOfChars, i as insertCreateAfter } from '../../index-eda6e499.js';
-import { l as localforageExports } from '../../localforage-3579bc81.js';
-import { i as isEmptyString } from '../../index-e07d5999.js';
-export { A as AddEvent, R as RangeLimitedInt, e as addURLParam, c as compareVersion, g as getThemeMode, b as isEmpty, a as isPromise, d as loadScript, l as loadStyle, m as myRemoveEvent, r as removejscssfile, s as sleep, u as updateStyle } from '../../index-e07d5999.js';
-import { p as parseResponse, a as post2Siyuan } from '../../index-444f88e6.js';
-export { g as genUUID, i as isMobile, b as isWindow } from '../../index-444f88e6.js';
+export { C as CopyDOM, b as MoveChildren, M as MoveDOM, a as addinsertCreateElement, c as bodyAC, f as bodyCC, e as bodyRC, d as diguiTooONE, j as eRemoveProperty, h as eSetProperty, g as getActualWidthOfChars, i as insertCreateAfter } from '../../index-b82fb1a2.js';
+import { l as localforageExports } from '../../localforage-fc4140d5.js';
+import { i as isEmptyString } from '../../index-848e304c.js';
+export { A as AddEvent, R as RangeLimitedInt, e as addURLParam, c as compareVersion, g as getThemeMode, b as isEmpty, a as isPromise, d as loadScript, l as loadStyle, m as myRemoveEvent, r as removejscssfile, s as sleep, u as updateStyle } from '../../index-848e304c.js';
+import { p as parseResponse, a as post2Siyuan } from '../../index-d18b6c0d.js';
+export { g as genUUID, i as isMobile, b as isWindow } from '../../index-d18b6c0d.js';
 
 // export class LimitPromise {
 //   constructor(max) {
@@ -633,12 +633,16 @@ var Block = {
     getBlockKramdown,
     getBlockBreadcrumb,
     insertBlock,
-    prependBlock: 插入前置子块,
-    appendBlock: 插入后置子块,
-    deleteBlock: 删除块,
-    updateBlock: 更新块,
+    prependBlock,
+    appendBlock,
+    deleteBlock,
+    updateBlock,
 };
-// 获取块kramdown源码
+/**
+ * 获取块kramdown源码
+ * @date 2023-03-26
+ * @param { string } id
+ */
 async function getBlockKramdown(id) {
     const data = {
         id: id,
@@ -646,7 +650,11 @@ async function getBlockKramdown(id) {
     const url = "/api/block/getBlockKramdown";
     return parseResponse(post2Siyuan(url, data));
 }
-// 获取块面包屑
+/**
+ * 获取块面包屑
+ * @date 2023-03-26
+ * @param { string } id
+ */
 async function getBlockBreadcrumb(id) {
     const data = {
         id: id,
@@ -654,6 +662,13 @@ async function getBlockBreadcrumb(id) {
     const url = "/api/block/getBlockBreadcrumb";
     return parseResponse(post2Siyuan(url, data));
 }
+/**
+ * desc
+ * @date 2023-03-26
+ * @param { * } previousID
+ * @param { * } dataType
+ * @param { * } data
+ */
 async function insertBlock(previousID, dataType, data) {
     let url = "/api/block/insertBlock";
     return parseResponse(post2Siyuan((url = url), (data = {
@@ -662,7 +677,14 @@ async function insertBlock(previousID, dataType, data) {
         data: data,
     })));
 }
-async function 插入前置子块(parentID, dataType, data) {
+/**
+ * 插入前置子块
+ * @date 2023-03-26
+ * @param { * } parentID
+ * @param { * } dataType
+ * @param { * } data
+ */
+async function prependBlock(parentID, dataType, data) {
     let url = "/api/block/prependBlock";
     return parseResponse(post2Siyuan((url = url), (data = {
         parentID: parentID,
@@ -670,7 +692,14 @@ async function 插入前置子块(parentID, dataType, data) {
         data: data,
     })));
 }
-async function 插入后置子块(parentID, dataType, data) {
+/**
+ * 插入后置子块
+ * @date 2023-03-26
+ * @param { * } parentID
+ * @param { * } dataType
+ * @param { * } data
+ */
+async function appendBlock(parentID, dataType, data) {
     let url = "/api/block/appendBlock";
     return parseResponse(post2Siyuan((url = url), (data = {
         parentID: parentID,
@@ -678,7 +707,14 @@ async function 插入后置子块(parentID, dataType, data) {
         data: data,
     })));
 }
-async function 更新块(id, dataType, data) {
+/**
+ * 更新块
+ * @date 2023-03-26
+ * @param { * } id
+ * @param { * } dataType
+ * @param { * } data
+ */
+async function updateBlock(id, dataType, data) {
     let url = "/api/block/updateBlock";
     return parseResponse(post2Siyuan((url = url), (data = {
         id: id,
@@ -686,7 +722,12 @@ async function 更新块(id, dataType, data) {
         data: data,
     })));
 }
-async function 删除块(id) {
+/**
+ * 删除块
+ * @date 2023-03-26
+ * @param { * } id
+ */
+async function deleteBlock(id) {
     let url = "/api/block/deleteBlock";
     return parseResponse(post2Siyuan(url, {
         id: id,
@@ -698,7 +739,11 @@ var Bookmark = {};
 var Export = {
     exportMdContent,
 };
-// 以id获取文档块markdown
+/**
+ * 以id获取文档块markdown
+ * @date 2023-03-26
+ * @param { string } id
+ */
 async function exportMdContent(id) {
     let data = {
         id: id,
