@@ -1,11 +1,11 @@
 /*!
-* sofill v1.0.64
+* sofill v1.0.65
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
 import { basename } from 'path';
-import { s as sleep } from '../../sleep-93811fb0.js';
-import { l as localforageExports } from '../../localforage-549f2b68.js';
+import { s as sleep } from '../../sleep-feb5889d.js';
+import { l as localforageExports } from '../../localforage-262e45b4.js';
 
 function importFromJson(idbDatabase, importObject) {
     return new Promise((resolve, reject) => {

@@ -1,14 +1,14 @@
 /*!
-* sofill v1.0.64
+* sofill v1.0.65
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
-export { C as CopyDOM, b as MoveChildren, M as MoveDOM, a as addinsertCreateElement, c as bodyAC, f as bodyCC, e as bodyRC, d as diguiTooONE, j as eRemoveProperty, h as eSetProperty, g as getActualWidthOfChars, i as insertCreateAfter } from '../../index-a7804956.js';
-import { l as localforageExports } from '../../localforage-549f2b68.js';
-import { i as isEmptyString } from '../../index-ea076314.js';
-export { A as AddEvent, R as RangeLimitedInt, e as addURLParam, c as compareVersion, g as getThemeMode, b as isEmpty, a as isPromise, d as loadScript, l as loadStyle, m as myRemoveEvent, r as removejscssfile, s as sleep, u as updateStyle } from '../../index-ea076314.js';
-import { p as parseResponse, a as post2Siyuan } from '../../index-d9c15d96.js';
-export { g as genUUID, i as isMobile, b as isWindow } from '../../index-d9c15d96.js';
+export { C as CopyDOM, b as MoveChildren, M as MoveDOM, a as addinsertCreateElement, c as bodyAC, f as bodyCC, e as bodyRC, d as diguiTooONE, j as eRemoveProperty, h as eSetProperty, g as getActualWidthOfChars, i as insertCreateAfter } from '../../index-56359a05.js';
+import { l as localforageExports } from '../../localforage-262e45b4.js';
+import { i as isEmptyString } from '../../index-15bf0ef7.js';
+export { A as AddEvent, R as RangeLimitedInt, e as addURLParam, c as compareVersion, g as getThemeMode, b as isEmpty, a as isPromise, d as loadScript, l as loadStyle, m as myRemoveEvent, r as removejscssfile, s as sleep, u as updateStyle } from '../../index-15bf0ef7.js';
+import { p as parseResponse, a as post2Siyuan } from '../../index-ab5c8d3f.js';
+export { g as genUUID, i as isMobile, b as isWindow } from '../../index-ab5c8d3f.js';
 
 // export class LimitPromise {
 //   constructor(max) {
@@ -377,18 +377,18 @@ async function checkedChange(obj, YesFn, NoFn) {
 // }
 const SofillDate = {
     isDuringDate: function (beginDateStr, endDateStr) {
-        var curDate = new Date();
-        var beginDate = new Date(beginDateStr);
-        var endDate = new Date(endDateStr);
+        const curDate = new Date();
+        const beginDate = new Date(beginDateStr);
+        const endDate = new Date(endDateStr);
         if (curDate >= beginDate && curDate <= endDate) {
             return true;
         }
         return false;
     },
     isDuringTime: function (beginTimeStr, endTimeStr) {
-        var curDate = new Date();
-        var beginDate = new Date(`${curDate.getFullYear()}-${curDate.getMonth() + 1}-${curDate.getDate()} ${beginTimeStr}`);
-        var endDate = new Date(`${curDate.getFullYear()}-${curDate.getMonth() + 1}-${curDate.getDate()} ${endTimeStr}`);
+        const curDate = new Date();
+        const beginDate = new Date(`${curDate.getFullYear()}-${curDate.getMonth() + 1}-${curDate.getDate()} ${beginTimeStr}`);
+        const endDate = new Date(`${curDate.getFullYear()}-${curDate.getMonth() + 1}-${curDate.getDate()} ${endTimeStr}`);
         if (beginDate <= endDate) {
             if (beginDate <= curDate && curDate <= endDate) {
                 return true;

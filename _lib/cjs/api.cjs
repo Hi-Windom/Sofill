@@ -1,14 +1,14 @@
 /*!
-* sofill v1.0.64
+* sofill v1.0.65
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
 'use strict';
 
-var index$1 = require('../../index-095fe4db.js');
-var localforage = require('../../localforage-0f061b62.js');
-var index$2 = require('../../index-b4d2a491.js');
-var index$3 = require('../../index-d5d43c6f.js');
+var index$1 = require('../../index-859c87c8.js');
+var localforage = require('../../localforage-f59a9169.js');
+var index$2 = require('../../index-4b7d5173.js');
+var index$3 = require('../../index-f9dbc790.js');
 
 // export class LimitPromise {
 //   constructor(max) {
@@ -377,18 +377,18 @@ async function checkedChange(obj, YesFn, NoFn) {
 // }
 const SofillDate = {
     isDuringDate: function (beginDateStr, endDateStr) {
-        var curDate = new Date();
-        var beginDate = new Date(beginDateStr);
-        var endDate = new Date(endDateStr);
+        const curDate = new Date();
+        const beginDate = new Date(beginDateStr);
+        const endDate = new Date(endDateStr);
         if (curDate >= beginDate && curDate <= endDate) {
             return true;
         }
         return false;
     },
     isDuringTime: function (beginTimeStr, endTimeStr) {
-        var curDate = new Date();
-        var beginDate = new Date(`${curDate.getFullYear()}-${curDate.getMonth() + 1}-${curDate.getDate()} ${beginTimeStr}`);
-        var endDate = new Date(`${curDate.getFullYear()}-${curDate.getMonth() + 1}-${curDate.getDate()} ${endTimeStr}`);
+        const curDate = new Date();
+        const beginDate = new Date(`${curDate.getFullYear()}-${curDate.getMonth() + 1}-${curDate.getDate()} ${beginTimeStr}`);
+        const endDate = new Date(`${curDate.getFullYear()}-${curDate.getMonth() + 1}-${curDate.getDate()} ${endTimeStr}`);
         if (beginDate <= endDate) {
             if (beginDate <= curDate && curDate <= endDate) {
                 return true;

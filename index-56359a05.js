@@ -1,5 +1,5 @@
 /*!
-* sofill v1.0.64
+* sofill v1.0.65
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
@@ -10,7 +10,8 @@ function getActualWidthOfChars(text, options) {
     const ctx = canvas.getContext("2d");
     ctx.font = `${size}px ${family}`;
     const metrics = ctx.measureText(text);
-    const actual = Math.abs(metrics.actualBoundingBoxLeft) + Math.abs(metrics.actualBoundingBoxRight);
+    const actual = Math.abs(metrics.actualBoundingBoxLeft) +
+        Math.abs(metrics.actualBoundingBoxRight);
     return Math.max(metrics.width, actual);
 }
 /**
