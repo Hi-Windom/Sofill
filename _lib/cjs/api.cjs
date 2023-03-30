@@ -1,14 +1,14 @@
 /*!
-* sofill v1.0.66
+* sofill v1.0.67
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
 'use strict';
 
-var index$1 = require('../../index-16d164cd.js');
-var localforage = require('../../localforage-c05f0c20.js');
-var index$2 = require('../../index-7b1641b2.js');
-var index$3 = require('../../index-bdfcd968.js');
+var index$1 = require('../../index-c098bddb.js');
+var localforage = require('../../localforage-b3a80567.js');
+var index$2 = require('../../index-2a614f5a.js');
+var index$3 = require('../../index-e91882a0.js');
 
 class LimitPromise {
     _max;
@@ -214,9 +214,9 @@ async function initAllPropFromIDBAsync(dom) {
         }
     };
     let childsLength = 0;
-    let selectList = dom.querySelectorAll("select:not([id^='NoSync'])");
-    let normalInputList = dom.querySelectorAll("input[id^='SC_winsay_cp']:not([type='checkbox'])");
-    let checkboxList = dom.querySelectorAll("input[type='checkbox']:not([id^='NoSync'])");
+    const selectList = dom.querySelectorAll("select:not([id^='NoSync'])");
+    const normalInputList = dom.querySelectorAll("input[id^='SC_winsay_cp']:not([type='checkbox'])");
+    const checkboxList = dom.querySelectorAll("input[type='checkbox']:not([id^='NoSync'])");
     childsLength += selectList.length;
     childsLength += normalInputList.length;
     childsLength += checkboxList.length;

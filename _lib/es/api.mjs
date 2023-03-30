@@ -1,14 +1,14 @@
 /*!
-* sofill v1.0.66
+* sofill v1.0.67
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
-export { C as CopyDOM, b as MoveChildren, M as MoveDOM, a as addinsertCreateElement, c as bodyAC, f as bodyCC, e as bodyRC, d as diguiTooONE, j as eRemoveProperty, h as eSetProperty, g as getActualWidthOfChars, i as insertCreateAfter } from '../../index-0c7ae737.js';
-import { l as localforageExports } from '../../localforage-32d12b1d.js';
-import { i as isEmptyString } from '../../index-c54d9814.js';
-export { A as AddEvent, R as RangeLimitedInt, e as addURLParam, c as compareVersion, g as getThemeMode, b as isEmpty, a as isPromise, d as loadScript, l as loadStyle, m as myRemoveEvent, r as removejscssfile, s as sleep, u as updateStyle } from '../../index-c54d9814.js';
-import { p as parseResponse, a as post2Siyuan } from '../../index-58ab3d79.js';
-export { g as genUUID, i as isMobile, b as isWindow } from '../../index-58ab3d79.js';
+export { C as CopyDOM, b as MoveChildren, M as MoveDOM, a as addinsertCreateElement, c as bodyAC, f as bodyCC, e as bodyRC, d as diguiTooONE, j as eRemoveProperty, h as eSetProperty, g as getActualWidthOfChars, i as insertCreateAfter } from '../../index-c80cd54e.js';
+import { l as localforageExports } from '../../localforage-e352c45e.js';
+import { i as isEmptyString } from '../../index-2960cbe6.js';
+export { A as AddEvent, R as RangeLimitedInt, e as addURLParam, c as compareVersion, g as getThemeMode, b as isEmpty, a as isPromise, d as loadScript, l as loadStyle, m as myRemoveEvent, r as removejscssfile, s as sleep, u as updateStyle } from '../../index-2960cbe6.js';
+import { p as parseResponse, a as post2Siyuan } from '../../index-a828656b.js';
+export { g as genUUID, i as isMobile, b as isWindow } from '../../index-a828656b.js';
 
 class LimitPromise {
     _max;
@@ -214,9 +214,9 @@ async function initAllPropFromIDBAsync(dom) {
         }
     };
     let childsLength = 0;
-    let selectList = dom.querySelectorAll("select:not([id^='NoSync'])");
-    let normalInputList = dom.querySelectorAll("input[id^='SC_winsay_cp']:not([type='checkbox'])");
-    let checkboxList = dom.querySelectorAll("input[type='checkbox']:not([id^='NoSync'])");
+    const selectList = dom.querySelectorAll("select:not([id^='NoSync'])");
+    const normalInputList = dom.querySelectorAll("input[id^='SC_winsay_cp']:not([type='checkbox'])");
+    const checkboxList = dom.querySelectorAll("input[type='checkbox']:not([id^='NoSync'])");
     childsLength += selectList.length;
     childsLength += normalInputList.length;
     childsLength += checkboxList.length;
