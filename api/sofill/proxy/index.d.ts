@@ -1,6 +1,5 @@
-export {};
+export * from './CP';
 export declare const getNewValueFromDomByID: (id: any) => Promise<any>;
-export declare function initAllPropFromIDBAsync(dom: any): Promise<void>;
 export declare function propChange(id: any, changeFn: any): Promise<void>;
 export declare function checkedChange(obj: any, YesFn: any, NoFn: any): Promise<void>;
 export declare const SofillDate: {

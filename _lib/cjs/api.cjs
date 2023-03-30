@@ -1,141 +1,127 @@
 /*!
-* sofill v1.0.65
+* sofill v1.0.66
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
 'use strict';
 
-var index$1 = require('../../index-859c87c8.js');
-var localforage = require('../../localforage-f59a9169.js');
-var index$2 = require('../../index-4b7d5173.js');
-var index$3 = require('../../index-f9dbc790.js');
+var index$1 = require('../../index-16d164cd.js');
+var localforage = require('../../localforage-c05f0c20.js');
+var index$2 = require('../../index-7b1641b2.js');
+var index$3 = require('../../index-bdfcd968.js');
 
-// export class LimitPromise {
-//   constructor(max) {
-//     // 异步任务“并发”上限
-//     this._max = max;
-//     // 当前正在执行的任务数量
-//     this._count = 0;
-//     // 等待执行的任务队列
-//     this._taskQueue = [];
-//   }
-//   /**
-//    * 调用器，将异步任务函数和它的参数传入
-//    * @param caller 异步任务函数，它必须是async函数或者返回Promise的函数
-//    * @param args 异步任务函数的参数列表
-//    * @returns {Promise<unknown>} 返回一个新的Promise
-//    */
-//   call(caller, ...args) {
-//     return new Promise((resolve, reject) => {
-//       const task = this._createTask(caller, args, resolve, reject);
-//       if (this._count >= this._max) {
-//         // console.log('count >= max, push a task to queue')
-//         this._taskQueue.push(task);
-//       } else {
-//         task();
-//       }
-//     });
-//   }
-//   /**
-//    * 创建一个任务
-//    * @param caller 实际执行的函数
-//    * @param args 执行函数的参数
-//    * @param resolve
-//    * @param reject
-//    * @returns {Function} 返回一个任务函数
-//    * @private
-//    */
-//   _createTask(caller, args, resolve, reject) {
-//     return () => {
-//       // 实际上是在这里调用了异步任务，并将异步任务的返回（resolve和reject）抛给了上层
-//       caller(...args)
-//         .then(resolve)
-//         .catch(reject)
-//         .finally(() => {
-//           // 任务队列的消费区，利用Promise的finally方法，在异步任务结束后，取出下一个任务执行
-//           this._count--;
-//           if (this._taskQueue.length) {
-//             // console.log('a task run over, pop a task to run')
-//             let task = this._taskQueue.shift();
-//             task();
-//           } else {
-//             // console.log('task count = ', count)
-//           }
-//         });
-//       this._count++;
-//       // console.log('task run , task count = ', count)
-//     };
-//   }
-// }
-// export class LocalStorage {
-//   constructor(max) {
-//     // 请求上限
-//     this._MAX = max;
-//     // 核心控制器
-//     this.limitP = new LimitPromise(this._MAX);
-//   }
-//   async getItem(key, cb = null) {
-//     return await this.limitP.call(this.GetItem, key);
-//   }
-//   async setItem(key, value, cb = null) {
-//     return await this.limitP.call(this.SetItem, key, value, cb);
-//   }
-//   async removeItem(key, cb = null) {
-//     return await this.limitP.call(this.RemoveItem, key, cb);
-//   }
-//   async GetItem(key) {
-//     if (key) {
-//       return await localforage?.getItem(key).catch(function (err) {
-//         // 当出错时，此处代码运行
-//         console.warn(err);
-//       });
-//     } else {
-//       console.error(
-//         "Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'getItem')"
-//       );
-//       return;
-//     }
-//   }
-//   async SetItem(key, value, cb) {
-//     return await localforage
-//       ?.setItem(key, value)
-//       .then(function (r) {
-//         // 当值被存储后，可执行其他操作
-//         console.log(r);
-//         if (typeof cb === "function") {
-//           cb;
-//         }
-//       })
-//       .catch(function (err) {
-//         // 当出错时，此处代码运行
-//         console.warn(err);
-//       });
-//   }
-//   async RemoveItem(key, cb) {
-//     return await localforage
-//       ?.removeItem(key)
-//       .then(() => {
-//         // 当值被移除后，此处代码运行
-//         console.log("Key is cleared!");
-//         if (typeof cb === "function") {
-//           cb;
-//         }
-//       })
-//       .catch(function (err) {
-//         // 当出错时，此处代码运行
-//         console.warn(err);
-//       });
-//   }
-// }
-const getNewValueFromDomByID = async (id) => {
-    let obj = document.getElementById(id);
-    if (obj.type === "checkbox" || obj.type === "radio") {
-        return obj.checked;
+class LimitPromise {
+    _max;
+    _count;
+    _taskQueue;
+    constructor(max) {
+        // 异步任务“并发”上限
+        this._max = max;
+        // 当前正在执行的任务数量
+        this._count = 0;
+        // 等待执行的任务队列
+        this._taskQueue = [];
     }
-    else {
-        return obj.value;
+    /**
+     * 调用器，将异步任务函数和它的参数传入
+     * @param caller 异步任务函数，它必须是async函数或者返回Promise的函数
+     * @param args 异步任务函数的参数列表
+     * @returns {Promise<unknown>} 返回一个新的Promise
+     */
+    call(caller, ...args) {
+        return new Promise((resolve, reject) => {
+            const task = this._createTask(caller, args, resolve, reject);
+            if (this._count >= this._max) {
+                // console.log('count >= max, push a task to queue')
+                this._taskQueue.push(task);
+            }
+            else {
+                task();
+            }
+        });
     }
-};
+    /**
+     * 创建一个任务
+     * @param caller 实际执行的函数
+     * @param args 执行函数的参数
+     * @param resolve
+     * @param reject
+     * @returns {Function} 返回一个任务函数
+     * @private
+     */
+    _createTask(caller, args, resolve, reject) {
+        return () => {
+            // 实际上是在这里调用了异步任务，并将异步任务的返回（resolve和reject）抛给了上层
+            caller(...args)
+                .then(resolve)
+                .catch(reject)
+                .finally(() => {
+                // 任务队列的消费区，利用Promise的finally方法，在异步任务结束后，取出下一个任务执行
+                this._count--;
+                if (this._taskQueue.length) {
+                    // console.log('a task run over, pop a task to run')
+                    const task = this._taskQueue.shift();
+                    task();
+                }
+            });
+            this._count++;
+            // console.log('task run , task count = ', count)
+        };
+    }
+}
+class LocalStorage {
+    _MAX;
+    limitP;
+    constructor(max) {
+        // 请求上限
+        this._MAX = max;
+        // 核心控制器
+        this.limitP = new LimitPromise(this._MAX);
+    }
+    async getItem(key, cb = null) {
+        return await this.limitP.call(this.GetItem, key);
+    }
+    async setItem(key, value, cb = null) {
+        return await this.limitP.call(this.SetItem, key, value, cb);
+    }
+    async removeItem(key, cb = null) {
+        return await this.limitP.call(this.RemoveItem, key, cb);
+    }
+    async GetItem(key) {
+        if (key) {
+            return await localforage.localforageExports.getItem(key).catch(function (err) {
+                // 当出错时，此处代码运行
+                console.warn(err);
+            });
+        }
+        else {
+            console.error("Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'getItem')");
+            return;
+        }
+    }
+    async SetItem(key, value, cb) {
+        return await localforage.localforageExports.setItem(key, value)
+            .then(function (r) {
+            // 当值被存储后，可执行其他操作
+            console.log(r);
+        })
+            .catch(function (err) {
+            // 当出错时，此处代码运行
+            console.warn(err);
+        });
+    }
+    async RemoveItem(key, cb) {
+        return await localforage.localforageExports.removeItem(key)
+            .then(() => {
+            // 当值被移除后，此处代码运行
+            console.log("Key is cleared!");
+        })
+            .catch(function (err) {
+            // 当出错时，此处代码运行
+            console.warn(err);
+        });
+    }
+}
 async function initAllPropFromIDBAsync(dom) {
     // 遍历所有子元素，判断 prop ，取代 propInit 和 checkedInit，绑定但是不回调（与change函数冲突）
     // 目前的问题是加载时没有等待getItem从IDB获取到值而是先setItem覆盖了IDB的值，解决方案：proxy(回调) -> bind -> init
@@ -146,30 +132,8 @@ async function initAllPropFromIDBAsync(dom) {
     // 若对象内部属性要全部递归代理，Proxy可以只在调用的时候递归，而Object.definePropery需要一次完成所有递归，性能比Proxy差。
     // https://es6.ruanyifeng.com/#docs/proxy
     const _bind = async (id) => {
-        let DOM = document.getElementById(id); // 获取dom
-        let prop = "bindIDB"; // 绑定的属性
-        let isCheckbox = DOM.type === "checkbox";
-        Object.defineProperty(DOM, prop, {
-            get: () => {
-                if (isCheckbox) {
-                    return DOM.checked;
-                }
-                else {
-                    return DOM.value;
-                }
-            },
-            set: function (value) {
-                if (isCheckbox) {
-                    DOM.checked = value === "true" ? true : false;
-                }
-                else {
-                    DOM.value = value;
-                }
-                localforage.localforageExports.setItem(id, value);
-                return true;
-            },
-            configurable: true,
-        });
+        const DOM = document.getElementById(id); // 获取dom
+        DOM.type === "checkbox";
         // window.obj3 = watchOut(
         //   { name: { second: "99" } },
         //   {
@@ -219,7 +183,7 @@ async function initAllPropFromIDBAsync(dom) {
         }
         await _bind(id);
         return localforage.localforageExports.getItem(id).then(async (v) => {
-            let dom = document.getElementById(id);
+            const dom = document.getElementById(id);
             if (!index$2.isEmptyString(v)) {
                 dom.bindIDB = v;
             }
@@ -289,6 +253,16 @@ async function initAllPropFromIDBAsync(dom) {
     //   return true;
     // }
 }
+
+const getNewValueFromDomByID = async (id) => {
+    let obj = document.getElementById(id);
+    if (obj.type === "checkbox" || obj.type === "radio") {
+        return obj.checked;
+    }
+    else {
+        return obj.value;
+    }
+};
 async function propChange(id, changeFn) {
     let dom = document.getElementById(id);
     // await changeFn(dom.bindIDB);
@@ -318,63 +292,6 @@ async function checkedChange(obj, YesFn, NoFn) {
     window.winsay.cp.listened += 1;
     console.log(`${obj.id} listen successfully`);
 }
-// async function bindDomWithObject(options) {
-//   var dom = document.getElementById(options.id); // 获取dom
-//   var obj = options.obj; // 需要绑定的obj
-//   var prop = options.prop; // 需要绑定的obj 的属性
-//   var callback = options.callback; // 绑定成功后调用
-//   var type = options.type; // 绑定的事件类型
-//   var updated = options.updated; // 更新成功后调用
-//   Object.defineProperty(obj, prop, {
-//     get: () => {
-//       return dom.value;
-//     },
-//     set: async function (value) {
-//       dom.value = value;
-//       await localforage.setItem(prop, value);
-//     },
-//     configurable: true,
-//   });
-//   dom.addEventListener(type, () => {
-//     obj[prop] = obj[prop];
-//     if (typeof updated === "function") {
-//       updated(obj, prop, dom); // 传入对象， 修改的属性， 以及dom节点
-//     }
-//   });
-//   if (typeof callback === "function") {
-//     callback(options, obj, dom);
-//   }
-//   console.log(`${options.id} binded successfully`);
-// }
-// export async function propInit(id, type) {
-//   bindDomWithObject({
-//     id: id,
-//     obj: obj,
-//     prop: id,
-//     type: type,
-//     callback: async function (options, obj) {
-//       localforage.getItem(id).then((v) => {
-//         if (!isEmptyString(v)) {
-//           obj[options.prop] = v;
-//         }
-//         console.log(`${id} binded successfully with inited value ${v}`);
-//       });
-//     },
-//   });
-// }
-// export async function checkedInit(obj) {
-//   let v = await localforage.getItem(obj.id);
-//   if (!isEmptyString(v)) {
-//     if (v === "true") {
-//       obj.checked = true;
-//     } else {
-//       obj.checked = false;
-//     }
-//   } else {
-//     obj.checked = false;
-//   }
-//   console.log(`${obj.id} binded successfully with inited value ${v}`);
-// }
 const SofillDate = {
     isDuringDate: function (beginDateStr, endDateStr) {
         const curDate = new Date();
@@ -1280,6 +1197,8 @@ exports.Graph = Graph;
 exports.History = History;
 exports.Import = Import;
 exports.Inbox = Inbox;
+exports.LimitPromise = LimitPromise;
+exports.LocalStorage = LocalStorage;
 exports.Lute = Lute;
 exports.Notebook = Notebook;
 exports.Outline = Outline;
