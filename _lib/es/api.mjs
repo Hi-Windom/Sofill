@@ -1,14 +1,14 @@
 /*!
-* sofill v1.0.68
+* sofill v1.0.69
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
-export { C as CopyDOM, b as MoveChildren, M as MoveDOM, a as addinsertCreateElement, c as bodyAC, f as bodyCC, e as bodyRC, d as diguiTooONE, j as eRemoveProperty, h as eSetProperty, g as getActualWidthOfChars, i as insertCreateAfter } from '../../index-054b5342.js';
-import { l as localforageExports } from '../../localforage-bf1d6ff7.js';
-import { i as isEmptyString } from '../../index-00260f81.js';
-export { A as AddEvent, R as RangeLimitedInt, e as addURLParam, c as compareVersion, g as getThemeMode, b as isEmpty, a as isPromise, d as loadScript, l as loadStyle, m as myRemoveEvent, r as removejscssfile, s as sleep, u as updateStyle } from '../../index-00260f81.js';
-import { p as parseResponse, a as post2Siyuan } from '../../index-33487e8b.js';
-export { g as genUUID, i as isMobile, b as isWindow } from '../../index-33487e8b.js';
+export { C as CopyDOM, b as MoveChildren, M as MoveDOM, a as addinsertCreateElement, c as bodyAC, f as bodyCC, e as bodyRC, d as diguiTooONE, j as eRemoveProperty, h as eSetProperty, g as getActualWidthOfChars, i as insertCreateAfter } from '../../index-dcd8a5e7.js';
+import { l as localforageExports } from '../../localforage-64eaa5da.js';
+import { i as isEmptyString } from '../../index-98b5f1b2.js';
+export { A as AddEvent, R as RangeLimitedInt, e as addURLParam, c as compareVersion, g as getThemeMode, b as isEmpty, a as isPromise, d as loadScript, l as loadStyle, m as myRemoveEvent, r as removejscssfile, s as sleep, u as updateStyle } from '../../index-98b5f1b2.js';
+import { p as parseResponse, a as post2Siyuan } from '../../index-4c4850c3.js';
+export { g as genUUID, i as isMobile, b as isWindow } from '../../index-4c4850c3.js';
 
 // 绑定DOM元素中的全部控件
 const bindAllControls = (domElem) => {
@@ -29,7 +29,7 @@ const bindAllControls2 = (domElem) => {
             // 当控件发生变化时，使用localforage库存储新值到indexedDB
             localforageExports.setItem(key.toString(), value);
             // 将新值显示在页面上
-            const controlElem = target.querySelector(`[name="${String(key)}"]`);
+            const controlElem = target.querySelector(`[id="${String(key)}"]`);
             controlElem.textContent = value;
             return true;
         },
@@ -44,7 +44,7 @@ const bindAllControls3 = async (domElem) => {
             // 当控件发生变化时，使用localforage库存储新值到indexedDB
             localforageExports.setItem(key.toString(), value);
             // 将新值显示在页面上
-            const controlElem = target.querySelector(`[name="${String(key)}"]`);
+            const controlElem = target.querySelector(`[id="${String(key)}"]`);
             controlElem.textContent = value;
             return true;
         },
@@ -53,7 +53,7 @@ const bindAllControls3 = async (domElem) => {
     const keys = await localforageExports.keys();
     for (const key of keys) {
         await localforageExports.getItem(key);
-        const controlElem = domElem.querySelector(`[name="${key}"]`);
+        const controlElem = domElem.querySelector(`[id="${key}"]`);
         controlElem.textContent = String(key);
     }
     return proxyObj;
@@ -62,7 +62,7 @@ const bindAllControls3 = async (domElem) => {
 // 如果需要在控件变化时执行多个逻辑，可以将这些逻辑封装成函数，然后在set方法中调用这些函数。例如，以下代码在控件变化时，除了存储新值到indexedDB外，还将新值显示在页面上，并发送Ajax请求保存新值到服务器：
 // 将新值显示在页面上
 const updateControlValue = (key, value, target) => {
-    const controlElem = target.querySelector(`[name="${key}"]`);
+    const controlElem = target.querySelector(`[id="${key}"]`);
     controlElem.textContent = value;
 };
 // 发送Ajax请求保存新值到服务器

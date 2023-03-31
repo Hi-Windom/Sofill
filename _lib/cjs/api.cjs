@@ -1,14 +1,14 @@
 /*!
-* sofill v1.0.68
+* sofill v1.0.69
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
 'use strict';
 
-var index$1 = require('../../index-9a16286d.js');
-var localforage = require('../../localforage-4fbb9232.js');
-var index$2 = require('../../index-88b3df89.js');
-var index$3 = require('../../index-2b1c6220.js');
+var index$1 = require('../../index-c41885a4.js');
+var localforage = require('../../localforage-80915fa6.js');
+var index$2 = require('../../index-5b8f1b68.js');
+var index$3 = require('../../index-e544a0e8.js');
 
 // 绑定DOM元素中的全部控件
 const bindAllControls = (domElem) => {
@@ -29,7 +29,7 @@ const bindAllControls2 = (domElem) => {
             // 当控件发生变化时，使用localforage库存储新值到indexedDB
             localforage.localforageExports.setItem(key.toString(), value);
             // 将新值显示在页面上
-            const controlElem = target.querySelector(`[name="${String(key)}"]`);
+            const controlElem = target.querySelector(`[id="${String(key)}"]`);
             controlElem.textContent = value;
             return true;
         },
@@ -44,7 +44,7 @@ const bindAllControls3 = async (domElem) => {
             // 当控件发生变化时，使用localforage库存储新值到indexedDB
             localforage.localforageExports.setItem(key.toString(), value);
             // 将新值显示在页面上
-            const controlElem = target.querySelector(`[name="${String(key)}"]`);
+            const controlElem = target.querySelector(`[id="${String(key)}"]`);
             controlElem.textContent = value;
             return true;
         },
@@ -53,7 +53,7 @@ const bindAllControls3 = async (domElem) => {
     const keys = await localforage.localforageExports.keys();
     for (const key of keys) {
         await localforage.localforageExports.getItem(key);
-        const controlElem = domElem.querySelector(`[name="${key}"]`);
+        const controlElem = domElem.querySelector(`[id="${key}"]`);
         controlElem.textContent = String(key);
     }
     return proxyObj;
@@ -62,7 +62,7 @@ const bindAllControls3 = async (domElem) => {
 // 如果需要在控件变化时执行多个逻辑，可以将这些逻辑封装成函数，然后在set方法中调用这些函数。例如，以下代码在控件变化时，除了存储新值到indexedDB外，还将新值显示在页面上，并发送Ajax请求保存新值到服务器：
 // 将新值显示在页面上
 const updateControlValue = (key, value, target) => {
-    const controlElem = target.querySelector(`[name="${key}"]`);
+    const controlElem = target.querySelector(`[id="${key}"]`);
     controlElem.textContent = value;
 };
 // 发送Ajax请求保存新值到服务器
