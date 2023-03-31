@@ -1,125 +1,15 @@
 /*!
-* sofill v1.0.71
+* sofill v1.0.72
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
-export { C as CopyDOM, b as MoveChildren, M as MoveDOM, a as addinsertCreateElement, c as bodyAC, f as bodyCC, e as bodyRC, d as diguiTooONE, j as eRemoveProperty, h as eSetProperty, g as getActualWidthOfChars, i as insertCreateAfter } from '../../index-8a56c84a.js';
-import { l as localforageExports } from '../../localforage-2137594f.js';
-import { i as isEmptyString } from '../../index-1cd240a4.js';
-export { A as AddEvent, R as RangeLimitedInt, e as addURLParam, c as compareVersion, g as getThemeMode, b as isEmpty, a as isPromise, d as loadScript, l as loadStyle, m as myRemoveEvent, r as removejscssfile, s as sleep, u as updateStyle } from '../../index-1cd240a4.js';
-import { p as parseResponse, a as post2Siyuan } from '../../index-c5460c2d.js';
-export { g as genUUID, i as isMobile, b as isWindow } from '../../index-c5460c2d.js';
+export { C as CopyDOM, b as MoveChildren, M as MoveDOM, a as addinsertCreateElement, c as bodyAC, f as bodyCC, e as bodyRC, d as diguiTooONE, j as eRemoveProperty, h as eSetProperty, g as getActualWidthOfChars, i as insertCreateAfter } from '../../index-d1dd5393.js';
+import { l as localforageExports } from '../../localforage-08be1fb2.js';
+import { i as isEmptyString } from '../../index-6dbe33e3.js';
+export { A as AddEvent, R as RangeLimitedInt, e as addURLParam, c as compareVersion, g as getThemeMode, b as isEmpty, a as isPromise, d as loadScript, l as loadStyle, m as myRemoveEvent, r as removejscssfile, s as sleep, u as updateStyle } from '../../index-6dbe33e3.js';
+import { p as parseResponse, a as post2Siyuan } from '../../index-94cf3df4.js';
+export { g as genUUID, i as isMobile, b as isWindow } from '../../index-94cf3df4.js';
 
-// 绑定DOM元素中的全部控件
-const bindAllControls = (domElem) => {
-    return new Proxy(domElem, {
-        set(target, key, value) {
-            // 当控件发生变化时，使用localforage库存储新值到indexedDB
-            localforageExports.setItem(key.toString(), value);
-            return true;
-        },
-    });
-};
-// 在上述代码中，使用了localforage库来操作indexedDB，使用Proxy对象来代理DOM元素中的全部控件，在set方法中实现了当控件发生变化时存储新值到indexedDB的逻辑。最后，示例使用了bindAllControls函数来绑定DOM元素中的全部控件。
-// 如果需要在控件变化时执行其他的逻辑，可以在set方法中添加相应的代码。例如，以下代码在控件变化时，除了存储新值到indexedDB外，还将新值显示在页面上：
-// 绑定DOM元素中的全部控件
-const bindAllControls2 = (domElem) => {
-    return new Proxy(domElem, {
-        set(target, key, value) {
-            // 当控件发生变化时，使用localforage库存储新值到indexedDB
-            localforageExports.setItem(key.toString(), value);
-            // 将新值显示在页面上
-            const controlElem = target.querySelector(`[id="${String(key)}"]`);
-            controlElem.textContent = value;
-            return true;
-        },
-    });
-};
-// 在上述代码中，添加了将新值显示在页面上的逻辑：在set方法中，通过querySelector方法找到对应的控件元素，将其textContent修改为新值。需要注意的是，这里假设控件的name属性和key值是一致的，如果不是，需要做相应的调整。
-// 如果需要在页面加载时，将indexedDB中保存的值恢复到页面上，可以使用以下代码：
-// 绑定DOM元素中的全部控件
-const bindAllControls3 = async (domElem) => {
-    // 页面加载时，将indexedDB中保存的值恢复到页面上
-    const keys = await localforageExports.keys();
-    for (const key of keys) {
-        await localforageExports.getItem(key);
-        const controlElem = domElem.querySelector(`[id="${key}"]`);
-        controlElem.textContent = String(key);
-    }
-    const proxyObj = new Proxy(domElem, {
-        set(target, key, value) {
-            // 当控件发生变化时，使用localforage库存储新值到indexedDB
-            localforageExports.setItem(key.toString(), value);
-            // 将新值显示在页面上
-            const controlElem = target.querySelector(`[id="${String(key)}"]`);
-            controlElem.textContent = value;
-            return true;
-        },
-    });
-    return proxyObj;
-};
-// 在上述代码中，添加了在页面加载时将indexedDB中保存的值恢复到页面上的逻辑：在bindAllControls方法中，通过await和localforage的API获取indexedDB中保存的所有key，然后根据每个key的值来更新页面中对应的控件内容。最后，返回Proxy对象以便后续使用。需要注意的是，这里使用了async/await语法，需要确保代码运行在支持该语法的环境中。
-// 如果需要在控件变化时执行多个逻辑，可以将这些逻辑封装成函数，然后在set方法中调用这些函数。例如，以下代码在控件变化时，除了存储新值到indexedDB外，还将新值显示在页面上，并发送Ajax请求保存新值到服务器：
-const updateControlValue = (key, value, target) => {
-    const controlElem = target.querySelector(`[id="${key}"]`);
-    controlElem.textContent = value;
-};
-// 如果需要支持控件的多种事件（如change、input等），可以使用以下代码：
-// 绑定DOM元素中的全部控件
-const bindAllControls5 = (domElem, events) => {
-    const proxyObj = new Proxy(domElem, {
-        set(target, key, value) {
-            // 当控件发生变化时，使用localforage库存储新值到indexedDB
-            localforageExports.setItem(key.toString(), value).then(() => {
-                updateControlValue(key.toString(), value, target);
-            });
-            return true;
-        },
-    });
-    // 绑定事件
-    for (const event of events) {
-        domElem.addEventListener(event, (e) => {
-            const target = e.target;
-            const key = target.getAttribute("name");
-            const value = target.getAttribute("value");
-            if (key && value) {
-                proxyObj[key] = value;
-            }
-        });
-    }
-    return proxyObj;
-};
-// 在上述代码中，添加了一个events参数，用于指定要绑定的事件类型。在bindAllControls方法中，遍历events数组，为DOM元素绑定指定的事件类型。在事件处理程序中，获取事件目标元素的name和value属性，然后使用Proxy对象更新数据。需要注意的是，这里假设控件的value属性存储的是字符串类型的值，如果需要支持其他数据类型，需要根据实际情况做出相应的调整。
-// 如果需要支持控件的多种事件以及自定义事件处理逻辑，可以使用以下代码：
-// 绑定DOM元素中的全部控件
-const bindAllControls6 = (domElem, handlers) => {
-    const proxyObj = new Proxy(domElem, {
-        set(target, key, value) {
-            // 当控件发生变化时，使用localforage库存储新值到indexedDB
-            localforageExports.setItem(key.toString(), value).then(() => {
-                // 将新值显示在页面上
-                updateControlValue(key.toString(), value, target);
-            });
-            return true;
-        },
-    });
-    // 绑定事件
-    for (const event in handlers) {
-        if (handlers.hasOwnProperty(event)) {
-            domElem.addEventListener(event, (e) => {
-                const target = e.target;
-                const key = target.getAttribute("name");
-                const value = target.getAttribute("value");
-                if (key && value) {
-                    handlers[event](key, value);
-                    proxyObj[key] = value;
-                }
-            });
-        }
-    }
-    return proxyObj;
-};
-// 在上述代码中，添加了一个handlers参数，用于指定要绑定的事件类型以及对应的事件处理程序。在bindAllControls方法中，遍历handlers对象，为DOM元素绑定指定的事件类型，并在事件处理程序中调用对应的事件处理程序。需要注意的是，这里假设控件的value属性存储的是字符串类型的值，如果需要支持其他数据类型，需要根据实际情况做出相应的调整。
 class LimitPromise {
     _max;
     _count;
@@ -244,36 +134,6 @@ async function initAllPropFromIDBAsync(dom) {
     const _bind = async (id) => {
         const DOM = document.getElementById(id); // 获取dom
         DOM.type === "checkbox";
-        new Proxy(DOM, {
-            get(target, prop, receiver) {
-                if (prop === "bindIDB") {
-                    if (target.type === "checkbox") {
-                        return target.checked;
-                    }
-                    else {
-                        return target.value;
-                    }
-                }
-                else {
-                    return Reflect.get(target, prop, receiver);
-                }
-            },
-            set(target, prop, value, receiver) {
-                if (prop === "bindIDB") {
-                    if (target.type === "checkbox") {
-                        target.checked = value === "true" ? true : false;
-                    }
-                    else {
-                        target.value = value;
-                    }
-                    localforageExports.setItem(target.id, value);
-                    return true;
-                }
-                else {
-                    return Reflect.set(target, prop, value, receiver);
-                }
-            },
-        });
         // Object.defineProperty(DOM, prop, {
         //   get: () => {
         //     if (isCheckbox) {
@@ -463,7 +323,7 @@ async function initAllPropFromIDBAsync(dom) {
 }
 
 const getNewValueFromDomByID = async (id) => {
-    let obj = document.getElementById(id);
+    const obj = document.getElementById(id);
     if (obj.type === "checkbox" || obj.type === "radio") {
         return obj.checked;
     }
@@ -472,17 +332,18 @@ const getNewValueFromDomByID = async (id) => {
     }
 };
 async function propChange(id, changeFn) {
-    let dom = document.getElementById(id);
+    const dom = document.getElementById(id);
     // await changeFn(dom.bindIDB);
     dom.addEventListener("change", async (e) => {
         if (typeof changeFn === "function") {
             // tips: e.target == dom
-            await changeFn(e.target.bindIDB);
+            await changeFn(e.target.value);
         }
     });
     window.winsay.cp.listened += 1;
     console.log(`${id} listen successfully`);
 }
+// 后续统一为传入 id
 async function checkedChange(obj, YesFn, NoFn) {
     // if (obj.checked && obj.checked === true) {
     //   YesFn();
@@ -1358,4 +1219,4 @@ function insertCreateBefore(targetElement, addElementTxt, setId = null) {
     return element;
 }
 
-export { AI, Account, Asset, Attr, Av, Bazaar, Block, Bookmark, Export, index as File, Filetree, Format, Graph, History, Import, Inbox, LimitPromise, LocalStorage, Lute, Notebook, Outline, Query, Ref, Repo, Riff, Search, Setting, Snippet, SofillDate, Storage, Sync, System, Tag, Template, bindAllControls, bindAllControls2, bindAllControls3, bindAllControls5, bindAllControls6, checkedChange, getBazaarTheme, getFocusedBlock, getFocusedBlockID, getFocusedDoc, getFocusedDocBackground, getFocusedDocID, getFocusedID, getInstalledTheme, getNewValueFromDomByID, getTooltipDirection, getUrlParam, getUrlParams, initAllPropFromIDBAsync, insertCreateBefore, isEmptyString, parseResponse, post2Siyuan, propChange, pushMsg, querySQL, setTooltipDirection, 通知 };
+export { AI, Account, Asset, Attr, Av, Bazaar, Block, Bookmark, Export, index as File, Filetree, Format, Graph, History, Import, Inbox, LimitPromise, LocalStorage, Lute, Notebook, Outline, Query, Ref, Repo, Riff, Search, Setting, Snippet, SofillDate, Storage, Sync, System, Tag, Template, checkedChange, getBazaarTheme, getFocusedBlock, getFocusedBlockID, getFocusedDoc, getFocusedDocBackground, getFocusedDocID, getFocusedID, getInstalledTheme, getNewValueFromDomByID, getTooltipDirection, getUrlParam, getUrlParams, initAllPropFromIDBAsync, insertCreateBefore, isEmptyString, parseResponse, post2Siyuan, propChange, pushMsg, querySQL, setTooltipDirection, 通知 };
