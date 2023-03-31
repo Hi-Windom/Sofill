@@ -1,3 +1,11 @@
+export declare const bindAllControls: (domElem: HTMLElement) => HTMLElement;
+export declare const bindAllControls2: (domElem: HTMLElement) => HTMLElement;
+export declare const bindAllControls3: (domElem: HTMLElement) => Promise<HTMLElement>;
+export declare const bindAllControls4: (domElem: HTMLElement) => HTMLElement;
+export declare const bindAllControls5: (domElem: HTMLElement, events: string[]) => HTMLElement;
+export declare const bindAllControls6: (domElem: HTMLElement, handlers: {
+    [event: string]: (key: string, value: any) => void;
+}) => HTMLElement;
 export declare class LimitPromise {
     private _max;
     private _count;
