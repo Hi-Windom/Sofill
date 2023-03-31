@@ -1,14 +1,14 @@
 /*!
-* sofill v1.0.70
+* sofill v1.0.71
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
-export { C as CopyDOM, b as MoveChildren, M as MoveDOM, a as addinsertCreateElement, c as bodyAC, f as bodyCC, e as bodyRC, d as diguiTooONE, j as eRemoveProperty, h as eSetProperty, g as getActualWidthOfChars, i as insertCreateAfter } from '../../index-e8486048.js';
-import { l as localforageExports } from '../../localforage-ed14747c.js';
-import { i as isEmptyString } from '../../index-5ca09e05.js';
-export { A as AddEvent, R as RangeLimitedInt, e as addURLParam, c as compareVersion, g as getThemeMode, b as isEmpty, a as isPromise, d as loadScript, l as loadStyle, m as myRemoveEvent, r as removejscssfile, s as sleep, u as updateStyle } from '../../index-5ca09e05.js';
-import { p as parseResponse, a as post2Siyuan } from '../../index-91c9d193.js';
-export { g as genUUID, i as isMobile, b as isWindow } from '../../index-91c9d193.js';
+export { C as CopyDOM, b as MoveChildren, M as MoveDOM, a as addinsertCreateElement, c as bodyAC, f as bodyCC, e as bodyRC, d as diguiTooONE, j as eRemoveProperty, h as eSetProperty, g as getActualWidthOfChars, i as insertCreateAfter } from '../../index-8a56c84a.js';
+import { l as localforageExports } from '../../localforage-2137594f.js';
+import { i as isEmptyString } from '../../index-1cd240a4.js';
+export { A as AddEvent, R as RangeLimitedInt, e as addURLParam, c as compareVersion, g as getThemeMode, b as isEmpty, a as isPromise, d as loadScript, l as loadStyle, m as myRemoveEvent, r as removejscssfile, s as sleep, u as updateStyle } from '../../index-1cd240a4.js';
+import { p as parseResponse, a as post2Siyuan } from '../../index-c5460c2d.js';
+export { g as genUUID, i as isMobile, b as isWindow } from '../../index-c5460c2d.js';
 
 // 绑定DOM元素中的全部控件
 const bindAllControls = (domElem) => {
@@ -60,33 +60,10 @@ const bindAllControls3 = async (domElem) => {
 };
 // 在上述代码中，添加了在页面加载时将indexedDB中保存的值恢复到页面上的逻辑：在bindAllControls方法中，通过await和localforage的API获取indexedDB中保存的所有key，然后根据每个key的值来更新页面中对应的控件内容。最后，返回Proxy对象以便后续使用。需要注意的是，这里使用了async/await语法，需要确保代码运行在支持该语法的环境中。
 // 如果需要在控件变化时执行多个逻辑，可以将这些逻辑封装成函数，然后在set方法中调用这些函数。例如，以下代码在控件变化时，除了存储新值到indexedDB外，还将新值显示在页面上，并发送Ajax请求保存新值到服务器：
-// 将新值显示在页面上
 const updateControlValue = (key, value, target) => {
     const controlElem = target.querySelector(`[id="${key}"]`);
     controlElem.textContent = value;
 };
-// 发送Ajax请求保存新值到服务器
-// const saveControlValue = (key: string, value: any) => {
-//   const xhr = new XMLHttpRequest();
-//   xhr.open("POST", "/save", true);
-//   xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-//   xhr.send(JSON.stringify({ key: key, value: value }));
-// };
-// 绑定DOM元素中的全部控件
-const bindAllControls4 = (domElem) => {
-    return new Proxy(domElem, {
-        set(target, key, value) {
-            // 当控件发生变化时，使用localforage库存储新值到indexedDB
-            localforageExports.setItem(key.toString(), value);
-            // 将新值显示在页面上
-            updateControlValue(key.toString(), value, target);
-            // 发送Ajax请求保存新值到服务器
-            // saveControlValue(key.toString(), value);
-            return true;
-        },
-    });
-};
-//在上述代码中，将将新值显示在页面上和发送Ajax请求保存新值到服务器的逻辑封装成了两个函数updateControlValue和saveControlValue，并在set方法中调用这些函数。这样做可以使代码更加模块化，易于维护和扩展。
 // 如果需要支持控件的多种事件（如change、input等），可以使用以下代码：
 // 绑定DOM元素中的全部控件
 const bindAllControls5 = (domElem, events) => {
@@ -94,7 +71,6 @@ const bindAllControls5 = (domElem, events) => {
         set(target, key, value) {
             // 当控件发生变化时，使用localforage库存储新值到indexedDB
             localforageExports.setItem(key.toString(), value).then(() => {
-                // 将新值显示在页面上
                 updateControlValue(key.toString(), value, target);
             });
             return true;
@@ -268,6 +244,104 @@ async function initAllPropFromIDBAsync(dom) {
     const _bind = async (id) => {
         const DOM = document.getElementById(id); // 获取dom
         DOM.type === "checkbox";
+        new Proxy(DOM, {
+            get(target, prop, receiver) {
+                if (prop === "bindIDB") {
+                    if (target.type === "checkbox") {
+                        return target.checked;
+                    }
+                    else {
+                        return target.value;
+                    }
+                }
+                else {
+                    return Reflect.get(target, prop, receiver);
+                }
+            },
+            set(target, prop, value, receiver) {
+                if (prop === "bindIDB") {
+                    if (target.type === "checkbox") {
+                        target.checked = value === "true" ? true : false;
+                    }
+                    else {
+                        target.value = value;
+                    }
+                    localforageExports.setItem(target.id, value);
+                    return true;
+                }
+                else {
+                    return Reflect.set(target, prop, value, receiver);
+                }
+            },
+        });
+        // Object.defineProperty(DOM, prop, {
+        //   get: () => {
+        //     if (isCheckbox) {
+        //       return DOM.checked;
+        //     } else {
+        //       return DOM.value;
+        //     }
+        //   },
+        //   set: function (value) {
+        //     if (isCheckbox) {
+        //       DOM.checked = value === "true" ? true : false;
+        //     } else {
+        //       DOM.value = value;
+        //     }
+        //     idb.setItem(id, value);
+        //     return true;
+        //   },
+        //   configurable: true,
+        // });
+        // function watchOut(obj, opts) {
+        //   const handler = {
+        //     get(target, property) {
+        //       opts.beforeRead(target, property);
+        //       const result = Reflect.get(target, property);
+        //       opts.read(target, property);
+        //       return result;
+        //     },
+        //     set(target, property, value) {
+        //       opts.beforeUpdated(value, property, value);
+        //       if (target[property] !== value)
+        //         opts.beforeChanged(value, property, value);
+        //       const result = Reflect.set(target, property, value);
+        //       opts.updated(value, property, value);
+        //       opts.changed(value, property, value);
+        //       if (typeof value === "object") {
+        //         target[property] = toDeepProxy(target[property], handler); //当value为一个对象时，对此对象也进行深度代理
+        //       }
+        //       return result;
+        //     },
+        //   };
+        //   return toDeepProxy(obj, handler);
+        //   function toDeepProxy(object, handler) {
+        //     if (!isPureObject(object)) addSubProxy(object, handler);
+        //     return new Proxy(object, handler);
+        //     function addSubProxy(object, handler) {
+        //       for (const prop in object) {
+        //         if (typeof object[prop] === "object") {
+        //           if (!isPureObject(object[prop]))
+        //             addSubProxy(object[prop], handler);
+        //           object[prop] = new Proxy(object[prop], handler);
+        //         }
+        //       }
+        //       object = new Proxy(object, handler);
+        //     }
+        //     function isPureObject(object) {
+        //       if (typeof object !== "object") {
+        //         return false;
+        //       } else {
+        //         for (const prop in object) {
+        //           if (typeof object[prop] === "object") {
+        //             return false;
+        //           }
+        //         }
+        //       }
+        //       return true;
+        //     }
+        //   }
+        // }
         // window.obj3 = watchOut(
         //   { name: { second: "99" } },
         //   {
@@ -1284,4 +1358,4 @@ function insertCreateBefore(targetElement, addElementTxt, setId = null) {
     return element;
 }
 
-export { AI, Account, Asset, Attr, Av, Bazaar, Block, Bookmark, Export, index as File, Filetree, Format, Graph, History, Import, Inbox, LimitPromise, LocalStorage, Lute, Notebook, Outline, Query, Ref, Repo, Riff, Search, Setting, Snippet, SofillDate, Storage, Sync, System, Tag, Template, bindAllControls, bindAllControls2, bindAllControls3, bindAllControls4, bindAllControls5, bindAllControls6, checkedChange, getBazaarTheme, getFocusedBlock, getFocusedBlockID, getFocusedDoc, getFocusedDocBackground, getFocusedDocID, getFocusedID, getInstalledTheme, getNewValueFromDomByID, getTooltipDirection, getUrlParam, getUrlParams, initAllPropFromIDBAsync, insertCreateBefore, isEmptyString, parseResponse, post2Siyuan, propChange, pushMsg, querySQL, setTooltipDirection, 通知 };
+export { AI, Account, Asset, Attr, Av, Bazaar, Block, Bookmark, Export, index as File, Filetree, Format, Graph, History, Import, Inbox, LimitPromise, LocalStorage, Lute, Notebook, Outline, Query, Ref, Repo, Riff, Search, Setting, Snippet, SofillDate, Storage, Sync, System, Tag, Template, bindAllControls, bindAllControls2, bindAllControls3, bindAllControls5, bindAllControls6, checkedChange, getBazaarTheme, getFocusedBlock, getFocusedBlockID, getFocusedDoc, getFocusedDocBackground, getFocusedDocID, getFocusedID, getInstalledTheme, getNewValueFromDomByID, getTooltipDirection, getUrlParam, getUrlParams, initAllPropFromIDBAsync, insertCreateBefore, isEmptyString, parseResponse, post2Siyuan, propChange, pushMsg, querySQL, setTooltipDirection, 通知 };
