@@ -1,14 +1,14 @@
 /*!
-* sofill v1.0.69
+* sofill v1.0.70
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
-export { C as CopyDOM, b as MoveChildren, M as MoveDOM, a as addinsertCreateElement, c as bodyAC, f as bodyCC, e as bodyRC, d as diguiTooONE, j as eRemoveProperty, h as eSetProperty, g as getActualWidthOfChars, i as insertCreateAfter } from '../../index-dcd8a5e7.js';
-import { l as localforageExports } from '../../localforage-64eaa5da.js';
-import { i as isEmptyString } from '../../index-98b5f1b2.js';
-export { A as AddEvent, R as RangeLimitedInt, e as addURLParam, c as compareVersion, g as getThemeMode, b as isEmpty, a as isPromise, d as loadScript, l as loadStyle, m as myRemoveEvent, r as removejscssfile, s as sleep, u as updateStyle } from '../../index-98b5f1b2.js';
-import { p as parseResponse, a as post2Siyuan } from '../../index-4c4850c3.js';
-export { g as genUUID, i as isMobile, b as isWindow } from '../../index-4c4850c3.js';
+export { C as CopyDOM, b as MoveChildren, M as MoveDOM, a as addinsertCreateElement, c as bodyAC, f as bodyCC, e as bodyRC, d as diguiTooONE, j as eRemoveProperty, h as eSetProperty, g as getActualWidthOfChars, i as insertCreateAfter } from '../../index-e8486048.js';
+import { l as localforageExports } from '../../localforage-ed14747c.js';
+import { i as isEmptyString } from '../../index-5ca09e05.js';
+export { A as AddEvent, R as RangeLimitedInt, e as addURLParam, c as compareVersion, g as getThemeMode, b as isEmpty, a as isPromise, d as loadScript, l as loadStyle, m as myRemoveEvent, r as removejscssfile, s as sleep, u as updateStyle } from '../../index-5ca09e05.js';
+import { p as parseResponse, a as post2Siyuan } from '../../index-91c9d193.js';
+export { g as genUUID, i as isMobile, b as isWindow } from '../../index-91c9d193.js';
 
 // 绑定DOM元素中的全部控件
 const bindAllControls = (domElem) => {
@@ -39,6 +39,13 @@ const bindAllControls2 = (domElem) => {
 // 如果需要在页面加载时，将indexedDB中保存的值恢复到页面上，可以使用以下代码：
 // 绑定DOM元素中的全部控件
 const bindAllControls3 = async (domElem) => {
+    // 页面加载时，将indexedDB中保存的值恢复到页面上
+    const keys = await localforageExports.keys();
+    for (const key of keys) {
+        await localforageExports.getItem(key);
+        const controlElem = domElem.querySelector(`[id="${key}"]`);
+        controlElem.textContent = String(key);
+    }
     const proxyObj = new Proxy(domElem, {
         set(target, key, value) {
             // 当控件发生变化时，使用localforage库存储新值到indexedDB
@@ -49,13 +56,6 @@ const bindAllControls3 = async (domElem) => {
             return true;
         },
     });
-    // 页面加载时，将indexedDB中保存的值恢复到页面上
-    const keys = await localforageExports.keys();
-    for (const key of keys) {
-        await localforageExports.getItem(key);
-        const controlElem = domElem.querySelector(`[id="${key}"]`);
-        controlElem.textContent = String(key);
-    }
     return proxyObj;
 };
 // 在上述代码中，添加了在页面加载时将indexedDB中保存的值恢复到页面上的逻辑：在bindAllControls方法中，通过await和localforage的API获取indexedDB中保存的所有key，然后根据每个key的值来更新页面中对应的控件内容。最后，返回Proxy对象以便后续使用。需要注意的是，这里使用了async/await语法，需要确保代码运行在支持该语法的环境中。

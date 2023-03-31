@@ -1,14 +1,14 @@
 /*!
-* sofill v1.0.69
+* sofill v1.0.70
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
 'use strict';
 
-var index$1 = require('../../index-c41885a4.js');
-var localforage = require('../../localforage-80915fa6.js');
-var index$2 = require('../../index-5b8f1b68.js');
-var index$3 = require('../../index-e544a0e8.js');
+var index$1 = require('../../index-958a9812.js');
+var localforage = require('../../localforage-f7bd9d89.js');
+var index$2 = require('../../index-c6cf4b4c.js');
+var index$3 = require('../../index-ffcfd87e.js');
 
 // 绑定DOM元素中的全部控件
 const bindAllControls = (domElem) => {
@@ -39,6 +39,13 @@ const bindAllControls2 = (domElem) => {
 // 如果需要在页面加载时，将indexedDB中保存的值恢复到页面上，可以使用以下代码：
 // 绑定DOM元素中的全部控件
 const bindAllControls3 = async (domElem) => {
+    // 页面加载时，将indexedDB中保存的值恢复到页面上
+    const keys = await localforage.localforageExports.keys();
+    for (const key of keys) {
+        await localforage.localforageExports.getItem(key);
+        const controlElem = domElem.querySelector(`[id="${key}"]`);
+        controlElem.textContent = String(key);
+    }
     const proxyObj = new Proxy(domElem, {
         set(target, key, value) {
             // 当控件发生变化时，使用localforage库存储新值到indexedDB
@@ -49,13 +56,6 @@ const bindAllControls3 = async (domElem) => {
             return true;
         },
     });
-    // 页面加载时，将indexedDB中保存的值恢复到页面上
-    const keys = await localforage.localforageExports.keys();
-    for (const key of keys) {
-        await localforage.localforageExports.getItem(key);
-        const controlElem = domElem.querySelector(`[id="${key}"]`);
-        controlElem.textContent = String(key);
-    }
     return proxyObj;
 };
 // 在上述代码中，添加了在页面加载时将indexedDB中保存的值恢复到页面上的逻辑：在bindAllControls方法中，通过await和localforage的API获取indexedDB中保存的所有key，然后根据每个key的值来更新页面中对应的控件内容。最后，返回Proxy对象以便后续使用。需要注意的是，这里使用了async/await语法，需要确保代码运行在支持该语法的环境中。
