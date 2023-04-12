@@ -1,6 +1,6 @@
 /*!
-* sofill v1.0.72
+* sofill v1.0.73
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
-export { s as sleep } from '../../sleep-b13a20d4.js';
+export { s as sleep } from '../../sleep-66aa6301.js';

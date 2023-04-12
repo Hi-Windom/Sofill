@@ -1,5 +1,5 @@
 /*!
-* sofill v1.0.72
+* sofill v1.0.73
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
@@ -22,5 +22,8 @@ function isPhoneAppMode() {
 function isPadAppMode() {
     return document.body.classList.contains("body--desktop") && isAppMode();
 }
+function isSillotPhoneAppMode() {
+    return document.body.classList.contains("branch--Sillot") && isPhoneAppMode();
+}
 
-export { isAppMode, isDesktopAppMode, isPadAppMode, isPhoneAppMode };
+export { isAppMode, isDesktopAppMode, isPadAppMode, isPhoneAppMode, isSillotPhoneAppMode };
