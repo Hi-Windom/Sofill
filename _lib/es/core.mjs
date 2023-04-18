@@ -1,11 +1,11 @@
 /*!
-* sofill v1.0.74
+* sofill v1.0.75
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
-import { f as bodyCC, e as bodyRC, c as bodyAC } from '../../index-04e697e4.js';
-import '../../localforage-64f0be48.js';
-import '../../index-27503b85.js';
+import { f as bodyCC, e as bodyRC, c as bodyAC } from '../../index-c72e64d4.js';
+import '../../localforage-4711d3aa.js';
+import '../../index-0894669b.js';
 
 function addUC() {
     if (window.siyuan.user == null) {

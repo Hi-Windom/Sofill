@@ -1,11 +1,12 @@
 /*!
-* sofill v1.0.74
+* sofill v1.0.75
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
 import { basename } from 'path';
-import { s as sleep } from '../../sleep-366c0500.js';
-import { l as localforageExports } from '../../localforage-64f0be48.js';
+import { s as sleep } from '../../sleep-c8f51b09.js';
+import { i as isSillot } from '../../index-29924cef.js';
+import { l as localforageExports } from '../../localforage-4711d3aa.js';
 
 function importFromJson(idbDatabase, importObject) {
     return new Promise((resolve, reject) => {
@@ -92,8 +93,8 @@ async function exportToJson(idbDatabase) {
 }
 
 async function importIDB(result) {
-    if (window.Sillot.status.IDBloaded &&
-        !window.location.search.startsWith("?b=Sillot")) {
+    if (window.Sillot?.status.IDBloaded ||
+        !isSillot()) {
         return;
     }
     const importObject = result.data;
@@ -149,7 +150,7 @@ async function importIDB(result) {
     });
 }
 async function exportIDB() {
-    if (window.location.search.startsWith("?b=Sillot")) {
+    if (!isSillot()) {
         return;
     }
     const dbList = (await window.indexedDB.databases()).map((db) => db.name);
