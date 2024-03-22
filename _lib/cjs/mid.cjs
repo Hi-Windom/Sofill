@@ -1,5 +1,5 @@
 /*!
-* sofill v1.1.3
+* sofill v1.1.4
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
@@ -138,6 +138,7 @@ function addDays(date, amount) {
  * }
  * ```
  */
+
 
 /**
  * @constant
@@ -2795,7 +2796,6 @@ const numericPatterns = {
   // 0 to 999, -0 to -999
   fourDigitsSigned: /^-?\d{1,4}/ // 0 to 9999, -0 to -9999
 };
-
 const timezonePatterns = {
   basicOptionalMinutes: /^([+-])(\d{2})(\d{2})?|Z/,
   basic: /^([+-])(\d{2})(\d{2})|Z/,

@@ -1,5 +1,5 @@
 /*!
-* sofill v1.1.3
+* sofill v1.1.4
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
@@ -115,4 +115,4 @@ const eRemoveProperty = (p) => {
     document.documentElement.style.removeProperty(p);
 };
 
-export { CopyDOM as C, MoveDOM as M, addinsertCreateElement as a, MoveChildren as b, bodyAC as c, diguiTooONE as d, bodyRC as e, bodyCC as f, getActualWidthOfChars as g, eSetProperty as h, insertCreateAfter as i, eRemoveProperty as j };
+export { CopyDOM as C, MoveDOM as M, bodyRC as a, bodyCC as b, bodyAC as c, addinsertCreateElement as d, diguiTooONE as e, MoveChildren as f, getActualWidthOfChars as g, eSetProperty as h, insertCreateAfter as i, eRemoveProperty as j };

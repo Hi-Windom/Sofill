@@ -1,14 +1,14 @@
 /*!
-* sofill v1.1.3
+* sofill v1.1.4
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
 'use strict';
 
-var index = require('../../index-c1b14106.js');
-require('../../localforage-2fa1b85d.js');
-require('../../index-f6440c3a.js');
-var index$1 = require('../../index-87eeec56.js');
+var index = require('../../index-B6XvZFcB.js');
+require('../../localforage-Ca4-CWkJ.js');
+require('../../index-CR05U1JW.js');
+var env = require('./env.cjs');
 
 function addUC() {
     if (window.siyuan.user == null) {
@@ -106,7 +106,7 @@ function sout() {
     };
 }
 function bad(m, head) {
-    if (index$1.isSillotPhoneAppMode()) {
+    if (env.isSillotPhoneAppMode()) {
         console.log(m);
         return;
     }
@@ -119,7 +119,7 @@ function bad(m, head) {
     }
 }
 function error(m, head) {
-    if (index$1.isSillotPhoneAppMode()) {
+    if (env.isSillotPhoneAppMode()) {
         console.error(m);
         return;
     }
@@ -132,7 +132,7 @@ function error(m, head) {
     }
 }
 function good(m, head) {
-    if (index$1.isSillotPhoneAppMode()) {
+    if (env.isSillotPhoneAppMode()) {
         console.log(m);
         return;
     }
@@ -145,7 +145,7 @@ function good(m, head) {
     }
 }
 function info(m, head) {
-    if (index$1.isSillotPhoneAppMode()) {
+    if (env.isSillotPhoneAppMode()) {
         console.log(m);
         return;
     }
@@ -162,7 +162,7 @@ function info(m, head) {
 function log(m) {
     if (!window.sout.debug)
         return;
-    if (index$1.isSillotPhoneAppMode()) {
+    if (env.isSillotPhoneAppMode()) {
         console.log(m);
         return;
     }
@@ -170,7 +170,7 @@ function log(m) {
     console.log("%c" + t, "color:#858585;font-size: 12px", m);
 }
 function ops(m, head) {
-    if (index$1.isSillotPhoneAppMode()) {
+    if (env.isSillotPhoneAppMode()) {
         console.warn(m);
         return;
     }
@@ -183,7 +183,7 @@ function ops(m, head) {
     }
 }
 function print(m, head) {
-    if (index$1.isSillotPhoneAppMode()) {
+    if (env.isSillotPhoneAppMode()) {
         console.log(m);
         return;
     }
@@ -196,7 +196,7 @@ function print(m, head) {
     }
 }
 function slog(m) {
-    if (index$1.isSillotPhoneAppMode()) {
+    if (env.isSillotPhoneAppMode()) {
         console.log(m);
         return;
     }
@@ -208,7 +208,7 @@ function slog(m) {
 function success(m, head) {
     if (!window.sout.debug)
         return;
-    if (index$1.isSillotPhoneAppMode()) {
+    if (env.isSillotPhoneAppMode()) {
         console.log(m);
         return;
     }
@@ -232,7 +232,7 @@ function table(m) {
 function tracker(m, ...additionalMessages) {
     if (!window.sout.debug)
         return;
-    if (index$1.isSillotPhoneAppMode()) {
+    if (env.isSillotPhoneAppMode()) {
         console.log(m);
         return;
     }
@@ -243,7 +243,7 @@ function tracker(m, ...additionalMessages) {
     });
 }
 function unsure(m, head) {
-    if (index$1.isSillotPhoneAppMode()) {
+    if (env.isSillotPhoneAppMode()) {
         console.warn(m);
         return;
     }
@@ -256,7 +256,7 @@ function unsure(m, head) {
     }
 }
 function warn(m, head) {
-    if (index$1.isSillotPhoneAppMode()) {
+    if (env.isSillotPhoneAppMode()) {
         console.warn(m);
         return;
     }
@@ -269,7 +269,7 @@ function warn(m, head) {
     }
 }
 function wink(m, head) {
-    if (index$1.isSillotPhoneAppMode()) {
+    if (env.isSillotPhoneAppMode()) {
         console.log(m);
         return;
     }

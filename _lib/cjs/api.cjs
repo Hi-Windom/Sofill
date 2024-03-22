@@ -1,14 +1,14 @@
 /*!
-* sofill v1.1.3
+* sofill v1.1.4
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
 'use strict';
 
-var index$1 = require('../../index-c1b14106.js');
-var localforage = require('../../localforage-2fa1b85d.js');
-var index$2 = require('../../index-f6440c3a.js');
-var index$3 = require('../../index-0894dc35.js');
+var index$1 = require('../../index-B6XvZFcB.js');
+var localforage = require('../../localforage-Ca4-CWkJ.js');
+var index$2 = require('../../index-CR05U1JW.js');
+var index$3 = require('../../index-DcwnOBEy.js');
 
 class LimitPromise {
     _max;
@@ -1303,4 +1303,4 @@ exports.propChange = propChange;
 exports.pushMsg = pushMsg;
 exports.querySQL = querySQL;
 exports.setTooltipDirection = setTooltipDirection;
-exports["通知"] = 通知;
+exports.通知 = 通知;

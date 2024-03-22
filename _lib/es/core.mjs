@@ -1,12 +1,12 @@
 /*!
-* sofill v1.1.3
+* sofill v1.1.4
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
-import { f as bodyCC, e as bodyRC, c as bodyAC } from '../../index-c49e283b.js';
-import '../../localforage-f4a2b9d6.js';
-import '../../index-fbadf60b.js';
-import { i as isSillotPhoneAppMode } from '../../index-234d3969.js';
+import { b as bodyCC, a as bodyRC, c as bodyAC } from '../../index-C5jH5tEs.js';
+import '../../localforage-BUN9JvcD.js';
+import '../../index-B6B6MmkR.js';
+import { isSillotPhoneAppMode } from './env.mjs';
 
 function addUC() {
     if (window.siyuan.user == null) {

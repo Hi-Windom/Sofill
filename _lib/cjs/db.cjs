@@ -1,14 +1,14 @@
 /*!
-* sofill v1.1.3
+* sofill v1.1.4
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
 'use strict';
 
 var path = require('path');
-var sleep = require('../../sleep-e791f7de.js');
-var index = require('../../index-87eeec56.js');
-var localforage = require('../../localforage-2fa1b85d.js');
+var hook = require('./hook.cjs');
+var env = require('./env.cjs');
+var localforage = require('../../localforage-Ca4-CWkJ.js');
 
 function importFromJson(idbDatabase, importObject) {
     return new Promise((resolve, reject) => {
@@ -96,7 +96,7 @@ async function exportToJson(idbDatabase) {
 
 async function importIDB(result) {
     if (window.Sillot?.status.IDBloaded ||
-        !index.isSillot()) {
+        !env.isSillot()) {
         return;
     }
     const importObject = result.data;
@@ -144,7 +144,7 @@ async function importIDB(result) {
                 break;
             }
             else {
-                await sleep.sleep(100);
+                await hook.sleep(100);
                 waittime += 0.1;
             }
         }
@@ -152,7 +152,7 @@ async function importIDB(result) {
     });
 }
 async function exportIDB() {
-    if (!index.isSillot()) {
+    if (!env.isSillot()) {
         return;
     }
     const dbList = (await window.indexedDB.databases()).map((db) => db.name);
@@ -177,7 +177,7 @@ async function exportIDB() {
                 break;
             }
             else {
-                await sleep.sleep(100);
+                await hook.sleep(100);
             }
         }
         const workspaceName = path.basename(window.siyuan?.config.system.workspaceDir);

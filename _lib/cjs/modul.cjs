@@ -1,12 +1,12 @@
 /*!
-* sofill v1.1.3
+* sofill v1.1.4
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
 'use strict';
 
-var index$1 = require('../../index-c1b14106.js');
-var index = require('../../index-0894dc35.js');
+var index$1 = require('../../index-B6XvZFcB.js');
+var index = require('../../index-DcwnOBEy.js');
 
 function showDocCreatedDate() {
     /** 为打开文档的标题下显示文档创建日期 */
@@ -81,11 +81,11 @@ function changeFontSizeScroller() {
                 fontsize: /(?<=\.b3-typography|protyle-wysiwyg|protyle-title\s*\{\s*font-size\s*:\s*)(\d+)(?=px(?:\s+\!important)?(?:\s*;|\}))/,
             },
             wheel: {
-                enable: true,
+                enable: true, // 滚轮功能开关
                 zoom: {
-                    enable: true,
-                    threshold: 100,
-                    min: 9,
+                    enable: true, // 滚轮缩放功能开关
+                    threshold: 100, // 滚轮缩放阈值
+                    min: 9, // 最小字号(px)
                     max: 72, // 最大字号(px)
                 },
             },
