@@ -1,14 +1,14 @@
 /*!
-* sofill v1.1.0
+* sofill v1.1.1
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
-export { C as CopyDOM, b as MoveChildren, M as MoveDOM, a as addinsertCreateElement, c as bodyAC, f as bodyCC, e as bodyRC, d as diguiTooONE, j as eRemoveProperty, h as eSetProperty, g as getActualWidthOfChars, i as insertCreateAfter } from '../../index-4af0e003.js';
-import { l as localforageExports } from '../../localforage-efb06984.js';
-import { i as isEmptyString } from '../../index-40cc9fad.js';
-export { A as AddEvent, R as RangeLimitedInt, e as addURLParam, c as compareVersion, g as getThemeMode, b as isEmpty, a as isPromise, d as loadScript, l as loadStyle, m as myRemoveEvent, r as removejscssfile, s as sleep, u as updateStyle } from '../../index-40cc9fad.js';
-import { p as parseResponse, a as post2Siyuan } from '../../index-a6ed79e2.js';
-export { g as genUUID, i as isMobile, b as isWindow } from '../../index-a6ed79e2.js';
+export { C as CopyDOM, b as MoveChildren, M as MoveDOM, a as addinsertCreateElement, c as bodyAC, f as bodyCC, e as bodyRC, d as diguiTooONE, j as eRemoveProperty, h as eSetProperty, g as getActualWidthOfChars, i as insertCreateAfter } from '../../index-13ab85fc.js';
+import { l as localforageExports } from '../../localforage-83a0396b.js';
+import { i as isEmptyString } from '../../index-0aa002dd.js';
+export { A as AddEvent, R as RangeLimitedInt, e as addURLParam, c as compareVersion, g as getThemeMode, b as isEmpty, a as isPromise, d as loadScript, l as loadStyle, m as myRemoveEvent, r as removejscssfile, s as sleep, u as updateStyle } from '../../index-0aa002dd.js';
+import { p as parseResponse, a as post2Siyuan } from '../../index-5f98be2b.js';
+export { g as genUUID, i as isMobile, b as isWindow } from '../../index-5f98be2b.js';
 
 class LimitPromise {
     _max;

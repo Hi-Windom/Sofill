@@ -1,9 +1,12 @@
 /*!
-* sofill v1.1.0
+* sofill v1.1.1
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
 'use strict';
+
+var index = require('../../index-cd69bb2c.js');
+require('../../index-fb136fde.js');
 
 /**
  * @name toDate
@@ -2523,7 +2526,7 @@ const originalFormatFunction = format$1;
 // 重写 format 函数
 function format(date, formatStr) {
     // 调用 window.sout.tracker() 每次运行 format 函数
-    return window.sout.tracker(originalFormatFunction(date, formatStr));
+    return index.tracker(originalFormatFunction(date, formatStr), date, formatStr);
 }
 
 /*
