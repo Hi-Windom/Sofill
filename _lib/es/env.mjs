@@ -1,6 +1,6 @@
 /*!
-* sofill v1.1.1
+* sofill v1.1.3
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
-export { a as isAppMode, b as isDesktopAppMode, d as isPadAppMode, c as isPhoneAppMode, i as isSillot, e as isSillotPhoneAppMode } from '../../index-84442f55.js';
+export { b as isAppMode, c as isDesktopAppMode, e as isPadAppMode, d as isPhoneAppMode, a as isSillot, i as isSillotPhoneAppMode } from '../../index-234d3969.js';

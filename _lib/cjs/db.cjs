@@ -1,14 +1,14 @@
 /*!
-* sofill v1.1.1
+* sofill v1.1.3
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
 'use strict';
 
 var path = require('path');
-var sleep = require('../../sleep-b7d318d7.js');
-var index = require('../../index-fb136fde.js');
-var localforage = require('../../localforage-7e913f80.js');
+var sleep = require('../../sleep-e791f7de.js');
+var index = require('../../index-87eeec56.js');
+var localforage = require('../../localforage-2fa1b85d.js');
 
 function importFromJson(idbDatabase, importObject) {
     return new Promise((resolve, reject) => {

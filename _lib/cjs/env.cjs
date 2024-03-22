@@ -1,11 +1,11 @@
 /*!
-* sofill v1.1.1
+* sofill v1.1.3
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
 'use strict';
 
-var index = require('../../index-fb136fde.js');
+var index = require('../../index-87eeec56.js');
 
 
 

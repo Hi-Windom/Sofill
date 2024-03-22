@@ -1,4 +1,4 @@
-export default function sout(): {
+export declare function sout(): {
     debug: boolean;
     log: typeof log;
     slog: typeof slog;
@@ -16,17 +16,18 @@ export default function sout(): {
     table: typeof table;
     showAll: () => void;
 };
-export declare function bad(m: any, head?: any): void;
-export declare function error(m: any, head?: any): void;
-export declare function good(m: any, head?: any): void;
-export declare function info(m: any, head?: any): void;
-export declare function log(m: any): void;
-export declare function ops(m: any, head?: any): void;
-export declare function print(m: any, head?: any): void;
-export declare function slog(m: any): void;
-export declare function success(m: any, head?: any): void;
-export declare function table(m: any): void;
-export declare function tracker(m: any, ...additionalMessages: any[]): void;
-export declare function unsure(m: any, head?: any): void;
-export declare function warn(m: any, head?: any): void;
-export declare function wink(m: any, head?: any): void;
+declare function bad(m: any, head?: any): void;
+declare function error(m: any, head?: any): void;
+declare function good(m: any, head?: any): void;
+declare function info(m: any, head?: any): void;
+declare function log(m: any): void;
+declare function ops(m: any, head?: any): void;
+declare function print(m: any, head?: any): void;
+declare function slog(m: any): void;
+declare function success(m: any, head?: any): void;
+declare function table(m: any): void;
+declare function tracker(m: any, ...additionalMessages: any[]): void;
+declare function unsure(m: any, head?: any): void;
+declare function warn(m: any, head?: any): void;
+declare function wink(m: any, head?: any): void;
+export {};
