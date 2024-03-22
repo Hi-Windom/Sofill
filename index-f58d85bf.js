@@ -1,10 +1,8 @@
 /*!
-* sofill v1.0.76
+* sofill v1.1.0
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 */
-'use strict';
-
 function isSillot() {
     return document.body.classList.contains("branch--Sillot");
 }
@@ -31,9 +29,4 @@ function isSillotPhoneAppMode() {
     return isSillot() && isPhoneAppMode();
 }
 
-exports.isAppMode = isAppMode;
-exports.isDesktopAppMode = isDesktopAppMode;
-exports.isPadAppMode = isPadAppMode;
-exports.isPhoneAppMode = isPhoneAppMode;
-exports.isSillot = isSillot;
-exports.isSillotPhoneAppMode = isSillotPhoneAppMode;
+export { isAppMode as a, isDesktopAppMode as b, isPhoneAppMode as c, isPadAppMode as d, isSillotPhoneAppMode as e, isSillot as i };
