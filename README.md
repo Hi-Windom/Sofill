@@ -9,15 +9,7 @@
 
 Sofill内核为一体化主题提供基于现代技术的全链路敏捷开发支持
 
-Sofill内核适用于[思源笔记](https://github.com/siyuan-note/siyuan)，并为[汐洛](https://github.com/Hi-Windom/Sillot)提供额外支持
-
-以下主题均基于Sofill内核：
-
-1. [Sofill-](https://github.com/Hi-Windom/winsay)
-2. [Sofill=](https://github.com/Hi-Windom/lili)
-3. Sofill+
-4. Sofill--
-5. Sofill++
+Sofill内核适用于[汐洛（Sillot）](https://github.com/Hi-Windom/Sillot)、赫礼斯（Hellise）等应用的主题开发。
 
 仍在积极构建中，请不要使用
 
@@ -40,5 +32,3 @@ Sofill内核总是跟进最新的 Chromium 版本。如果一个特性在移动�
 总的来说，Sofill内核是激进的，总是青睐于采用新技术、新标准。如果你的目标是开发一个适用群体最大化的主题，请不要使用Sofill内核。
 
 ## TODO
-
-* [ ] Support [https://esm.sh](https://esm.sh)

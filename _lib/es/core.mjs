@@ -1,11 +1,11 @@
 /*!
-* sofill v1.1.4
+* sofill v1.1.5
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
+* https://jsr.io/@sisi/sofill
 */
-import { b as bodyCC, a as bodyRC, c as bodyAC } from '../../index-C5jH5tEs.js';
-import '../../localforage-BUN9JvcD.js';
-import '../../index-B6B6MmkR.js';
+import { f as bodyCC, e as bodyRC, c as bodyAC } from '../../index-DtAeCvFa.js';
+import '../../index-B54_XORD.js';
 import { isSillotPhoneAppMode } from './env.mjs';
 
 function addUC() {
@@ -235,7 +235,8 @@ function tracker(m, ...additionalMessages) {
         return;
     }
     const t = typeof m === "string" ? "%s" : "%o";
-    console.log("%c%s%c" + t, "padding: 2px 4px;margin: 2px;background: orange;color: white;border-radius: 2px;font-size: 16px", (new Error()).stack.split("\n")[2].trim().split(" ")[1], "padding: 2px 4px;color: #1BA1E2;font-size: 16px", m);
+    console.log("%c%s%c" + t, "padding: 2px 4px;margin: 2px;background: #CB5831;color: white;border-radius: 2px;font-size: 16px", // #CB5831 能在明暗主题的DevTools均清晰显示超链接的蓝色字体
+    (new Error()).stack.split("\n")[2].trim().split(" ")[1], "padding: 2px 4px;color: #1BA1E2;font-size: 16px", m);
     additionalMessages.forEach(message => {
         console.log(message);
     });

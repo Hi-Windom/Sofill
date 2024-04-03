@@ -22,14 +22,21 @@ export declare class LimitPromise {
     _createTask(caller: any, args: any, resolve: any, reject: any): () => void;
 }
 export declare class LocalStorage {
+    private _DB;
+    private _DB_version;
     private _MAX;
     limitP: LimitPromise;
-    constructor(max: any);
+    constructor(max: any, DB?: string, DB_version?: number);
     getItem(key: any, cb?: any): Promise<unknown>;
     setItem(key: any, value: any, cb?: any): Promise<unknown>;
     removeItem(key: any, cb?: any): Promise<unknown>;
-    GetItem(key: any): Promise<unknown>;
-    SetItem(key: any, value: any, cb: any): Promise<void>;
-    RemoveItem(key: any, cb: any): Promise<void>;
+    GetItem(key: string): Promise<any>;
+    SetItem(key: string, value: any, cb?: () => void): Promise<void>;
+    RemoveItem(key: string, cb?: () => void): Promise<void>;
+    checkAndSetBindIDB(obj: {
+        id: any;
+        bindIDB?: string;
+    }): Promise<void>;
+    initDOMWithIDBValue(id: string): Promise<void>;
+    initAllPropFromIDBAsync(dom: any): Promise<void>;
 }
-export declare function initAllPropFromIDBAsync(dom: any): Promise<void>;

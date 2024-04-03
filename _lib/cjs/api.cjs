@@ -1,15 +1,16 @@
 /*!
-* sofill v1.1.4
+* sofill v1.1.5
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
+* https://jsr.io/@sisi/sofill
 */
 'use strict';
 
-var index$1 = require('../../index-B6XvZFcB.js');
-var localforage = require('../../localforage-Ca4-CWkJ.js');
-var index$2 = require('../../index-CR05U1JW.js');
-var index$3 = require('../../index-DcwnOBEy.js');
+var index$1 = require('../../index-8bhpMU2r.js');
+var index$2 = require('../../index-CilrUROb.js');
+var index$3 = require('../../index-BaTKDbBI.js');
 
+// import * as idb from "localforage";
 class LimitPromise {
     _max;
     _count;
@@ -70,9 +71,13 @@ class LimitPromise {
     }
 }
 class LocalStorage {
+    _DB;
+    _DB_version;
     _MAX;
     limitP;
-    constructor(max) {
+    constructor(max, DB = "sofill", DB_version = 1) {
+        this._DB = DB;
+        this._DB_version = DB_version;
         // 请求上限
         this._MAX = max;
         // 核心控制器
@@ -87,239 +92,315 @@ class LocalStorage {
     async removeItem(key, cb = null) {
         return await this.limitP.call(this.RemoveItem, key, cb);
     }
+    // async GetItem(key) {
+    //   if (key) {
+    //     return await idb.getItem(key).catch(function (err) {
+    //       // 当出错时，此处代码运行
+    //       console.warn(err);
+    //     });
+    //   } else {
+    //     console.error(
+    //       "Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'getItem')"
+    //     );
+    //     return;
+    //   }
+    // }
     async GetItem(key) {
         if (key) {
-            return await localforage.localforageExports.getItem(key).catch(function (err) {
+            try {
+                const db = await index$2.openDB(this._DB, this._DB_version, {
+                    upgrade(db) {
+                        // 创建一个名为'items'的存储对象
+                        db.createObjectStore('items');
+                    },
+                });
+                // 使用事务从'items'存储中获取给定键的值
+                const tx = db.transaction('items', 'readonly');
+                const store = tx.objectStore('items');
+                const value = await store.get(key);
+                return value; // 返回获取到的值
+            }
+            catch (err) {
                 // 当出错时，此处代码运行
                 console.warn(err);
-            });
+                return undefined;
+            }
         }
         else {
             console.error("Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'getItem')");
-            return;
+            return undefined;
         }
     }
     async SetItem(key, value, cb) {
-        return await localforage.localforageExports.setItem(key, value)
-            .then(function (r) {
-            // 当值被存储后，可执行其他操作
-            console.log(r);
-        })
-            .catch(function (err) {
-            // 当出错时，此处代码运行
-            console.warn(err);
-        });
-    }
-    async RemoveItem(key, cb) {
-        return await localforage.localforageExports.removeItem(key)
-            .then(() => {
-            // 当值被移除后，此处代码运行
-            console.log("Key is cleared!");
-        })
-            .catch(function (err) {
-            // 当出错时，此处代码运行
-            console.warn(err);
-        });
-    }
-}
-async function initAllPropFromIDBAsync(dom) {
-    // 遍历所有子元素，判断 prop ，取代 propInit 和 checkedInit，绑定但是不回调（与change函数冲突）
-    // 目前的问题是加载时没有等待getItem从IDB获取到值而是先setItem覆盖了IDB的值，解决方案：proxy(回调) -> bind -> init
-    // 专门为CP这种包含大量配置DOM设计的，propInit 和 checkedInit 整合为 initPropAndBindFromIDBAsync 单点初始化并绑定
-    // Object.defineProperty 拦截的是对象的属性，会改变原对象。proxy 是拦截整个对象，通过 new 生成一个新对象，不会改变原对象。
-    // Proxy是对整个对象的代理，而Object.defineProperty只能代理某个属性。
-    // 对象上新增属性，Proxy可以监听到，Object.defineProperty不能。
-    // 若对象内部属性要全部递归代理，Proxy可以只在调用的时候递归，而Object.definePropery需要一次完成所有递归，性能比Proxy差。
-    // https://es6.ruanyifeng.com/#docs/proxy
-    const _bind = async (id) => {
-        const DOM = document.getElementById(id); // 获取dom
-        DOM.type === "checkbox";
-        // Object.defineProperty(DOM, prop, {
-        //   get: () => {
-        //     if (isCheckbox) {
-        //       return DOM.checked;
-        //     } else {
-        //       return DOM.value;
-        //     }
-        //   },
-        //   set: function (value) {
-        //     if (isCheckbox) {
-        //       DOM.checked = value === "true" ? true : false;
-        //     } else {
-        //       DOM.value = value;
-        //     }
-        //     idb.setItem(id, value);
-        //     return true;
-        //   },
-        //   configurable: true,
-        // });
-        // function watchOut(obj, opts) {
-        //   const handler = {
-        //     get(target, property) {
-        //       opts.beforeRead(target, property);
-        //       const result = Reflect.get(target, property);
-        //       opts.read(target, property);
-        //       return result;
-        //     },
-        //     set(target, property, value) {
-        //       opts.beforeUpdated(value, property, value);
-        //       if (target[property] !== value)
-        //         opts.beforeChanged(value, property, value);
-        //       const result = Reflect.set(target, property, value);
-        //       opts.updated(value, property, value);
-        //       opts.changed(value, property, value);
-        //       if (typeof value === "object") {
-        //         target[property] = toDeepProxy(target[property], handler); //当value为一个对象时，对此对象也进行深度代理
-        //       }
-        //       return result;
-        //     },
-        //   };
-        //   return toDeepProxy(obj, handler);
-        //   function toDeepProxy(object, handler) {
-        //     if (!isPureObject(object)) addSubProxy(object, handler);
-        //     return new Proxy(object, handler);
-        //     function addSubProxy(object, handler) {
-        //       for (const prop in object) {
-        //         if (typeof object[prop] === "object") {
-        //           if (!isPureObject(object[prop]))
-        //             addSubProxy(object[prop], handler);
-        //           object[prop] = new Proxy(object[prop], handler);
-        //         }
-        //       }
-        //       object = new Proxy(object, handler);
-        //     }
-        //     function isPureObject(object) {
-        //       if (typeof object !== "object") {
-        //         return false;
-        //       } else {
-        //         for (const prop in object) {
-        //           if (typeof object[prop] === "object") {
-        //             return false;
-        //           }
-        //         }
-        //       }
-        //       return true;
-        //     }
-        //   }
-        // }
-        // window.obj3 = watchOut(
-        //   { name: { second: "99" } },
-        //   {
-        //     beforeRead(target, property) {
-        //       console.log(target, property, "beforeRead");
-        //     },
-        //     read(target, property) {
-        //       console.log("afterRead");
-        //     },
-        //     beforeUpdated(target, property, value) {
-        //       console.log("beforeUpdated");
-        //     },
-        //     beforeChanged(target, property, value) {
-        //       console.log("beforeChanged");
-        //     },
-        //     updated(target, property, value) {
-        //       console.log("updated");
-        //     },
-        //     changed(target, property, value) {
-        //       console.log("changed");
-        //     },
-        //   }
-        // );
-        // window.obj3.name.second;
-        console.log(`${id} binded successfully`);
-    };
-    const _checkedInit = async (obj) => {
-        if (index$2.isEmptyString(obj.id)) {
-            console.warn(obj);
-            return;
-        }
-        await _bind(obj.id);
-        return localforage.localforageExports.getItem(obj.id).then(async (v) => {
-            if (!index$2.isEmptyString(v)) {
-                obj.bindIDB = "true";
-            }
-            else {
-                obj.bindIDB = "false";
-            }
-            console.log(`${obj.id} inited successfully with value \`${v}\``);
-        });
-    };
-    const _propInit = async (id) => {
-        if (index$2.isEmptyString(id)) {
-            console.warn(id);
-            return;
-        }
-        await _bind(id);
-        return localforage.localforageExports.getItem(id).then(async (v) => {
-            const dom = document.getElementById(id);
-            if (!index$2.isEmptyString(v)) {
-                dom.bindIDB = v;
-            }
-            else {
-                switch (dom.type) {
-                    case "select-one":
-                    case "select-multiple":
-                        dom.bindIDB = dom.options[0].value;
-                        break;
-                    case "number":
-                    case "range":
-                        dom.bindIDB = 0;
-                        break;
-                    default:
-                        dom.bindIDB = "";
-                        break;
+        if (key) {
+            try {
+                const db = await index$2.openDB(this._DB, this._DB_version, {
+                    upgrade(db) {
+                        // 创建一个名为'items'的存储对象
+                        db.createObjectStore('items');
+                    },
+                });
+                // 使用事务将值添加到'items'存储中
+                const tx = db.transaction('items', 'readwrite');
+                const store = tx.objectStore('items');
+                await store.put(value, key); // 使用put方法存储键值对
+                // 当值被存储后，可执行其他操作
+                console.log("Value is stored!");
+                if (typeof cb === "function") {
+                    cb();
                 }
             }
-            console.log(`${id} inited successfully with value \`${v}\``);
-        });
-    };
-    const _forEach = async (arr, callback) => {
-        const length = arr.length;
-        let k = 0;
-        while (k < length) {
-            await callback(arr[k]);
-            k++;
+            catch (err) {
+                // 当出错时，此处代码运行
+                console.warn(err);
+            }
         }
-    };
-    let childsLength = 0;
-    const selectList = dom.querySelectorAll("select:not([id^='NoSync'])");
-    const normalInputList = dom.querySelectorAll("input[id^='SC_winsay_cp']:not([type='checkbox'])");
-    const checkboxList = dom.querySelectorAll("input[type='checkbox']:not([id^='NoSync'])");
-    childsLength += selectList.length;
-    childsLength += normalInputList.length;
-    childsLength += checkboxList.length;
-    console.warn(childsLength);
-    window.winsay.cp.awaitInitItem = childsLength;
-    await _forEach(selectList, async (dom) => {
-        await _propInit(dom.id);
-        window.winsay.cp.awaitInitItem -= 1;
-        window.winsay.cp.inited += 1;
-    });
-    await _forEach(normalInputList, async (dom) => {
-        await _propInit(dom.id);
-        window.winsay.cp.awaitInitItem -= 1;
-        window.winsay.cp.inited += 1;
-    });
-    await _forEach(checkboxList, async (dom) => {
-        await _checkedInit(dom);
-        window.winsay.cp.awaitInitItem -= 1;
-        window.winsay.cp.inited += 1;
-    });
-    // await selectList?.forEach(async function (value) {
-    //   await _propInit(value.id);
-    //   childsLength -= 1;
-    // });
-    // await rangeSliderList?.forEach(async function (value) {
-    //   await _propInit(value.id);
-    //   childsLength -= 1;
-    // });
-    // await checkboxList?.forEach(async function (obj) {
-    //   await _checkedInit(obj);
-    //   childsLength -= 1;
-    // });
-    // if (childsLength === 0) {
-    //   return true;
+        else {
+            console.error("Key is not provided.");
+        }
+    }
+    async RemoveItem(key, cb) {
+        if (key) {
+            try {
+                // 打开或创建一个名为'mydb'的数据库，版本为1
+                const db = await index$2.openDB(this._DB, this._DB_version, {
+                    upgrade(db) {
+                        // 创建一个名为'items'的存储对象
+                        db.createObjectStore('items');
+                    },
+                });
+                // 使用事务从'items'存储中删除给定键的值
+                const tx = db.transaction('items', 'readwrite');
+                const store = tx.objectStore('items');
+                await store.delete(key); // 使用delete方法删除键对应的值
+                // 当值被移除后，此处代码运行
+                console.log("Key is cleared!");
+                if (typeof cb === "function") {
+                    cb();
+                }
+            }
+            catch (err) {
+                // 当出错时，此处代码运行
+                console.warn(err);
+            }
+        }
+        else {
+            console.error("Key is not provided.");
+        }
+    }
+    // async SetItem(key, value, cb) {
+    //   return await idb
+    //     .setItem(key, value)
+    //     .then(function (r) {
+    //       // 当值被存储后，可执行其他操作
+    //       console.log(r);
+    //       if (typeof cb === "function") {
+    //         cb;
+    //       }
+    //     })
+    //     .catch(function (err) {
+    //       // 当出错时，此处代码运行
+    //       console.warn(err);
+    //     });
     // }
+    // async RemoveItem(key, cb) {
+    //   return await idb
+    //     ?.removeItem(key)
+    //     .then(() => {
+    //       // 当值被移除后，此处代码运行
+    //       console.log("Key is cleared!");
+    //       if (typeof cb === "function") {
+    //         cb;
+    //       }
+    //     })
+    //     .catch(function (err) {
+    //       // 当出错时，此处代码运行
+    //       console.warn(err);
+    //     });
+    // }
+    async checkAndSetBindIDB(obj) {
+        if (obj.id) {
+            try {
+                const db = await index$2.openDB(this._DB, this._DB_version, {
+                    upgrade(db) {
+                        // 创建一个名为'items'的存储对象
+                        db.createObjectStore('items');
+                    },
+                });
+                // 使用事务从'items'存储中获取给定id的值
+                const tx = db.transaction('items', 'readonly');
+                const store = tx.objectStore('items');
+                const value = await store.get(obj.id);
+                // 检查值是否为空字符串
+                if (!index$2.isEmptyString(value)) {
+                    obj.bindIDB = "true";
+                }
+                else {
+                    obj.bindIDB = "false";
+                }
+                console.log(`${obj.id} inited successfully with value \`${value}\``);
+            }
+            catch (err) {
+                // 当出错时，此处代码运行
+                console.warn(err);
+            }
+        }
+        else {
+            console.error("Object ID is not provided.");
+        }
+    }
+    async initDOMWithIDBValue(id) {
+        if (id) {
+            try {
+                const db = await index$2.openDB(this._DB, this._DB_version, {
+                    upgrade(db) {
+                        // 创建一个名为'items'的存储对象
+                        db.createObjectStore('items');
+                    },
+                });
+                // 使用事务从'items'存储中获取给定id的值
+                const tx = db.transaction('items', 'readonly');
+                const store = tx.objectStore('items');
+                const value = await store.get(id);
+                // 获取DOM元素
+                const dom = document.getElementById(id);
+                if (!index$2.isEmptyString(value)) {
+                    dom.bindIDB = value;
+                }
+                else {
+                    // 根据DOM元素类型设置默认值
+                    switch (dom.type) {
+                        case "select-one":
+                        case "select-multiple":
+                            dom.bindIDB = dom.options[0].value;
+                            break;
+                        case "number":
+                        case "range":
+                            dom.bindIDB = 0;
+                            break;
+                        default:
+                            dom.bindIDB = "";
+                            break;
+                    }
+                }
+                console.log(`${id} inited successfully with value \`${value}\``);
+            }
+            catch (err) {
+                // 当出错时，此处代码运行
+                console.warn(err);
+            }
+        }
+        else {
+            console.error("ID is not provided.");
+        }
+    }
+    async initAllPropFromIDBAsync(dom) {
+        // 遍历所有子元素，判断 prop ，取代 propInit 和 checkedInit，绑定但是不回调（与change函数冲突）
+        // 目前的问题是加载时没有等待getItem从IDB获取到值而是先setItem覆盖了IDB的值，解决方案：proxy(回调) -> bind -> init
+        // 专门为CP这种包含大量配置DOM设计的，propInit 和 checkedInit 整合为 initPropAndBindFromIDBAsync 单点初始化并绑定
+        // Object.defineProperty 拦截的是对象的属性，会改变原对象。proxy 是拦截整个对象，通过 new 生成一个新对象，不会改变原对象。
+        // Proxy是对整个对象的代理，而Object.defineProperty只能代理某个属性。
+        // 对象上新增属性，Proxy可以监听到，Object.defineProperty不能。
+        // 若对象内部属性要全部递归代理，Proxy可以只在调用的时候递归，而Object.definePropery需要一次完成所有递归，性能比Proxy差。
+        // https://es6.ruanyifeng.com/#docs/proxy
+        const _bind = async (id) => {
+            const DOM = document.getElementById(id); // 获取dom
+            DOM.type === "checkbox";
+            console.log(`${id} binded successfully`);
+        };
+        const _checkedInit = async (obj) => {
+            if (index$2.isEmptyString(obj.id)) {
+                console.warn(obj);
+                return;
+            }
+            await _bind(obj.id);
+            return this.checkAndSetBindIDB(obj.id);
+            // return idb.getItem(obj.id).then(async (v) => {
+            //   if (!isEmptyString(v)) {
+            //     obj.bindIDB = "true";
+            //   } else {
+            //     obj.bindIDB = "false";
+            //   }
+            //   console.log(`${obj.id} inited successfully with value \`${v}\``);
+            // });
+        };
+        const _propInit = async (id) => {
+            if (index$2.isEmptyString(id)) {
+                console.warn(id);
+                return;
+            }
+            await _bind(id);
+            return this.initDOMWithIDBValue(id);
+            // return idb.getItem(id).then(async (v) => {
+            //   const dom = document.getElementById(id) as any;
+            //   if (!isEmptyString(v)) {
+            //     dom.bindIDB = v;
+            //   } else {
+            //     switch (dom.type) {
+            //       case "select-one":
+            //       case "select-multiple":
+            //         dom.bindIDB = dom.options[0].value;
+            //         break;
+            //       case "number":
+            //       case "range":
+            //         dom.bindIDB = 0;
+            //         break;
+            //       default:
+            //         dom.bindIDB = "";
+            //         break;
+            //     }
+            //   }
+            //   console.log(`${id} inited successfully with value \`${v}\``);
+            // });
+        };
+        const _forEach = async (arr, callback) => {
+            const length = arr.length;
+            let k = 0;
+            while (k < length) {
+                await callback(arr[k]);
+                k++;
+            }
+        };
+        let childsLength = 0;
+        const selectList = dom.querySelectorAll("select:not([id^='NoSync'])");
+        const normalInputList = dom.querySelectorAll("input[id^='SC_winsay_cp']:not([type='checkbox'])");
+        const checkboxList = dom.querySelectorAll("input[type='checkbox']:not([id^='NoSync'])");
+        childsLength += selectList.length;
+        childsLength += normalInputList.length;
+        childsLength += checkboxList.length;
+        console.warn(childsLength);
+        window.winsay.cp.awaitInitItem = childsLength;
+        await _forEach(selectList, async (dom) => {
+            await _propInit(dom.id);
+            window.winsay.cp.awaitInitItem -= 1;
+            window.winsay.cp.inited += 1;
+        });
+        await _forEach(normalInputList, async (dom) => {
+            await _propInit(dom.id);
+            window.winsay.cp.awaitInitItem -= 1;
+            window.winsay.cp.inited += 1;
+        });
+        await _forEach(checkboxList, async (dom) => {
+            await _checkedInit(dom);
+            window.winsay.cp.awaitInitItem -= 1;
+            window.winsay.cp.inited += 1;
+        });
+        // await selectList?.forEach(async function (value) {
+        //   await _propInit(value.id);
+        //   childsLength -= 1;
+        // });
+        // await rangeSliderList?.forEach(async function (value) {
+        //   await _propInit(value.id);
+        //   childsLength -= 1;
+        // });
+        // await checkboxList?.forEach(async function (obj) {
+        //   await _checkedInit(obj);
+        //   childsLength -= 1;
+        // });
+        // if (childsLength === 0) {
+        //   return true;
+        // }
+    }
 }
 
 const getNewValueFromDomByID = async (id) => {
@@ -1297,7 +1378,6 @@ exports.getNewValueFromDomByID = getNewValueFromDomByID;
 exports.getTooltipDirection = getTooltipDirection;
 exports.getUrlParam = getUrlParam;
 exports.getUrlParams = getUrlParams;
-exports.initAllPropFromIDBAsync = initAllPropFromIDBAsync;
 exports.insertCreateBefore = insertCreateBefore;
 exports.propChange = propChange;
 exports.pushMsg = pushMsg;

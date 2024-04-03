@@ -1,12 +1,12 @@
 /*!
-* sofill v1.1.4
+* sofill v1.1.5
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
+* https://jsr.io/@sisi/sofill
 */
 import { basename } from 'path';
 import { sleep } from './hook.mjs';
 import { isSillot } from './env.mjs';
-import { l as localforageExports } from '../../localforage-BUN9JvcD.js';
 
 function importFromJson(idbDatabase, importObject) {
     return new Promise((resolve, reject) => {
@@ -190,26 +190,4 @@ async function exportIDB() {
     });
 }
 
-// 不在内部使用，否则外部间接调用会报路径错误
-async function setItem(key, value, cb) {
-    try {
-        const v = await localforageExports.setItem(key, value);
-        cb ? cb() : console.log(v);
-        v(true);
-    }
-    catch (e) {
-        console.error(e);
-        e(false);
-    }
-}
-function getItem(key, cb) {
-    return localforageExports.getItem(key)
-        .then((v) => {
-        cb ? cb() : console.log(v);
-    })
-        .catch((e) => {
-        console.error(e);
-    });
-}
-
-export { exportIDB, getItem, importIDB, setItem };
+export { exportIDB, importIDB };

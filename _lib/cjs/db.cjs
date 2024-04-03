@@ -1,14 +1,14 @@
 /*!
-* sofill v1.1.4
+* sofill v1.1.5
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
+* https://jsr.io/@sisi/sofill
 */
 'use strict';
 
 var path = require('path');
 var hook = require('./hook.cjs');
 var env = require('./env.cjs');
-var localforage = require('../../localforage-Ca4-CWkJ.js');
 
 function importFromJson(idbDatabase, importObject) {
     return new Promise((resolve, reject) => {
@@ -192,29 +192,5 @@ async function exportIDB() {
     });
 }
 
-// 不在内部使用，否则外部间接调用会报路径错误
-async function setItem(key, value, cb) {
-    try {
-        const v = await localforage.localforageExports.setItem(key, value);
-        cb ? cb() : console.log(v);
-        v(true);
-    }
-    catch (e) {
-        console.error(e);
-        e(false);
-    }
-}
-function getItem(key, cb) {
-    return localforage.localforageExports.getItem(key)
-        .then((v) => {
-        cb ? cb() : console.log(v);
-    })
-        .catch((e) => {
-        console.error(e);
-    });
-}
-
 exports.exportIDB = exportIDB;
-exports.getItem = getItem;
 exports.importIDB = importIDB;
-exports.setItem = setItem;
