@@ -1,5 +1,5 @@
 /*!
-* sofill v1.1.5
+* sofill v1.1.6
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 * https://jsr.io/@sisi/sofill
@@ -269,8 +269,8 @@ function compareVersion(version1, version2) {
     const minlength = Math.min(length1, length2);
     let i = 0;
     for (i; i < minlength; i++) {
-        let a = parseInt(arr1[i]);
-        let b = parseInt(arr2[i]);
+        const a = parseInt(arr1[i]);
+        const b = parseInt(arr2[i]);
         if (a > b) {
             return 1;
         }
@@ -327,18 +327,18 @@ function isEmptyString(obj) {
         obj === "NULL");
 }
 function RangeLimitedInt(min, value1, max) {
-    var v1 = parseInt(min, 10);
-    var v2 = parseInt(value1, 10);
-    var v3 = parseInt(max, 10);
-    var vmin = v2 < v3 ? v2 : v3;
-    var vmax = v1 > vmin ? v1 : vmin;
+    const v1 = parseInt(min, 10);
+    const v2 = parseInt(value1, 10);
+    const v3 = parseInt(max, 10);
+    const vmin = v2 < v3 ? v2 : v3;
+    const vmax = v1 > vmin ? v1 : vmin;
     return vmax;
 }
 function removejscssfile(filename, filetype) {
-    var targetelement = filetype === "js" ? "script" : filetype === "css" ? "link" : "none";
-    var targetattr = filetype === "js" ? "src" : filetype === "css" ? "href" : "none";
-    var allsuspects = document.getElementsByTagName(targetelement);
-    for (var i = allsuspects.length; i >= 0; i--) {
+    const targetelement = filetype === "js" ? "script" : filetype === "css" ? "link" : "none";
+    const targetattr = filetype === "js" ? "src" : filetype === "css" ? "href" : "none";
+    const allsuspects = document.getElementsByTagName(targetelement);
+    for (let i = allsuspects.length; i >= 0; i--) {
         if (allsuspects[i]?.getAttribute(targetattr) != null &&
             allsuspects[i].getAttribute(targetattr).indexOf(filename) !== -1)
             allsuspects[i].parentNode.removeChild(allsuspects[i]);
@@ -389,7 +389,7 @@ function myRemoveEvent(element, strType, fun) {
     }
 }
 function loadStyle(href, id = null) {
-    let style = document.createElement("link");
+    const style = document.createElement("link");
     if (id)
         style.id = id;
     style.type = "text/css";
@@ -398,7 +398,7 @@ function loadStyle(href, id = null) {
     document.head.appendChild(style);
 }
 function updateStyle(id, href) {
-    let style = document.getElementById(id);
+    const style = document.getElementById(id);
     if (style) {
         style.setAttribute("href", href);
     }
@@ -437,7 +437,7 @@ function addURLParam(url, param = {
             new_url = new URL(url, window.location.origin + window.location.pathname);
             break;
     }
-    for (let [key, value] of Object.entries(param)) {
+    for (const [key, value] of Object.entries(param)) {
         new_url.searchParams.set(key, value);
     }
     switch (true) {

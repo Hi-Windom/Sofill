@@ -1,14 +1,14 @@
 /*!
-* sofill v1.1.5
+* sofill v1.1.6
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 * https://jsr.io/@sisi/sofill
 */
 'use strict';
 
-var index$1 = require('../../index-8bhpMU2r.js');
-var index$2 = require('../../index-CilrUROb.js');
-var index$3 = require('../../index-BaTKDbBI.js');
+var index$1 = require('../../index-DwfWm5FP.js');
+var index$2 = require('../../index-DJnuPu03.js');
+var index$3 = require('../../index-BCixm0tE.js');
 
 // import * as idb from "localforage";
 class LimitPromise {
