@@ -1,9 +1,11 @@
 /*!
-* sofill v1.1.6
+* sofill v1.1.7
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 * https://jsr.io/@sisi/sofill
 */
+'use strict';
+
 function getActualWidthOfChars(text, options) {
     // ref https://juejin.cn/post/7091990279565082655
     const { size, family = "Microsoft YaHei" } = options;
@@ -116,4 +118,15 @@ const eRemoveProperty = (p) => {
     document.documentElement.style.removeProperty(p);
 };
 
-export { CopyDOM as C, MoveDOM as M, addinsertCreateElement as a, MoveChildren as b, bodyAC as c, diguiTooONE as d, bodyRC as e, bodyCC as f, getActualWidthOfChars as g, eSetProperty as h, insertCreateAfter as i, eRemoveProperty as j };
+exports.CopyDOM = CopyDOM;
+exports.MoveChildren = MoveChildren;
+exports.MoveDOM = MoveDOM;
+exports.addinsertCreateElement = addinsertCreateElement;
+exports.bodyAC = bodyAC;
+exports.bodyCC = bodyCC;
+exports.bodyRC = bodyRC;
+exports.diguiTooONE = diguiTooONE;
+exports.eRemoveProperty = eRemoveProperty;
+exports.eSetProperty = eSetProperty;
+exports.getActualWidthOfChars = getActualWidthOfChars;
+exports.insertCreateAfter = insertCreateAfter;
