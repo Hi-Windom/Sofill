@@ -1,6 +1,6 @@
 {
   "name": "sofill",
-  "version": "1.1.7",
+  "version": "1.1.8",
   "description": "Sofill 内核适用于思源笔记 siyuan-note ，并为汐洛 Sillot 提供额外支持",
   "main": "index.cjs",
   "module": "index.mjs",
@@ -95,18 +95,18 @@
   },
   "peerDependencies": {
     "@sillot/bridge": "^0.0.3",
-    "localforage": "^1.10.0",
+    "idb": "^8.0.0",
     "typescript": ">=3.7.0"
   },
   "peerDependenciesMeta": {
     "@sillot/bridge": {
       "optional": false
      },
-     "localforage": {
+     "idb": {
       "optional": true
      },
      "typescript": {
-      "optional": false
+      "optional": true
      }
    }
 }

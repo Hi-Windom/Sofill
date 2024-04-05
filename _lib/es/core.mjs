@@ -1,11 +1,11 @@
 /*!
-* sofill v1.1.7
+* sofill v1.1.8
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 * https://jsr.io/@sisi/sofill
 */
-import { f as bodyCC, e as bodyRC, c as bodyAC } from '../../index-CtFXodK5.js';
-import '../../index-Ck2Y93SB.js';
+import { f as bodyCC, e as bodyRC, c as bodyAC } from '../../index-BX-rI5iM.js';
+import '../../index-I4p9xq1t.js';
 import { isSillotPhoneAppMode } from './env.mjs';
 
 function addUC() {
@@ -230,17 +230,18 @@ function table(m) {
 function tracker(m, ...additionalMessages) {
     if (!window.sout.debug)
         return;
+    const FN = new Error().stack.split("\n")[2].trim().split(" ")[1];
     if (isSillotPhoneAppMode()) {
-        const fn = new Error().stack.split("\n")[2].trim().split(" ")[1];
-        console.log(`${fn} -> ${m}`);
+        console.log(`${FN} -> ${m}`);
     }
     else {
         const t = typeof m === "string" ? "%s" : "%o";
-        console.log("%c%s%c" + t, "padding: 2px 4px;margin: 2px;background: #CB5831;color: white;border-radius: 2px;font-size: 16px", // #CB5831 能在明暗主题的DevTools均清晰显示超链接的蓝色字体
-        new Error().stack.split("\n")[2].trim().split(" ")[1], "padding: 2px 4px;color: #1BA1E2;font-size: 16px", m);
+        console.log(`%c%s%c${t}`, "padding: 2px 4px;margin: 2px;background: #CB5831;color: white;border-radius: 2px;font-size: 16px", // #CB5831 能在明暗主题的DevTools均清晰显示超链接的蓝色字体
+        FN, "padding: 2px 4px;color: #1BA1E2;font-size: 16px", m);
         additionalMessages.forEach((message) => {
             console.log(message);
         });
+        console.warn(FN); // 兼容 vConsole
     }
 }
 function unsure(m, head) {

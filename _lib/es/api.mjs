@@ -1,14 +1,14 @@
 /*!
-* sofill v1.1.7
+* sofill v1.1.8
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 * https://jsr.io/@sisi/sofill
 */
-export { C as CopyDOM, b as MoveChildren, M as MoveDOM, a as addinsertCreateElement, c as bodyAC, f as bodyCC, e as bodyRC, d as diguiTooONE, j as eRemoveProperty, h as eSetProperty, g as getActualWidthOfChars, i as insertCreateAfter } from '../../index-CtFXodK5.js';
-import { o as openDB, i as isEmptyString } from '../../index-Ck2Y93SB.js';
-export { A as AddEvent, R as RangeLimitedInt, e as addURLParam, c as compareVersion, g as getThemeMode, b as isEmpty, a as isPromise, d as loadScript, l as loadStyle, m as myRemoveEvent, r as removejscssfile, s as sleep, u as updateStyle } from '../../index-Ck2Y93SB.js';
-import { p as parseResponse, a as post2Siyuan } from '../../index-B_1kphIr.js';
-export { g as genUUID, i as isMobile, b as isWindow } from '../../index-B_1kphIr.js';
+export { C as CopyDOM, b as MoveChildren, M as MoveDOM, a as addinsertCreateElement, c as bodyAC, f as bodyCC, e as bodyRC, d as diguiTooONE, j as eRemoveProperty, h as eSetProperty, g as getActualWidthOfChars, i as insertCreateAfter } from '../../index-BX-rI5iM.js';
+import { o as openDB, i as isEmptyString } from '../../index-I4p9xq1t.js';
+export { A as AddEvent, R as RangeLimitedInt, e as addURLParam, c as compareVersion, g as getThemeMode, b as isEmpty, a as isPromise, d as loadScript, l as loadStyle, m as myRemoveEvent, r as removejscssfile, s as sleep, u as updateStyle } from '../../index-I4p9xq1t.js';
+import { p as parseResponse, a as post2Siyuan } from '../../index-Xa1VEhGm.js';
+export { g as genUUID, i as isMobile, b as isWindow } from '../../index-Xa1VEhGm.js';
 
 // import * as idb from "localforage";
 class LimitPromise {
