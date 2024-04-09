@@ -1,14 +1,14 @@
 /*!
-* sofill v1.1.8
+* sofill v1.1.9
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 * https://jsr.io/@sisi/sofill
 */
 'use strict';
 
-var index$1 = require('../../index-DPNnHBw4.js');
-var index$2 = require('../../index-DIshAWE3.js');
-var index$3 = require('../../index-DYlAAZT1.js');
+var index$1 = require('../../index-DwL4wnFC.js');
+var index$2 = require('../../index-DAFl0dls.js');
+var index$3 = require('../../index-BbRyH_NP.js');
 
 // import * as idb from "localforage";
 class LimitPromise {
@@ -232,7 +232,7 @@ class LocalStorage {
                 const store = tx.objectStore('items');
                 const value = await store.get(obj.id);
                 // 检查值是否为空字符串
-                if (!index$2.isEmptyString(value)) {
+                if (!index$2.isInvalidStringStrict(value)) {
                     obj.bindIDB = "true";
                 }
                 else {
@@ -264,7 +264,7 @@ class LocalStorage {
                 const value = await store.get(id);
                 // 获取DOM元素
                 const dom = document.getElementById(id);
-                if (!index$2.isEmptyString(value)) {
+                if (!index$2.isInvalidStringStrict(value)) {
                     dom.bindIDB = value;
                 }
                 else {
@@ -309,14 +309,14 @@ class LocalStorage {
             console.log(`${id} binded successfully`);
         };
         const _checkedInit = async (obj) => {
-            if (index$2.isEmptyString(obj.id)) {
+            if (index$2.isInvalidStringStrict(obj.id)) {
                 console.warn(obj);
                 return;
             }
             await _bind(obj.id);
             return this.checkAndSetBindIDB(obj.id);
             // return idb.getItem(obj.id).then(async (v) => {
-            //   if (!isEmptyString(v)) {
+            //   if (!isInvalidStringStrict(v)) {
             //     obj.bindIDB = "true";
             //   } else {
             //     obj.bindIDB = "false";
@@ -325,7 +325,7 @@ class LocalStorage {
             // });
         };
         const _propInit = async (id) => {
-            if (index$2.isEmptyString(id)) {
+            if (index$2.isInvalidStringStrict(id)) {
                 console.warn(id);
                 return;
             }
@@ -333,7 +333,7 @@ class LocalStorage {
             return this.initDOMWithIDBValue(id);
             // return idb.getItem(id).then(async (v) => {
             //   const dom = document.getElementById(id) as any;
-            //   if (!isEmptyString(v)) {
+            //   if (!isInvalidStringStrict(v)) {
             //     dom.bindIDB = v;
             //   } else {
             //     switch (dom.type) {
@@ -1317,8 +1317,7 @@ exports.RangeLimitedInt = index$2.RangeLimitedInt;
 exports.addURLParam = index$2.addURLParam;
 exports.compareVersion = index$2.compareVersion;
 exports.getThemeMode = index$2.getThemeMode;
-exports.isEmpty = index$2.isEmpty;
-exports.isEmptyString = index$2.isEmptyString;
+exports.isInvalidStringStrict = index$2.isInvalidStringStrict;
 exports.isPromise = index$2.isPromise;
 exports.loadScript = index$2.loadScript;
 exports.loadStyle = index$2.loadStyle;

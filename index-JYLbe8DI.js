@@ -1,11 +1,9 @@
 /*!
-* sofill v1.1.8
+* sofill v1.1.9
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 * https://jsr.io/@sisi/sofill
 */
-'use strict';
-
 const instanceOfAny = (object, constructors) => constructors.some(c => object instanceof c);
 let idbProxyableTypes;
 let cursorAdvanceMethods;
@@ -313,18 +311,15 @@ const getThemeMode = (() => {
 const isPromise = (val) => {
     return typeof val.then === "function";
 };
-//判断对象是否为空
-function isEmpty(obj) {
-    return typeof obj === "undefined" || obj === null || obj === "";
-}
-//判断字符串是否为空
-function isEmptyString(obj) {
+//字符串不是法外之地
+function isInvalidStringStrict(obj) {
     return (typeof obj !== "string" ||
         obj === null ||
         obj === undefined ||
+        obj.toLowerCase() === "undefined" ||
         obj === "" ||
-        obj === "null" ||
-        obj === "NULL");
+        obj === " " ||
+        obj.toLowerCase() === "null");
 }
 function RangeLimitedInt(min, value1, max) {
     const v1 = parseInt(min, 10);
@@ -453,18 +448,4 @@ function addURLParam(url, param = {
     }
 }
 
-exports.AddEvent = AddEvent;
-exports.RangeLimitedInt = RangeLimitedInt;
-exports.addURLParam = addURLParam;
-exports.compareVersion = compareVersion;
-exports.getThemeMode = getThemeMode;
-exports.isEmpty = isEmpty;
-exports.isEmptyString = isEmptyString;
-exports.isPromise = isPromise;
-exports.loadScript = loadScript;
-exports.loadStyle = loadStyle;
-exports.myRemoveEvent = myRemoveEvent;
-exports.openDB = openDB;
-exports.removejscssfile = removejscssfile;
-exports.sleep = sleep;
-exports.updateStyle = updateStyle;
+export { AddEvent as A, RangeLimitedInt as R, isPromise as a, loadScript as b, compareVersion as c, addURLParam as d, getThemeMode as g, isInvalidStringStrict as i, loadStyle as l, myRemoveEvent as m, openDB as o, removejscssfile as r, sleep as s, updateStyle as u };

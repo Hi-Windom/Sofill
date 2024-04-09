@@ -1,5 +1,5 @@
 /*!
-* sofill v1.1.8
+* sofill v1.1.9
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 * https://jsr.io/@sisi/sofill
@@ -8,8 +8,8 @@
 
 var com = require('./com.cjs');
 var core = require('./core.cjs');
-require('../../index-DPNnHBw4.js');
-require('../../index-DIshAWE3.js');
+require('../../index-DwL4wnFC.js');
+require('../../index-DAFl0dls.js');
 require('./env.cjs');
 
 

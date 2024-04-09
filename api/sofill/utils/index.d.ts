@@ -2,8 +2,7 @@ export declare function compareVersion(version1: any, version2: any): 0 | 1 | -1
 export declare const sleep: (ms: number) => Promise<unknown>;
 export declare const getThemeMode: string;
 export declare const isPromise: (val: any) => boolean;
-export declare function isEmpty(obj: any): boolean;
-export declare function isEmptyString(obj: any): boolean;
+export declare function isInvalidStringStrict(obj: any): boolean;
 export declare function RangeLimitedInt(min: any, value1: any, max: any): number;
 export declare function removejscssfile(filename: any, filetype: any): void;
 /**

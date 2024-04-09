@@ -1,14 +1,14 @@
 /*!
-* sofill v1.1.8
+* sofill v1.1.9
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 * https://jsr.io/@sisi/sofill
 */
-export { C as CopyDOM, b as MoveChildren, M as MoveDOM, a as addinsertCreateElement, c as bodyAC, f as bodyCC, e as bodyRC, d as diguiTooONE, j as eRemoveProperty, h as eSetProperty, g as getActualWidthOfChars, i as insertCreateAfter } from '../../index-BX-rI5iM.js';
-import { o as openDB, i as isEmptyString } from '../../index-I4p9xq1t.js';
-export { A as AddEvent, R as RangeLimitedInt, e as addURLParam, c as compareVersion, g as getThemeMode, b as isEmpty, a as isPromise, d as loadScript, l as loadStyle, m as myRemoveEvent, r as removejscssfile, s as sleep, u as updateStyle } from '../../index-I4p9xq1t.js';
-import { p as parseResponse, a as post2Siyuan } from '../../index-Xa1VEhGm.js';
-export { g as genUUID, i as isMobile, b as isWindow } from '../../index-Xa1VEhGm.js';
+export { C as CopyDOM, b as MoveChildren, M as MoveDOM, a as addinsertCreateElement, c as bodyAC, f as bodyCC, e as bodyRC, d as diguiTooONE, j as eRemoveProperty, h as eSetProperty, g as getActualWidthOfChars, i as insertCreateAfter } from '../../index-DWUS5Jpo.js';
+import { o as openDB, i as isInvalidStringStrict } from '../../index-JYLbe8DI.js';
+export { A as AddEvent, R as RangeLimitedInt, d as addURLParam, c as compareVersion, g as getThemeMode, a as isPromise, b as loadScript, l as loadStyle, m as myRemoveEvent, r as removejscssfile, s as sleep, u as updateStyle } from '../../index-JYLbe8DI.js';
+import { p as parseResponse, a as post2Siyuan } from '../../index--OEU98V0.js';
+export { g as genUUID, i as isMobile, b as isWindow } from '../../index--OEU98V0.js';
 
 // import * as idb from "localforage";
 class LimitPromise {
@@ -232,7 +232,7 @@ class LocalStorage {
                 const store = tx.objectStore('items');
                 const value = await store.get(obj.id);
                 // 检查值是否为空字符串
-                if (!isEmptyString(value)) {
+                if (!isInvalidStringStrict(value)) {
                     obj.bindIDB = "true";
                 }
                 else {
@@ -264,7 +264,7 @@ class LocalStorage {
                 const value = await store.get(id);
                 // 获取DOM元素
                 const dom = document.getElementById(id);
-                if (!isEmptyString(value)) {
+                if (!isInvalidStringStrict(value)) {
                     dom.bindIDB = value;
                 }
                 else {
@@ -309,14 +309,14 @@ class LocalStorage {
             console.log(`${id} binded successfully`);
         };
         const _checkedInit = async (obj) => {
-            if (isEmptyString(obj.id)) {
+            if (isInvalidStringStrict(obj.id)) {
                 console.warn(obj);
                 return;
             }
             await _bind(obj.id);
             return this.checkAndSetBindIDB(obj.id);
             // return idb.getItem(obj.id).then(async (v) => {
-            //   if (!isEmptyString(v)) {
+            //   if (!isInvalidStringStrict(v)) {
             //     obj.bindIDB = "true";
             //   } else {
             //     obj.bindIDB = "false";
@@ -325,7 +325,7 @@ class LocalStorage {
             // });
         };
         const _propInit = async (id) => {
-            if (isEmptyString(id)) {
+            if (isInvalidStringStrict(id)) {
                 console.warn(id);
                 return;
             }
@@ -333,7 +333,7 @@ class LocalStorage {
             return this.initDOMWithIDBValue(id);
             // return idb.getItem(id).then(async (v) => {
             //   const dom = document.getElementById(id) as any;
-            //   if (!isEmptyString(v)) {
+            //   if (!isInvalidStringStrict(v)) {
             //     dom.bindIDB = v;
             //   } else {
             //     switch (dom.type) {
@@ -1300,4 +1300,4 @@ function insertCreateBefore(targetElement, addElementTxt, setId = null) {
     return element;
 }
 
-export { AI, Account, Asset, Attr, Av, Bazaar, Block, Bookmark, Export, index as File, Filetree, Format, Graph, History, Import, Inbox, LimitPromise, LocalStorage, Lute, Notebook, Outline, Query, Ref, Repo, Riff, Search, Setting, Snippet, SofillDate, Storage, Sync, System, Tag, Template, checkedChange, getBazaarTheme, getFocusedBlock, getFocusedBlockID, getFocusedDoc, getFocusedDocBackground, getFocusedDocID, getFocusedID, getInstalledTheme, getNewValueFromDomByID, getTooltipDirection, getUrlParam, getUrlParams, insertCreateBefore, isEmptyString, parseResponse, post2Siyuan, propChange, pushMsg, querySQL, setTooltipDirection, 通知 };
+export { AI, Account, Asset, Attr, Av, Bazaar, Block, Bookmark, Export, index as File, Filetree, Format, Graph, History, Import, Inbox, LimitPromise, LocalStorage, Lute, Notebook, Outline, Query, Ref, Repo, Riff, Search, Setting, Snippet, SofillDate, Storage, Sync, System, Tag, Template, checkedChange, getBazaarTheme, getFocusedBlock, getFocusedBlockID, getFocusedDoc, getFocusedDocBackground, getFocusedDocID, getFocusedID, getInstalledTheme, getNewValueFromDomByID, getTooltipDirection, getUrlParam, getUrlParams, insertCreateBefore, isInvalidStringStrict, parseResponse, post2Siyuan, propChange, pushMsg, querySQL, setTooltipDirection, 通知 };

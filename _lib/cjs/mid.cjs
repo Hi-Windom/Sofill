@@ -1,5 +1,5 @@
 /*!
-* sofill v1.1.8
+* sofill v1.1.9
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 * https://jsr.io/@sisi/sofill
@@ -4705,11 +4705,29 @@ function cleanEscapedString(input) {
 
 // 重写 format 函数
 function formatDate(date, formatStr) {
-    // 调用 window.sout.tracker() 每次运行 format 函数
-    return window.sout.tracker(format(date, formatStr), date, formatStr);
+    try {
+        return format(date, formatStr);
+    }
+    catch (error) {
+        if (typeof (date) !== "string") {
+            return error.message;
+        }
+        return parseNumber2FormatString(date, formatStr);
+    }
 }
 function parseDate(dateStr, formatStr, referenceDate, options) {
     return parse(dateStr, formatStr, referenceDate, options);
+}
+function parseNumber2FormatString(dateString, f) {
+    const year = dateString.slice(0, 4);
+    const month = dateString.slice(4, 6);
+    const day = dateString.slice(6, 8);
+    const hour = dateString.slice(8, 10);
+    const minute = dateString.slice(10, 12);
+    const second = dateString.slice(12);
+    const dateObject = new Date(`${year}-${month}-${day}T${hour}:${minute}:${second}`);
+    const result = format(dateObject, f);
+    return result;
 }
 
 /*
