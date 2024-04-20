@@ -1,13 +1,13 @@
 /*!
-* sofill v1.1.9
+* sofill v1.1.10
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 * https://jsr.io/@sisi/sofill
 */
 'use strict';
 
-var index = require('../../index-DwL4wnFC.js');
-require('../../index-DAFl0dls.js');
+var index = require('../../index-DR7QqU83.js');
+require('../../index-D9maxC_R.js');
 var env = require('./env.cjs');
 
 function addUC() {

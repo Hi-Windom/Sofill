@@ -1,11 +1,11 @@
 /*!
-* sofill v1.1.9
+* sofill v1.1.10
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 * https://jsr.io/@sisi/sofill
 */
-import { f as bodyCC, e as bodyRC, c as bodyAC } from '../../index-DWUS5Jpo.js';
-import '../../index-JYLbe8DI.js';
+import { f as bodyCC, e as bodyRC, c as bodyAC } from '../../index-D3_otFAu.js';
+import '../../index-BbVHAAtn.js';
 import { isSillotPhoneAppMode } from './env.mjs';
 
 function addUC() {

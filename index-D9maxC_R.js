@@ -1,9 +1,11 @@
 /*!
-* sofill v1.1.9
+* sofill v1.1.10
 * https://github.com/Hi-Windom/Sofill
 * https://www.npmjs.com/package/sofill
 * https://jsr.io/@sisi/sofill
 */
+'use strict';
+
 const instanceOfAny = (object, constructors) => constructors.some(c => object instanceof c);
 let idbProxyableTypes;
 let cursorAdvanceMethods;
@@ -448,4 +450,17 @@ function addURLParam(url, param = {
     }
 }
 
-export { AddEvent as A, RangeLimitedInt as R, isPromise as a, loadScript as b, compareVersion as c, addURLParam as d, getThemeMode as g, isInvalidStringStrict as i, loadStyle as l, myRemoveEvent as m, openDB as o, removejscssfile as r, sleep as s, updateStyle as u };
+exports.AddEvent = AddEvent;
+exports.RangeLimitedInt = RangeLimitedInt;
+exports.addURLParam = addURLParam;
+exports.compareVersion = compareVersion;
+exports.getThemeMode = getThemeMode;
+exports.isInvalidStringStrict = isInvalidStringStrict;
+exports.isPromise = isPromise;
+exports.loadScript = loadScript;
+exports.loadStyle = loadStyle;
+exports.myRemoveEvent = myRemoveEvent;
+exports.openDB = openDB;
+exports.removejscssfile = removejscssfile;
+exports.sleep = sleep;
+exports.updateStyle = updateStyle;

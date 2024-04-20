@@ -1,1 +1,1 @@
-export * from 'ts-md5';
+export { Md5 } from 'ts-md5';
